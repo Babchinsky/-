@@ -1,0 +1,8 @@
+C:\Users\Oleksii\Desktop\1 lab 31.01.2023\1 lab 31.01.2023\bin\Debug\1 lab 31.01.2023.exe.config
+C:\Users\Oleksii\Desktop\1 lab 31.01.2023\1 lab 31.01.2023\bin\Debug\1 lab 31.01.2023.exe
+C:\Users\Oleksii\Desktop\1 lab 31.01.2023\1 lab 31.01.2023\bin\Debug\1 lab 31.01.2023.pdb
+C:\Users\Oleksii\Desktop\1 lab 31.01.2023\1 lab 31.01.2023\obj\Debug\1 lab 31.01.2023.csproj.AssemblyReference.cache
+C:\Users\Oleksii\Desktop\1 lab 31.01.2023\1 lab 31.01.2023\obj\Debug\1 lab 31.01.2023.csproj.SuggestedBindingRedirects.cache
+C:\Users\Oleksii\Desktop\1 lab 31.01.2023\1 lab 31.01.2023\obj\Debug\1 lab 31.01.2023.csproj.CoreCompileInputs.cache
+C:\Users\Oleksii\Desktop\1 lab 31.01.2023\1 lab 31.01.2023\obj\Debug\1 lab 31.01.2023.exe
+C:\Users\Oleksii\Desktop\1 lab 31.01.2023\1 lab 31.01.2023\obj\Debug\1 lab 31.01.2023.pdb
