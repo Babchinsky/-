@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mod", "Mod\Mod.csproj", "{0C7698F9-C2E6-404F-ADAE-48F51D5ADD9B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EA680EFB-6453-44FC-BC5B-72A38D9D72E6} = {EA680EFB-6453-44FC-BC5B-72A38D9D72E6}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLib", "MyLib\MyLib.csproj", "{EA680EFB-6453-44FC-BC5B-72A38D9D72E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C7698F9-C2E6-404F-ADAE-48F51D5ADD9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C7698F9-C2E6-404F-ADAE-48F51D5ADD9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C7698F9-C2E6-404F-ADAE-48F51D5ADD9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C7698F9-C2E6-404F-ADAE-48F51D5ADD9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA680EFB-6453-44FC-BC5B-72A38D9D72E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA680EFB-6453-44FC-BC5B-72A38D9D72E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA680EFB-6453-44FC-BC5B-72A38D9D72E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA680EFB-6453-44FC-BC5B-72A38D9D72E6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {462604C6-8321-42AA-887E-E0142486CC65}
+	EndGlobalSection
+EndGlobal
