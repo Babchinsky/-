@@ -64,11 +64,16 @@ namespace _7_hw_07._02._2023
 
         public void IncreaseByScalar(int num)
         {
-
+            this.x += num;
+            this.y += num;
+            this.z += num;
         }
 
         public void ReductionByScalar(int num)
         {
+            this.x -= num;
+            this.y -= num;
+            this.z -= num;
         }
 
         public Vector Addition(Vector v)
