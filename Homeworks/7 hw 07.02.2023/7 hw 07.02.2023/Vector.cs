@@ -106,12 +106,14 @@ namespace _7_hw_07._02._2023
 
         public int ScalarMultiply(Vector v)
         {
-            return this.x * v.x + this.y + v.y + this.z + v.z;
+            return this.x * v.x + this.y * v.y + this.z * v.z;
         }
 
-        public double GetCosCorner(Vector v)
+        public double GetCorner(Vector v)
         {
-            return this.ScalarMultiply(v) / (this.GetLength() * v.GetLength());
+            double buf = this.ScalarMultiply(v) / ( this.GetLength() * v.GetLength());
+            buf = Math.Pow(Math.Cos(buf), -1);
+            return buf;
         }
 
         public bool EqualityTest(Vector v)
