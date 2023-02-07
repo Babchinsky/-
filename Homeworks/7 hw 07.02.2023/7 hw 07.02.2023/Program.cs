@@ -10,6 +10,11 @@ namespace _7_hw_07._02._2023
     {
         static void Main(string[] args)
         {
+            Vector first = new Vector(1, 2, 3);
+            Vector second = new Vector(1, 2, 3);
+            Console.WriteLine(first);
+            Console.WriteLine(first.GetLength());
+            Console.WriteLine(first.EqualityTest(second));
         }
     }
 }
