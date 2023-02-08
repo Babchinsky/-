@@ -17,9 +17,9 @@ namespace _3_hw_01._01._2023
             //Task_2();
             //Task_3();
             //Task_4();
-            //Task_5();
+            Task_5();
             //Task_6();
-            Task_7();
+            //Task_7();
         }
         public static void Task_1()
         {

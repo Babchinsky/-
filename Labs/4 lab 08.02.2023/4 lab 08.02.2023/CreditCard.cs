@@ -20,7 +20,7 @@ namespace _4_lab_08._02._2023
             cvc = 0;
             date_of_expire = null;
         }
-
+        
         public CreditCard(string number, string full_name, int cvc, string date_of_expire)
         {
             this.number = number;
