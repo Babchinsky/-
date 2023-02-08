@@ -117,7 +117,7 @@ namespace _7_hw_07._02._2023
         public double GetCorner(Vector v)
         {
             double buf = this.ScalarMultiply(v) / ( this.GetLength() * v.GetLength());
-            buf = Math.Pow(Math.Cos(buf), -1);
+            buf = Math.Acos(buf);
             return buf;
         }
 
