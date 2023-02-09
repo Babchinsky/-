@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "9 hw 09.02.2023 overloading operations", "9 hw 09.02.2023 overloading operations\9 hw 09.02.2023 overloading operations.csproj", "{11AE12BA-9CC0-4855-ADC9-9D98C00A3B8A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11AE12BA-9CC0-4855-ADC9-9D98C00A3B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11AE12BA-9CC0-4855-ADC9-9D98C00A3B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11AE12BA-9CC0-4855-ADC9-9D98C00A3B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11AE12BA-9CC0-4855-ADC9-9D98C00A3B8A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27442DA8-CDBD-4174-8FD1-7C19DD58903A}
+	EndGlobalSection
+EndGlobal
