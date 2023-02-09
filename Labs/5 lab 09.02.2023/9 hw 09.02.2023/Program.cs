@@ -15,7 +15,7 @@ namespace _9_hw_09._02._2023
             //Task_3();
             Task_4();
         }
-
+        
         public static void Task_1()
         {
             Console.WriteLine("\n\n\t\t\tTask 1");
