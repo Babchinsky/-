@@ -253,7 +253,7 @@ namespace _3_hw_01._01._2023
                 result = int.Parse(temp[0]) - int.Parse(temp[2]);
             }
 
-
+        
             Console.WriteLine(expression + result);
         }
         public static void Task_6()
