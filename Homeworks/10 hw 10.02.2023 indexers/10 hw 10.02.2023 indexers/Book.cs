@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _10_hw_10._02._2023_indexers
+namespace Project
 {
     internal class Book
     {

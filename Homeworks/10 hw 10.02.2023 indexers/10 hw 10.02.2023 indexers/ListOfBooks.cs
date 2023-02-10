@@ -5,7 +5,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _10_hw_10._02._2023_indexers
+namespace Project
 {
     internal class ListOfBooks
     {
@@ -38,12 +38,12 @@ namespace _10_hw_10._02._2023_indexers
         }
         public Book this[int index]
         {
-            get 
+            get
             {
                 if (index >= 0 && index < books.Length) return books[index];
                 else throw new Exception("Некоректный индекс");
             }
-            set 
+            set
             {
                 if (index >= 0 && index < books.Length) books[index] = value;
                 else throw new Exception("Некоректный индекс");
@@ -60,7 +60,6 @@ namespace _10_hw_10._02._2023_indexers
             }
 
             result.books[result.GetQuantity() - 1] = book;
-
             return result;
         }
 
@@ -83,7 +82,6 @@ namespace _10_hw_10._02._2023_indexers
             {
                 if (this.books[i] == book) return true;
             }
-
             return false;
         }
 

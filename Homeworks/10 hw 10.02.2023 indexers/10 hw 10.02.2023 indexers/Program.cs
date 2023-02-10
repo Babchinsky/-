@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _10_hw_10._02._2023_indexers
+
+namespace Project
 {
     internal class Program
     {
@@ -27,7 +28,7 @@ namespace _10_hw_10._02._2023_indexers
             if (l2.IsThereOn(d) == true) Console.WriteLine("True");
             else Console.WriteLine("False");
 
-
+            
 
             //ListOfBooks l3 = new ListOfBooks(4);
             //Console.WriteLine(l3);
@@ -36,8 +37,9 @@ namespace _10_hw_10._02._2023_indexers
         }
     }
 }
-// У меня есть 3 класса: класс Program, класс Book, класс ListOfBooks.
-// Я хочу, чтобы в списке книг у меня был доступ к свойствам в классе книги.
-// Но закрыть доступ к этим свойствам в главном классе.
 
-// Пока что они все в одном пространстве имён.
+
+// У меня есть 3 класса: класс Program, класс Book, класс ListOfBooks.
+// В главном классе у меня есть доступ к полям класса Book.
+// Я хочу закрыть доступ к этим полям из класса Program, но оставить доступ из класса ListOfBooks. 
+// Как это сделать?
