@@ -33,7 +33,7 @@ class Club
 
 // IEnumerable предоставляет перечислитель, который поддерживает простой перебор элементов необобщенной коллекции
 // IEnumerator поддерживает простой перебор по необобщенной коллекции
-class League : IEnumerable, IEnumerator
+class League /*: IEnumerable, IEnumerator*/
 {
     Club[] ar;
     int curpos = -1;

@@ -150,7 +150,7 @@ namespace _12_hw_14._02._2023_interface
             int numberOfElements = uniqueValues.Count;
             return numberOfElements;
         }
-
+        
         public int EqualToValue(int valueToCompare)
         {
             int count = 0;
