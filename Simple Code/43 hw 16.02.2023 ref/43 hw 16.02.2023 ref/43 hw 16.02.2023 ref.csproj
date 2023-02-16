@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{14178D10-C225-43DA-8F8C-2E105018F0E9}</ProjectGuid>
+    <ProjectGuid>{1B679224-D60C-4C47-BDE4-5516D00262E9}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_14_структуры_и_перечисления_16._02._2023</RootNamespace>
-    <AssemblyName>14 структуры и перечисления 16.02.2023</AssemblyName>
+    <RootNamespace>_43_hw_16._02._2023_ref</RootNamespace>
+    <AssemblyName>43 hw 16.02.2023 ref</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,13 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="1. Структуры. Инициализация. Конструкторы.cs" />
-    <None Include="2. Сравнение структур и классов. Поле значимого типа.cs" />
-    <None Include="3. Сравнение структур и классов. Поле ссылочного типа.cs" />
-    <None Include="4. Перечисления.cs" />
-    <Compile Include="5. Клавиши управления курсором.cs" />
-    <None Include="6. Консольные клавиши.cs" />
-    <None Include="Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

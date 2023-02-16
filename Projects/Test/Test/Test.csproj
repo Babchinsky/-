@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{14178D10-C225-43DA-8F8C-2E105018F0E9}</ProjectGuid>
+    <ProjectGuid>{E0C622FF-892F-4EF9-A61D-A57644DE5D6C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_14_структуры_и_перечисления_16._02._2023</RootNamespace>
-    <AssemblyName>14 структуры и перечисления 16.02.2023</AssemblyName>
+    <RootNamespace>Test</RootNamespace>
+    <AssemblyName>Test</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HtmlAgilityPack, Version=1.11.46.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.46\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,17 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="1. Структуры. Инициализация. Конструкторы.cs" />
-    <None Include="2. Сравнение структур и классов. Поле значимого типа.cs" />
-    <None Include="3. Сравнение структур и классов. Поле ссылочного типа.cs" />
-    <None Include="4. Перечисления.cs" />
-    <Compile Include="5. Клавиши управления курсором.cs" />
-    <None Include="6. Консольные клавиши.cs" />
-    <None Include="Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

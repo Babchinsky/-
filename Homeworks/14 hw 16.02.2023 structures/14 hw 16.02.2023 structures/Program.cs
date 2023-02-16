@@ -41,6 +41,5 @@ namespace _14_hw_16._02._2023_structures
             Console.WriteLine(obj1.ToHsl());
             Console.WriteLine(obj1.ToCmyk());
         }
-
     }
 }
