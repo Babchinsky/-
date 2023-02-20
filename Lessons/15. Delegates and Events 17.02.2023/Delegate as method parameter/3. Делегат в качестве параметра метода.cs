@@ -19,6 +19,7 @@ namespace Delegate
                         }
             }
         }
+        
 
         public struct Person
         {
