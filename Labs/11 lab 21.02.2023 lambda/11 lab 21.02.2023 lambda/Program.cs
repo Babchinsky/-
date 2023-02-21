@@ -71,16 +71,10 @@ namespace _18_hw_21._02._2023_lambda
         {
             Find max = delegate (int[] arr)
             {
-                int maxNum = arr[0];
-                foreach (int element in arr)
-                {
-                    if (element > maxNum) maxNum = element;
-                }
-
+                int maxNum = arr.Max(element => Math.Abs(element));
                 return maxNum;
             };
 
-            //Find max = arr[] => 
             int[] arr1 = { 1, 27, 1, 3, 22 };
             Console.WriteLine(max(arr1));
         }
