@@ -10,9 +10,9 @@ namespace _18_hw_21._02._2023_lambda
     {
         static void Main(string[] args)
         {
-            Task_1();
-            Task_2();
-            Task_3();
+            //Task_1();
+            //Task_2();
+            //Task_3();
             Task_4();
             Task_5();
             Task_6();
@@ -55,13 +55,14 @@ namespace _18_hw_21._02._2023_lambda
 
         static void Task_4()
         {
-            Is programmersDay = delegate (int day)
-            {
-                if (day > 355) throw new Exception("Максимум в году 355 дней");
+            //Is programmersDay = delegate (int day)
+            //{
+            //    if (day > 355) throw new Exception("Максимум в году 355 дней");
 
-                if (day == 256) return true;
-                else return false;
-            };
+            //    if (day == 256) return true;
+            //    else return false;
+            //};
+            Is programmersDay = num => num == 256;
             Console.WriteLine(programmersDay(256));
         }
 
@@ -78,6 +79,8 @@ namespace _18_hw_21._02._2023_lambda
 
                 return maxNum;
             };
+
+            //Find max = arr[] => 
             int[] arr1 = { 1, 27, 1, 3, 22 };
             Console.WriteLine(max(arr1));
         }
