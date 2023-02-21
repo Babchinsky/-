@@ -13,8 +13,8 @@ namespace _18_hw_21._02._2023_lambda
             //Task_1();
             //Task_2();
             //Task_3();
-            Task_4();
-            Task_5();
+            //Task_4();
+            //Task_5();
             Task_6();
             Task_7();
         }
@@ -71,7 +71,7 @@ namespace _18_hw_21._02._2023_lambda
         {
             Find max = delegate (int[] arr)
             {
-                int maxNum = arr.Max(element => Math.Abs(element));
+                int maxNum = arr.Max();
                 return maxNum;
             };
 
@@ -83,15 +83,17 @@ namespace _18_hw_21._02._2023_lambda
         {
             Find min = delegate (int[] arr)
             {
-                int minNum = arr[0];
-                foreach (int element in arr)
-                {
-                    if (element < minNum) minNum = element;
-                }
+                //int minNum = arr[0];
+                int minNum = arr.Min();
+                //foreach (int element in arr)
+                //{
+                //    if (element < minNum) minNum = element;
+                //}
 
                 return minNum;
             };
-            int[] arr1 = { 1, 27, 1, 3, 22 };
+
+            int[] arr1 = { 1, -27, 1, 3, 22 };
             Console.WriteLine(min(arr1));
         }
 
@@ -99,11 +101,11 @@ namespace _18_hw_21._02._2023_lambda
         {
             Find countOfOdd = delegate (int[] arr)
             {
-                int count = 0;
-                foreach (int element in arr)
-                {
-                    if (element % 2 != 0) count++;
-                }
+                int count = arr.Count(element => element % 2 != 0);
+                //foreach (int element in arr)
+                //{
+                //    if (element % 2 != 0) count++;
+                //}
 
                 return count;
             };
