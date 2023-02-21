@@ -10,41 +10,46 @@ namespace _18_hw_21._02._2023_lambda
     {
         static void Main(string[] args)
         {
-            //Task_1();
-            //Task_2(); 
-            //Task_3();
-            //Task_4();
-            //Task_5();
-            //Task_6();
+            Task_1();
+            Task_2();
+            Task_3();
+            Task_4();
+            Task_5();
+            Task_6();
             Task_7();
         }
 
         delegate bool Is(int num);
         static void Task_1()
         {
-            Is even = delegate (int num)
-            {
-                return num % 2 == 0;
-            };
-            Console.WriteLine(even(12));
+            //Is even = delegate (int num)
+            //{
+            //    return num % 2 == 0;
+            //};
+
+            Is even = num => num % 2 == 0;
+
+            Console.WriteLine(even(13));
         }
 
         delegate int Do(int num);
         static void Task_2()
         {
-            Do sqare = delegate (int num)
-            {
-                return num * num;
-            };
+            //Do sqare = delegate (int num)
+            //{
+            //    return num * num;
+            //};
+            Do sqare = num => num * num;
             Console.WriteLine(sqare(12));
         }
 
         static void Task_3()
         {
-            Do cube = delegate (int num)
-            {
-                return num * num * num;
-            };
+            //Do cube = delegate (int num)
+            //{
+            //    return num * num * num;
+            //};
+            Do cube = num => num * num * num;
             Console.WriteLine(cube(2));
         }
 
