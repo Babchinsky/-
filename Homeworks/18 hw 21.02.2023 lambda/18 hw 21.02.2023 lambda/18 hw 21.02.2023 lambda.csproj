@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{87F5E81C-5154-415C-BD49-A1C1D730747A}</ProjectGuid>
+    <ProjectGuid>{9827CDFC-87B1-4A89-B75B-CE207954ECA9}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_17_hw_20._02._2023</RootNamespace>
-    <AssemblyName>17 hw 20.02.2023</AssemblyName>
+    <RootNamespace>_18_hw_21._02._2023_lambda</RootNamespace>
+    <AssemblyName>18 hw 21.02.2023 lambda</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreditCard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

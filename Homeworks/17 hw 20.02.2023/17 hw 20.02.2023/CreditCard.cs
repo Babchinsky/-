@@ -92,7 +92,7 @@ namespace CreditCard
                 Notify?.Invoke($"Цель достигнута");
             }
         }
-
+        
         // Метод для изменения PIN-кода
         public void ChangePin(int newPin)
         {
