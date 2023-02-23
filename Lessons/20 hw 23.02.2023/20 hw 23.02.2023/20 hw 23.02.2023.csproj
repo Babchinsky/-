@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8AC89AC9-2A2B-4A05-8BA2-BF6C5DF98BD8}</ProjectGuid>
+    <ProjectGuid>{B8D7426E-6D44-423F-88E3-F24C63E00A3F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_18_hw_22._02._2023_SRP__OCP</RootNamespace>
-    <AssemblyName>18 hw 22.02.2023 SRP, OCP</AssemblyName>
+    <RootNamespace>_20_hw_23._02._2023</RootNamespace>
+    <AssemblyName>20 hw 23.02.2023</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,9 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bankomat.cs" />
-    <Compile Include="Check.cs" />
-    <Compile Include="Money.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

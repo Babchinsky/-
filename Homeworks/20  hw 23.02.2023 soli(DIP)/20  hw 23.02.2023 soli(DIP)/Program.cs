@@ -6,8 +6,8 @@ namespace Bankomat
     {
         static void Main(string[] args)
         {
-            //Money uah= new UAH(100);
-            Bankomat bankomat1 = new Bankomat(new UAH(100));
+            Money uah= new UAH(100);
+            Bankomat bankomat1 = new Bankomat(uah);
             bankomat1.Info();
             //bankomat1.Put(new EUR(100), new SMSCheck());
 
