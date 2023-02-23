@@ -10,7 +10,7 @@ namespace Bankomat
         public abstract void Withdraw(decimal amount);
     }
 
-    class SMSCheck :Check
+    class SMSCheck : Check
     {
         public SMSCheck() { }
         public override void Put(decimal amount)
