@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _20_hw_23._02._2023
+namespace _21_hw_24._02._2023_SOLID_University
 {
-    internal class Program
+    internal class Student
     {
-        static void Main(string[] args)
-        {
-        }
+
     }
 }
