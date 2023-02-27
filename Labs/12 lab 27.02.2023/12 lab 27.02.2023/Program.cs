@@ -204,7 +204,7 @@ namespace _12_lab_27._02._2023
 
                 return elements[head];
             }
-
+            
             public int Count
             {
                 get { return tail - head + 1; }
