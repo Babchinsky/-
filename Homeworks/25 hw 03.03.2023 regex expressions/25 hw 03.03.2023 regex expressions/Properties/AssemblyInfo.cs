@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("24 hw 03.03.2023 regex expressions")]
+[assembly: AssemblyTitle("25 hw 03.03.2023 regex expressions")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("24 hw 03.03.2023 regex expressions")]
+[assembly: AssemblyProduct("25 hw 03.03.2023 regex expressions")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8b5b5a39-26b4-4265-a2b4-27736e12fa88")]
+[assembly: Guid("0e9b9770-3b85-4c7c-a811-4a97657ec1f2")]
 
 // Version information for an assembly consists of the following four values:
 //

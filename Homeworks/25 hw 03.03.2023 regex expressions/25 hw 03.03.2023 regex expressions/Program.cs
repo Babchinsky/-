@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace _24_hw_03._03._2023_regex_expressions
 {
@@ -17,8 +13,8 @@ namespace _24_hw_03._03._2023_regex_expressions
             //Task_4();
             //Task_5();
             //Task_6();
-            Task_7();
-            //Task_8();
+            //Task_7();
+            Task_8();
         }
         static void Task_1()
         {

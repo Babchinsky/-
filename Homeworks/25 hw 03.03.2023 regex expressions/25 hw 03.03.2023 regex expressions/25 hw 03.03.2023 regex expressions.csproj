@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8B5B5A39-26B4-4265-A2B4-27736E12FA88}</ProjectGuid>
+    <ProjectGuid>{0E9B9770-3B85-4C7C-A811-4A97657EC1F2}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>_24_hw_03._03._2023_regex_expressions</RootNamespace>
-    <AssemblyName>24 hw 03.03.2023 regex expressions</AssemblyName>
+    <RootNamespace>_25_hw_03._03._2023_regex_expressions</RootNamespace>
+    <AssemblyName>25 hw 03.03.2023 regex expressions</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
