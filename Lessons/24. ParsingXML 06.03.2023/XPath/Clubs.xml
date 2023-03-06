@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE football SYSTEM "clubs.dtd">
+<football>
+    <club city = "Лондон" country = "Англия">
+        <name>Арсенал</name>
+    </club>
+    <club city = "Киев" country = "Украина">
+        <name>Динамо</name>
+    </club>
+    <club city = "Донецк" country = "Украина">
+        <name>Шахтер</name>
+    </club>
+    <club city = "Барселона" country = "Испания">
+        <name>Барселона</name>
+    </club>
+    <club city = "Манчестер" country = "Англия">
+        <name>Манчестер Юнайтед</name>
+    </club>
+</football>

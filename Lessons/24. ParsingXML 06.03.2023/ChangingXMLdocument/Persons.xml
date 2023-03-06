@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<persons>
+  <person name="Сатья Наделла">
+    <company>Microsoft</company>
+    <age>48</age>
+  </person>
+  <person name="Ларри Пейдж">
+    <company>Google</company>
+    <age>42</age>
+  </person>
+  <person name="Тим Кук">
+    <company>Apple</company>
+    <age>55</age>
+  </person>
+</persons>

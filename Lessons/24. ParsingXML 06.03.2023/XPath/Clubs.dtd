@@ -1,0 +1,6 @@
+<!ELEMENT football (club*)>
+<!ELEMENT club (name)>
+<!ELEMENT name (#PCDATA)>
+<!ATTLIST club 
+  city CDATA #REQUIRED
+  country CDATA #REQUIRED>

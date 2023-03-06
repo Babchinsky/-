@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<library>
+	<book>
+		<title>Visual C++.NET</title>
+		<author>Ivanov I.P.</author>
+		<year>2003</year>				
+	</book>
+	<book>
+		<title>JavaScript</title>
+		<author>Petrov A.F.</author>
+		<year>2000</year>				
+	</book>
+	<book>
+		<title>XML Technology</title>
+		<author>Vasiliev R.O.</author>
+		<year>2002</year>				
+	</book>
+</library>
