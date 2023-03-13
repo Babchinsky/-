@@ -10,43 +10,40 @@ namespace Dictionary_3._0
     {
         static void Main(string[] args)
         {
-            //DictionaryManager manager = new DictionaryManager();
+            DictionaryManager manager = new DictionaryManager();
 
-            //// создание словаря английский-русский
-            //manager.CreateDictionary("английский-русский");
-
-            //// добавление слов в словарь
-            //manager.AddWordToDictionary("английский-русский", "hello", new List<string> { "привет", "здравствуйте" });
-            //manager.AddWordToDictionary("английский-русский", "world", new List<string> { "мир", "вселенная" });
-            //manager.AddWordToDictionary("английский-русский", "cat", new List<string> { "кот", "кошка" });
-
-            //// поиск перевода слова в словаре
-            //manager.TranslateWord("английский-русский", "hello");
-            //manager.TranslateWord("английский-русский", "world");
-            //manager.TranslateWord("английский-русский", "dog");
+            Console.WriteLine("Выберите действие: ");
+            Console.WriteLine("1. Создать новый словарь");
 
 
 
-            Dictionary dictionary = new Dictionary("англо-русский");
-            dictionary.AddWord("hello", new List<string> { "привет", "здравствуйте" });
-            dictionary.AddWord("world", new List<string> { "мир", "вселенная" });
-            dictionary.AddWord("cat", new List<string> { "кот", "кошка" });
-            Console.WriteLine(dictionary);
+            //// 1. Cоздание словаря английский-русский
+            //manager.CreateDictionary("англо-русский");
+
+            //// 2. Добавление слов в словарь
+            //manager.AddWordToDictionary("англо-русский", "hello", new List<string> { "привет", "здравствуйте" });
+            //manager.AddWordToDictionary("англо-русский", "world", new List<string> { "мир", "вселенная" });
+            //manager.AddWordToDictionary("англо-русский", "cat", new List<string> { "кот", "кошка" });
+
+            //Console.WriteLine(manager);
+
+            //// 3. Замена слова или его перевода в словаре
+            //manager.ChangeWordInDictionary("англо-русский", "hello", "hi", new List<string> { "приветствую" });
+            //Console.WriteLine(manager);
 
 
-            dictionary.ChangeWord("hello", "hi", new List<string> { "приветствую" });
-            Console.WriteLine(dictionary);
+            //// 4а. Удаление слова из словаря
+            //manager.RemoveWordFromDictionary("англо-русский", "hi");
+            //Console.WriteLine(manager);
 
-            //dictionary.RemoveWord("hello");
-            //Console.WriteLine(dictionary);
+            //// 4б. Удаление перевода у слова в словаре (нельзя удалить единственный вариант перевода)
+            //manager.RemoveTranslationFromDictionary("англо-русский", "world", "вселенная");
+            //Console.WriteLine(manager);
 
-            //dictionary.RemoveTranslation("world", "мир");
-            //Console.WriteLine(dictionary);
 
-            // срабатывает исключение
-            ////dictionary.RemoveTranslation("world", "вселенная");
-            ////Console.WriteLine(dictionary);
-
+            //// 5. Поиск перевода слова в словаре
+            //manager.FindWordInDictionary("англо-русский", "hello");
+            //manager.FindWordInDictionary("англо-русский", "world");
 
         }
     }
