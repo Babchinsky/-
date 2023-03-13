@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +10,25 @@ namespace Dictionary_3._0
     //класс для управления словарями
     public class DictionaryManager
     {
-        private List<Dictionary> dictionaries;  // список всех словарей
+        public List<Dictionary> dictionaries;  // список всех словарей
 
         public DictionaryManager()
         {
             dictionaries = new List<Dictionary>();
+        }
+
+        public bool IsEmpty()
+        {
+            if (dictionaries.Count == 0) return true;
+            return false;
+        }
+
+        public void ShowLanguages()
+        {
+            for (int i = 0; i < dictionaries.Count; i++)
+            {
+                Console.WriteLine(i+1 + "." + dictionaries[i].Language);
+            }
         }
 
         // 1. Создание нового словаря
