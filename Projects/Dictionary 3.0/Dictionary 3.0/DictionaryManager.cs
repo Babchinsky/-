@@ -166,7 +166,11 @@ namespace Dictionary_3._0
         // Метод для импорта данных из JSON-файла
         public void ImportFromJson()
         {
-            string filePath = "Dictionaries.json";
+            Console.WriteLine("Напишите путь к файлу: ");
+            //string filePath = Console.ReadLine();
+            string filePath = "../../";
+            filePath += "Dictionaries.json";
+
             using (StreamReader reader = new StreamReader(filePath))
             {
                 string json = reader.ReadToEnd();
@@ -177,7 +181,11 @@ namespace Dictionary_3._0
         // Метод для экспорта данных в JSON-файл
         public void ExportToJson()
         {
-            string filePath = "Dictionaries.json";
+            Console.WriteLine("Напишите путь к файлу: ");
+            //string filePath = Console.ReadLine();
+            string filePath = "../../";
+            filePath += "Dictionaries.json";
+
             string json = JsonConvert.SerializeObject(dictionaries);
             using (StreamWriter writer = new StreamWriter(filePath))
             {
@@ -185,13 +193,23 @@ namespace Dictionary_3._0
             }
         }
 
+        public void ShowAll()
+        {
+            foreach (Dictionary dictionary in dictionaries)
+            {
+                Console.WriteLine(dictionary);
+            }
+        }
+
         public override string ToString()
         {
             string buf = string.Empty;
+
             foreach(var dict in dictionaries)
             {
                 buf += dict + "\n";
             }
+
             return buf;
         }
     }

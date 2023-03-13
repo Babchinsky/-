@@ -23,7 +23,6 @@ namespace Dictionary_3._0
             {
                 Console.WriteLine("Нельзя удалить единственный вариант перевода");
                 return;
-                //throw new Exception("Нельзя удалить единственный вариант перевода");
             }
 
             if (Translations.Contains(tran))
@@ -32,8 +31,8 @@ namespace Dictionary_3._0
                 Console.WriteLine($"Перевод \"{tran}\" удалён");
                 return;
             }
+            else Console.WriteLine("Перевод не найден");
             //else throw new Exception("Перевод не найден");
-            Console.WriteLine("Перевод не найден");
         }
 
         public void AddTranslation(string tran)
@@ -58,6 +57,13 @@ namespace Dictionary_3._0
 
         public override string ToString()
         {
+            //string buf = $"Term:{Term}\n";
+
+            //foreach (string t in Translations)
+            //{
+            //    buf += t + " ";
+            //}
+            //return buf;
             return $"{Term} - {string.Join(", ", Translations)}";
         }
     }

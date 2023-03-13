@@ -1,0 +1,56 @@
+[
+  {
+    "Language": "англо-русский",
+    "Words": [
+      {
+        "Term": "apple",
+        "Translations": [ "яблоко" ]
+      },
+      {
+        "Term": "banana",
+        "Translations": [ "банан" ]
+      },
+      {
+        "Term": "cat",
+        "Translations": [ "кот", "кошка" ]
+      },
+      {
+        "Term": "dog",
+        "Translations": [ "собака", "пёс" ]
+      },
+      {
+        "Term": "world",
+        "Translations": [ "мир", "вселенная" ]
+      }
+    ]
+  },
+  {
+    "Language": "русско-английский",
+    "Words": [
+      {
+        "Term": "привет",
+        "Translations": [ "hello", "hi" ]
+      },
+      {
+        "Term": "мир",
+        "Translations": [ "world" ]
+      },
+      {
+        "Term": "кошка",
+        "Translations": [ "cat" ]
+      },
+      {
+        "Term": "яблоко",
+        "Translations": [ "apple" ]
+      },
+      {
+        "Term": "банан",
+        "Translations": [ "banana" ]
+      },
+      {
+        "Term": "собака",
+        "Translations": [ "dog", "pooch", "hound" ]
+      }
+    ]
+  }
+]
