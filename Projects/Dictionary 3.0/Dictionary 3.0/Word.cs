@@ -18,6 +18,7 @@ namespace Dictionary_3._0
             Translations = translations;
         }
 
+
         // удаление перевода у слова (нельзя удалить единственный вариант перевода)
         public void RemoveTranslation(string tran)
         {

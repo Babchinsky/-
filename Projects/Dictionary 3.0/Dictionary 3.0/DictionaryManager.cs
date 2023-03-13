@@ -17,25 +17,21 @@ namespace Dictionary_3._0
             dictionaries = new List<Dictionary>();
         }
 
-        //public List<Dictionary> this[int index]
-        //{
-        //    get 
-        //    {
-        //        int id;
-        //        if (index >= 0 && index < dictionaries.Count)
-        //        {
-        //            for (id = 0; id < index; id++)
-        //            {
-        //                dictionaries.
-        //            }
-
-        //        }
-        //    }
-        //}
-
         public bool IsEmpty()
         {
             if (dictionaries.Count == 0) return true;
+            return false;
+        }
+
+        public bool IsWordInSelectedDictionary(string language, string find)
+        {
+            foreach (var dict in dictionaries)
+            {
+                if (dict.Language == language)
+                {
+                    if (dict.IsWordIn(find)) return true;
+                }
+            }
             return false;
         }
 
@@ -83,7 +79,7 @@ namespace Dictionary_3._0
         }
 
         // 4a. Удаление слова из словаря
-        public void RemoveWordFromDictionary(string language, string term)
+        public void RemoveWordFromSelectedDictionary(string language, string term)
         {
             foreach (var dict in dictionaries)
             {
@@ -110,7 +106,6 @@ namespace Dictionary_3._0
             throw new Exception($"Словарь на языке '{language}' не найден!");
         }
 
-
         // 5. Поиск перевода слова в указанном словаре
         public void FindWordInDictionary(string language, string term)
         {
@@ -122,11 +117,37 @@ namespace Dictionary_3._0
                     return;
                 }
             }
-            throw new Exception($"Словарь на языке '{language}' не найден!");
+            Console.WriteLine($"Слово {term} в словаре '{language}' не найдено!");
+            //throw new Exception($"Словарь на языке '{language}' не найден!");
         }
 
+        // Показать выбранный словарь
+        public void ShowSelectedDictionary(string language)
+        {
+            foreach (var dict in dictionaries)
+            {
+                if (dict.Language == language)
+                {
+                    dict.ShowDictionary();
+                    return;
+                }
+            }
+            Console.WriteLine("Словарь не найден");
+        }
 
-
+        // Удалить выбранный словарь
+        public void RemoveSelectedDictionary(string language)
+        {
+            foreach (var dict in dictionaries)
+            {
+                if (dict.Language == language)
+                {
+                    dictionaries.Remove(dict);
+                    return;
+                }
+            }
+            Console.WriteLine("Словарь не найден");
+        }
 
         public override string ToString()
         {

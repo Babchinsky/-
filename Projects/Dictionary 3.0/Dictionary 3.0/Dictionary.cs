@@ -67,6 +67,15 @@ namespace Dictionary_3._0
             //throw new Exception("Слово не найдено");
         }
 
+        public bool IsWordIn(string find)
+        {
+            foreach (Word word in Words)
+            {
+                if (word.Term == find) return true;
+            }
+            return false;
+        }
+
         public void ChangeWord(string term_old, string term_new, List<string> translations)
         {
             foreach (Word word in Words)
@@ -80,8 +89,13 @@ namespace Dictionary_3._0
             }
         }
 
-        public void ShowDictionary(int id)
+        public void ShowDictionary()
         {
+            if (Words.Count == 0)
+            {
+                Console.WriteLine("Словарь пуст");
+                return;
+            }
             foreach (Word word in Words)
             {
                 Console.WriteLine(word);
@@ -93,6 +107,4 @@ namespace Dictionary_3._0
             return "\t\t\t" + Language + "\n" + string.Join("\n", Words);
         }
     }
-
-    
 }
