@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Newtonsoft.Json;
+using System.IO;
 
 namespace Dictionary_3._0
 {
@@ -162,6 +161,28 @@ namespace Dictionary_3._0
                 }
             }
             Console.WriteLine("Словарь не найден");
+        }
+
+        // Метод для импорта данных из JSON-файла
+        public void ImportFromJson()
+        {
+            string filePath = "Dictionaries.json";
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string json = reader.ReadToEnd();
+                dictionaries = JsonConvert.DeserializeObject<List<Dictionary>>(json);
+            }
+        }
+
+        // Метод для экспорта данных в JSON-файл
+        public void ExportToJson()
+        {
+            string filePath = "Dictionaries.json";
+            string json = JsonConvert.SerializeObject(dictionaries);
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                writer.Write(json);
+            }
         }
 
         public override string ToString()

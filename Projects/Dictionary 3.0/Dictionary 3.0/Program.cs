@@ -1,11 +1,6 @@
 ﻿using System;
-using System.CodeDom.Compiler;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Dictionary_3._0
 {
@@ -15,22 +10,6 @@ namespace Dictionary_3._0
         {
             DictionaryManager manager = new DictionaryManager();
 
-            // 1. Cоздание словаря английский-русский
-            manager.CreateDictionary("англо-русский");
-
-            // 2. Добавление слов в словарь
-            manager.AddWordToDictionary("англо-русский", "hello", new List<string> { "привет", "здравствуйте" });
-            manager.AddWordToDictionary("англо-русский", "world", new List<string> { "мир", "вселенная" });
-            manager.AddWordToDictionary("англо-русский", "cat", new List<string> { "кот", "кошка" });
-
-            // 1. Cоздание словаря английский-русский
-            manager.CreateDictionary("русско-английский");
-
-            // 2. Добавление слов в словарь
-            manager.AddWordToDictionary("русско-английский", "привет", new List<string> { "hello, hi" });
-            manager.AddWordToDictionary("русско-английский", "мир", new List<string> { "world" });
-            manager.AddWordToDictionary("русско-английский", "кошка", new List<string> { "cat" });
-
             char answer;
             do
             {
@@ -39,7 +18,9 @@ namespace Dictionary_3._0
                 Console.WriteLine(" A. Показать все словари  ");
                 Console.WriteLine(" B. Создать новый словарь ");
                 Console.WriteLine(" C. Выбрать словарь       ");
-                Console.WriteLine(" D. Выйти                 ");
+                Console.WriteLine(" D. Экспорт в JSON                 ");
+                Console.WriteLine(" E. Импорт из JSON                 ");
+                Console.WriteLine(" F. Выйти                 ");
                 Console.WriteLine("IIIIIIIIIIIIIIIIIIIIIIIIIIII");
 
 
@@ -63,6 +44,18 @@ namespace Dictionary_3._0
                         ChooseDictionaryMenu(manager);
                         break;
                     case 'd':
+                        Console.Clear();
+                        manager.ExportToJson();
+                        Console.WriteLine("Экспорт завершён. Нажмите любую кнопку, чтобы вернуться");
+                        Console.ReadKey();
+                        break;
+                    case 'e':
+                        Console.Clear();
+                        manager.ImportFromJson();
+                        Console.WriteLine("Импорт завершён. Нажмите любую кнопку, чтобы вернуться");
+                        Console.ReadKey();
+                        break;
+                    case 'f':
                         return;
                 }
             } while (true);
