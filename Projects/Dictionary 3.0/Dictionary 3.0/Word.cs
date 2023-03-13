@@ -22,10 +22,35 @@ namespace Dictionary_3._0
         // удаление перевода у слова (нельзя удалить единственный вариант перевода)
         public void RemoveTranslation(string tran)
         {
-            if (Translations.Count == 1) throw new Exception("Нельзя удалить единственный вариант перевода");
+            if (Translations.Count == 1)
+            {
+                Console.WriteLine("Нельзя удалить единственный вариант перевода");
+                return;
+                //throw new Exception("Нельзя удалить единственный вариант перевода");
+            }
 
-            if (Translations.Contains(tran)) Translations.Remove(tran);
-            else throw new Exception("Перевод не найден");
+            if (Translations.Contains(tran))
+            {
+                Translations.Remove(tran);
+                Console.WriteLine($"Перевод \"{tran}\" удалён");
+                return;
+            }
+            //else throw new Exception("Перевод не найден");
+            Console.WriteLine("Перевод не найден");
+        }
+
+        public void AddTranslation(string tran)
+        {
+            if (Translations.Contains(tran))
+            {
+                Console.WriteLine("Нельзя добавить уже существующий перевод");
+                return;
+            }
+
+            Translations.Add(tran);
+            Console.WriteLine("Перевод добавлен");
+
+            //else throw new Exception("Перевод не найден");
         }
 
         public void ChangeWord(string term, List<string> translations)

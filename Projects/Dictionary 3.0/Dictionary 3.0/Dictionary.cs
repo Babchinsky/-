@@ -49,8 +49,23 @@ namespace Dictionary_3._0
                     word.RemoveTranslation(tran);
                     return;
                 }
-                else throw new Exception("Слово в словаре не найдено");
             }
+            Console.WriteLine("Слово в словаре не найдено");
+            //else throw new Exception("Слово в словаре не найдено");
+        }
+
+        public void AddTranslation(string term, string tran)
+        {
+            foreach (Word word in Words)
+            {
+                if (word.Term == term)
+                {
+                    word.AddTranslation(tran);
+                    return;
+                }
+            }
+            Console.WriteLine("Слово в словаре не найдено");
+            //else throw new Exception("Слово в словаре не найдено");
         }
 
         public void FindWord(string term)

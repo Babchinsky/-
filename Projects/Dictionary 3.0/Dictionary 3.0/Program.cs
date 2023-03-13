@@ -157,9 +157,11 @@ namespace Dictionary_3._0
                 Console.WriteLine(" A. Показать словарь ");
                 Console.WriteLine(" B. Показать перевод слова");
                 Console.WriteLine(" C. Добавить слово");
-                Console.WriteLine(" D. Выбрать слово");
+                Console.WriteLine(" D. Удалить слово"); 
                 Console.WriteLine(" E. Удалить словарь");
-                Console.WriteLine(" F. Назад");
+                Console.WriteLine(" F. Удалить перевод у слова");
+                Console.WriteLine(" G. Добавить перевод слову");
+                Console.WriteLine(" H. Назад");
                 Console.WriteLine("IIIIIIIIIIIIIIIIIIIIIIIIIIII");
 
 
@@ -184,7 +186,7 @@ namespace Dictionary_3._0
                         break;
                     case 'd':
                         Console.Clear();
-                        ChooseWordMenu(manager, languages[id_dict - 1]);
+                        RemoveWordFromSelectedDictionaryMenu(manager, languages[id_dict - 1]);
                         break;
                     case 'e':
                         Console.Clear();
@@ -193,8 +195,15 @@ namespace Dictionary_3._0
                         Console.ReadKey();
                         break;
                     case 'f':
+                        Console.Clear();
+                        RemoveTranslationFromSelectedDictionaryMenu(manager, languages[id_dict - 1]);
+                        break;
+                    case 'g':
+                        Console.Clear();
+                        AddTranslationToWordInSelectedDictionary(manager, languages[id_dict - 1]);
+                        break;
+                    case 'h':
                         return;
-
                 }
             } while (true);
         }
@@ -254,53 +263,53 @@ namespace Dictionary_3._0
         }
 
         //START//////////////////////////////////////////////////////////// 3 Меню
-        static void ChooseWordMenu(DictionaryManager manager, string language)
-        {
+        //static void ChooseWordMenu(DictionaryManager manager, string language)
+        //{
 
-            char answer;
-            do
-            {
-                Console.Clear();
-                Console.WriteLine("IIIIIIIIIIIIIIIIIIIIIIIIIIII");
-                Console.WriteLine(" A. Удалить слово ");
-                Console.WriteLine(" B. Удалить перевод у слова");
-                Console.WriteLine(" C. Добавить перевод слову");
-                Console.WriteLine(" D. Экспортировать слово в XML-файл");
-                Console.WriteLine(" E. Назад");
-                Console.WriteLine("IIIIIIIIIIIIIIIIIIIIIIIIIIII");
+        //    char answer;
+        //    do
+        //    {
+        //        Console.Clear();
+        //        Console.WriteLine("IIIIIIIIIIIIIIIIIIIIIIIIIIII");
+        //        Console.WriteLine(" A. Удалить слово ");
+        //        Console.WriteLine(" B. Удалить перевод у слова");
+        //        Console.WriteLine(" C. Добавить перевод слову");
+        //        Console.WriteLine(" D. Экспортировать слово в XML-файл");
+        //        Console.WriteLine(" E. Назад");
+        //        Console.WriteLine("IIIIIIIIIIIIIIIIIIIIIIIIIIII");
 
-                answer = Char.ToLower(Convert.ToChar(Console.ReadLine()));
-                switch (answer)
-                {
-                    default:
-                        Console.WriteLine("Неверно нажатая клавиша. Попробуйте нажать ещё раз, но перед этим нажмите любую клавишу");
-                        Console.ReadKey();
-                        break;
-                    case 'a':
-                        Console.Clear();
-                        RemoveWordFromSelectedDictionary3Menu(manager, language);
-                        break;
-                    case 'b':
-                        Console.Clear();
+        //        answer = Char.ToLower(Convert.ToChar(Console.ReadLine()));
+        //        switch (answer)
+        //        {
+        //            default:
+        //                Console.WriteLine("Неверно нажатая клавиша. Попробуйте нажать ещё раз, но перед этим нажмите любую клавишу");
+        //                Console.ReadKey();
+        //                break;
+        //            case 'a':
+        //                Console.Clear();
+        //                RemoveWordFromSelectedDictionary3Menu(manager, language);
+        //                break;
+        //            case 'b':
+        //                Console.Clear();
+        //                RemoveTranslationFromSelectedDictionary3Menu(manager, language);
+        //                break;
+        //            case 'c':
+        //                Console.Clear();
 
-                        break;
-                    case 'c':
-                        Console.Clear();
+        //                break;
+        //            case 'd':
+        //                Console.Clear();
 
-                        break;
-                    case 'd':
-                        Console.Clear();
+        //                break;
+        //            case 'e':
+        //                return;
+        //        }
 
-                        break;
-                    case 'e':
-                        return;
-                }
-
-                } while (true);
-        }
+        //        } while (true);
+        //}
         //END//////////////////////////////////////////////////////////// 3 Меню
 
-        static void RemoveWordFromSelectedDictionary3Menu(DictionaryManager manager, string language)
+        static void RemoveWordFromSelectedDictionaryMenu(DictionaryManager manager, string language)
         {
             Console.WriteLine("Напишите слово, которое хотите удалить");
             string delete = Console.ReadLine();
@@ -313,7 +322,53 @@ namespace Dictionary_3._0
             }
             
             manager.RemoveWordFromSelectedDictionary(language, delete);
-            Console.WriteLine($"Слово {delete} удалено");
+            Console.WriteLine($"Слово \"{delete}\" удалено");
+
+            Console.WriteLine("Нажмите любую клавишу, чтобы вернуться");
+            Console.ReadKey();
+            return;
+        }
+
+        static void RemoveTranslationFromSelectedDictionaryMenu(DictionaryManager manager, string language)
+        {
+            Console.WriteLine("Напишите слово, у которого хотите удалить перевод: ");
+            string deleteWord = Console.ReadLine();
+
+            if (manager.IsWordInSelectedDictionary(language, deleteWord) == false)
+            {
+                Console.WriteLine("Слово не найдено. Нажмите любую клавишу, чтобы вернуться");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("Напишите перевод, который хотите удалить: ");
+            string deleteTranslate = Console.ReadLine();
+
+            manager.RemoveTranslationFromDictionary(language, deleteWord, deleteTranslate);
+
+            
+            Console.WriteLine("Нажмите любую клавишу, чтобы вернуться");
+            Console.ReadKey();
+            return;
+        }
+
+        static void AddTranslationToWordInSelectedDictionary(DictionaryManager manager, string language)
+        {
+            Console.WriteLine("Напишите слово, которому хотите добавить перевод: ");
+            string addWord = Console.ReadLine();
+
+            if (manager.IsWordInSelectedDictionary(language, addWord) == false)
+            {
+                Console.WriteLine("Слово не найдено. Нажмите любую клавишу, чтобы вернуться");
+                Console.ReadKey();
+                return;
+            }
+
+            Console.WriteLine("Напишите перевод, который хотите добавить: ");
+            string addTranslate = Console.ReadLine();
+
+            manager.AddTranslationToDictionary(language, addWord, addTranslate);
+
 
             Console.WriteLine("Нажмите любую клавишу, чтобы вернуться");
             Console.ReadKey();

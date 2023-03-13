@@ -103,7 +103,22 @@ namespace Dictionary_3._0
                     return;
                 }
             }
-            throw new Exception($"Словарь на языке '{language}' не найден!");
+            Console.WriteLine($"Словарь на языке {language} не найден!");
+            //throw new Exception($"Словарь на языке '{language}' не найден!");
+        }
+
+        public void AddTranslationToDictionary(string language, string term, string tran)
+        {
+            foreach (var dict in dictionaries)
+            {
+                if (dict.Language == language)
+                {
+                    dict.AddTranslation(term, tran);
+                    return;
+                }
+            }
+            Console.WriteLine($"Словарь на языке {language} не найден!");
+            //throw new Exception($"Словарь на языке '{language}' не найден!");
         }
 
         // 5. Поиск перевода слова в указанном словаре
