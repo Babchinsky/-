@@ -14,6 +14,21 @@ namespace Dictionary_3._0
         {
             DictionaryManager manager = new DictionaryManager();
 
+            // 1. Cоздание словаря английский-русский
+            manager.CreateDictionary("англо-русский");
+
+            // 2. Добавление слов в словарь
+            manager.AddWordToDictionary("англо-русский", "hello", new List<string> { "привет", "здравствуйте" });
+            manager.AddWordToDictionary("англо-русский", "world", new List<string> { "мир", "вселенная" });
+            manager.AddWordToDictionary("англо-русский", "cat", new List<string> { "кот", "кошка" });
+
+            // 1. Cоздание словаря английский-русский
+            manager.CreateDictionary("русско-английский");
+
+            // 2. Добавление слов в словарь
+            manager.AddWordToDictionary("русско-английский", "привет", new List<string> { "hello, hi" });
+            manager.AddWordToDictionary("русско-английский", "мир", new List<string> { "world" });
+            manager.AddWordToDictionary("русско-английский", "кошка", new List<string> { "cat" });
 
             char answer;
             do
@@ -52,13 +67,7 @@ namespace Dictionary_3._0
             } while (true);
 
             #region MyRegion
-            //// 1. Cоздание словаря английский-русский
-            //manager.CreateDictionary("англо-русский");
-
-            //// 2. Добавление слов в словарь
-            //manager.AddWordToDictionary("англо-русский", "hello", new List<string> { "привет", "здравствуйте" });
-            //manager.AddWordToDictionary("англо-русский", "world", new List<string> { "мир", "вселенная" });
-            //manager.AddWordToDictionary("англо-русский", "cat", new List<string> { "кот", "кошка" });
+           
 
             //Console.WriteLine(manager);
 
@@ -136,8 +145,7 @@ namespace Dictionary_3._0
                 return;
             }
 
-
-            char id;
+            int id;
             do
             {
                 Console.Clear();
@@ -145,7 +153,8 @@ namespace Dictionary_3._0
                 manager.ShowLanguages();
 
 
-                id = Convert.ToChar(Console.ReadLine());
+                
+                id = Convert.ToInt32(Console.ReadLine());
                 if (id < 1 || id > manager.dictionaries.Count)
                 {
                     Console.WriteLine("Неверно введённое число. Попробуйте снова, но перед этим нажмите любую клавишу.");
@@ -153,6 +162,64 @@ namespace Dictionary_3._0
                 }
                 else break;
             } while (true);
+
+
+
+            char answer;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("IIIIIIIIIIIIIIIIIIIIIIIIIIII");
+                Console.WriteLine(" A. Показать словарь ");
+                Console.WriteLine(" B. Показать перевод слова");
+                Console.WriteLine(" C. Добавить слово");
+                Console.WriteLine(" D. Выбрать слово");
+                Console.WriteLine(" E. Назад");
+                Console.WriteLine("IIIIIIIIIIIIIIIIIIIIIIIIIIII");
+
+
+                answer = Char.ToLower(Convert.ToChar(Console.ReadLine()));
+                switch (answer)
+                {
+                    default:
+                        Console.WriteLine("Неверно нажатая клавиша. Попробуйте нажать ещё раз, но перед этим нажмите любую клавишу");
+                        Console.ReadKey();
+                        break;
+                    case 'a':
+                        Console.Clear();
+                        ShowDictionary(manager, id);
+                        break;
+                    case 'b':
+                        Console.Clear();
+                        
+                        break;
+                    case 'c':
+                        Console.Clear();
+                        
+                        break;
+                    case 'd':
+                        return;
+                }
+            } while (true);
+        }
+
+        static void ShowDictionary(DictionaryManager manager, int id)
+        {
+            if (manager.IsEmpty() == true) Console.WriteLine("Список словарей пуст");
+            else manager.dictionaries[id - 1].ShowDictionary(id);
+
+
+            Console.WriteLine("Нажмите Escape, чтобы вернуться ");
+
+            ConsoleKeyInfo keyInfo;
+            do
+            {
+                keyInfo = Console.ReadKey();
+                if (keyInfo.Key == ConsoleKey.Escape)
+                {
+                    return;
+                }
+            } while (keyInfo.Key != ConsoleKey.Escape);
         }
     }
 }

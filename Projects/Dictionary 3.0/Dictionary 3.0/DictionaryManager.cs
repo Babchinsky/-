@@ -17,6 +17,22 @@ namespace Dictionary_3._0
             dictionaries = new List<Dictionary>();
         }
 
+        //public List<Dictionary> this[int index]
+        //{
+        //    get 
+        //    {
+        //        int id;
+        //        if (index >= 0 && index < dictionaries.Count)
+        //        {
+        //            for (id = 0; id < index; id++)
+        //            {
+        //                dictionaries.
+        //            }
+
+        //        }
+        //    }
+        //}
+
         public bool IsEmpty()
         {
             if (dictionaries.Count == 0) return true;

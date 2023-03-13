@@ -80,6 +80,14 @@ namespace Dictionary_3._0
             }
         }
 
+        public void ShowDictionary(int id)
+        {
+            foreach (Word word in Words)
+            {
+                Console.WriteLine(word);
+            }
+        }
+
         public override string ToString()
         {
             return "\t\t\t" + Language + "\n" + string.Join("\n", Words);
