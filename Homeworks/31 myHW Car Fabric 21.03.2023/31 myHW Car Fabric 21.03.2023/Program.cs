@@ -61,18 +61,6 @@ namespace _31_myHW_Car_Fabric_21._03._2023
 
     #endregion
 
-
-
-
-
-
-
-
-
-
-
-
-
     internal class Program
     {
         static void Main(string[] args)
