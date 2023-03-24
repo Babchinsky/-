@@ -22,13 +22,7 @@ namespace _35_hw_24._03._2023_composite
     {
         public void Main()
         {
-            //Component office = new Room("Office");
-            ////Component leaf = new Item("Leaf");
-            //Room reception = new Room("Reception");
-            ////office.Add(leaf);
-            //office.Add(reception);
-            //office.Display();
-
+            #region HW
             Composite office = new Composite("Офис");
             Composite recepiton = new Composite("Приёмная");
 
@@ -40,8 +34,33 @@ namespace _35_hw_24._03._2023_composite
             room1.Add(new Leaf("Стол", 20));
             office.Add(room1);
 
+            //office.Display();
+            #endregion
 
-            office.Display();
+            Composite complexOrder = new Composite("Fedex");
+
+
+                Composite box = new Composite("Коробка с молотком");
+                box.Add(new Leaf("Молоток", 100));
+
+                Composite doubleBox = new Composite("Двойная коробка");
+
+                    Composite box1 = new Composite("Коробка iPhone");
+                        box1.Add(new Leaf("iPhone", 1000));
+                        box1.Add(new Leaf("Зарядка", 50));
+
+                    Composite box2 = new Composite("Коробка с наушниками");
+                        box2.Add(new Leaf("Наушники", 500));
+
+
+                doubleBox.Add(box1);
+                doubleBox.Add(box2);
+
+            complexOrder.Add(box);
+            complexOrder.Add(doubleBox);
+            complexOrder.Add(new Leaf("Чек", 0));
+
+            complexOrder.Display();
         }
     }
     abstract class Component
