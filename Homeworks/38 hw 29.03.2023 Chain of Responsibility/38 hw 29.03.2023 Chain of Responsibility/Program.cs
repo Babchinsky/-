@@ -10,14 +10,15 @@ namespace _38_hw_29._03._2023_Chain_of_Responsibility
     {
         static void Main(string[] args)
         {
-            Receiver receiver = new Receiver(false, true, true);
+            Receiver receiver = new Receiver(true, true, true);
 
             PaymentHandler bankPaymentHandler = new BankPaymentHandler();
             PaymentHandler moneyPaymentHadler = new MoneyPaymentHandler();
             PaymentHandler paypalPaymentHandler = new PayPalPaymentHandler();
 
-            bankPaymentHandler.Successor = paypalPaymentHandler;
-            paypalPaymentHandler.Successor = moneyPaymentHadler;
+            //bankPaymentHandler.Successor = paypalPaymentHandler;
+            //paypalPaymentHandler.Successor = moneyPaymentHadler;
+            bankPaymentHandler.Successor = moneyPaymentHadler;
 
             bankPaymentHandler.Handle(receiver);
         }
