@@ -23,11 +23,11 @@ namespace _39a_hw_30._03._2023_mediator_pattern
 
             Registration(chatroom, participants, 5);
 
-            Chat(participants[4], "John", "Hi John!");
-            Chat(participants[1], "Ringo", "All you need is love");
-            Chat(participants[2], "George", "My sweet Lord");
-            Chat(participants[1], "John", "Can't buy me love");
-            Chat(participants[3], "Yoko", "My sweet love");
+            //Chat(participants[4], "John", "Hi John!");
+            //Chat(participants[1], "Ringo", "All you need is love");
+            //Chat(participants[2], "George", "My sweet Lord");
+            //Chat(participants[1], "John", "Can't buy me love");
+            //Chat(participants[3], "Yoko", "My sweet love");
         }
 
         public static void Registration(AbstractChatroom chatroom, Participant[] participants, int size)
