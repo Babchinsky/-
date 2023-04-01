@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace _39b_hw_30._03._2023_iterator
 {
+    class Program
+    {
+
+    }
+
     class Client
     {
         public void Main()
