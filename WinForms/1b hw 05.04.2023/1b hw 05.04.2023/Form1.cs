@@ -45,7 +45,7 @@ namespace _1b_hw_05._04._2023
 
             #endregion
 
-            #region RightMouseButton
+            #region RightMouseButton 
             if (e.Button == MouseButtons.Right)
             {
                 MessageBox.Show(String.Format("Width = {0}  Height = {1}", this.Size.Width, this.Size.Height));
