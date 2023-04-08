@@ -35,13 +35,13 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBoxPayableToGas = new System.Windows.Forms.TextBox();
             this.textBoxGasMoney = new System.Windows.Forms.TextBox();
-            this.textBoxGasCount = new System.Windows.Forms.TextBox();
+            this.textBoxFuelCount = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxFuelPricePerL = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -61,10 +61,11 @@
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.textBoxPayableToCafe = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBoxPayableToTotal = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox23 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
@@ -83,9 +84,9 @@
             this.groupBox1.Controls.Add(this.textBox7);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.textBoxGasMoney);
-            this.groupBox1.Controls.Add(this.textBoxGasCount);
+            this.groupBox1.Controls.Add(this.textBoxFuelCount);
             this.groupBox1.Controls.Add(this.groupBox3);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.textBoxFuelPricePerL);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.textBox1);
@@ -129,7 +130,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.textBox10);
-            this.groupBox4.Controls.Add(this.textBox6);
+            this.groupBox4.Controls.Add(this.textBoxPayableToGas);
             this.groupBox4.Location = new System.Drawing.Point(7, 177);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(187, 85);
@@ -147,17 +148,17 @@
             this.textBox10.TabIndex = 12;
             this.textBox10.Text = "грн";
             // 
-            // textBox6
+            // textBoxPayableToGas
             // 
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Enabled = false;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox6.Location = new System.Drawing.Point(91, 34);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(67, 42);
-            this.textBox6.TabIndex = 0;
-            this.textBox6.Text = "0";
+            this.textBoxPayableToGas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPayableToGas.Enabled = false;
+            this.textBoxPayableToGas.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxPayableToGas.Location = new System.Drawing.Point(91, 34);
+            this.textBoxPayableToGas.Name = "textBoxPayableToGas";
+            this.textBoxPayableToGas.ReadOnly = true;
+            this.textBoxPayableToGas.Size = new System.Drawing.Size(67, 42);
+            this.textBoxPayableToGas.TabIndex = 0;
+            this.textBoxPayableToGas.Text = "0";
             // 
             // textBoxGasMoney
             // 
@@ -168,13 +169,13 @@
             this.textBoxGasMoney.TabIndex = 7;
             this.textBoxGasMoney.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
-            // textBoxGasCount
+            // textBoxFuelCount
             // 
-            this.textBoxGasCount.Location = new System.Drawing.Point(105, 92);
-            this.textBoxGasCount.Name = "textBoxGasCount";
-            this.textBoxGasCount.Size = new System.Drawing.Size(68, 20);
-            this.textBoxGasCount.TabIndex = 6;
-            this.textBoxGasCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
+            this.textBoxFuelCount.Location = new System.Drawing.Point(105, 92);
+            this.textBoxFuelCount.Name = "textBoxFuelCount";
+            this.textBoxFuelCount.Size = new System.Drawing.Size(68, 20);
+            this.textBoxFuelCount.TabIndex = 6;
+            this.textBoxFuelCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // groupBox3
             // 
@@ -209,14 +210,14 @@
             this.radioButton1.Text = "Количество";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // textBoxFuelPricePerL
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(75, 46);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(98, 20);
-            this.textBox3.TabIndex = 4;
+            this.textBoxFuelPricePerL.Enabled = false;
+            this.textBoxFuelPricePerL.Location = new System.Drawing.Point(75, 46);
+            this.textBoxFuelPricePerL.Name = "textBoxFuelPricePerL";
+            this.textBoxFuelPricePerL.ReadOnly = true;
+            this.textBoxFuelPricePerL.Size = new System.Drawing.Size(98, 20);
+            this.textBoxFuelPricePerL.TabIndex = 4;
             // 
             // textBox2
             // 
@@ -235,6 +236,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(98, 21);
             this.comboBox1.TabIndex = 1;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // textBox1
             // 
@@ -408,7 +410,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.textBox15);
+            this.groupBox5.Controls.Add(this.textBoxPayableToCafe);
             this.groupBox5.Controls.Add(this.textBox14);
             this.groupBox5.Location = new System.Drawing.Point(7, 177);
             this.groupBox5.Name = "groupBox5";
@@ -417,17 +419,17 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "К оплате";
             // 
-            // textBox15
+            // textBoxPayableToCafe
             // 
-            this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox15.Enabled = false;
-            this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox15.Location = new System.Drawing.Point(91, 34);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.ReadOnly = true;
-            this.textBox15.Size = new System.Drawing.Size(67, 42);
-            this.textBox15.TabIndex = 13;
-            this.textBox15.Text = "0";
+            this.textBoxPayableToCafe.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPayableToCafe.Enabled = false;
+            this.textBoxPayableToCafe.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxPayableToCafe.Location = new System.Drawing.Point(91, 34);
+            this.textBoxPayableToCafe.Name = "textBoxPayableToCafe";
+            this.textBoxPayableToCafe.ReadOnly = true;
+            this.textBoxPayableToCafe.Size = new System.Drawing.Size(67, 42);
+            this.textBoxPayableToCafe.TabIndex = 13;
+            this.textBoxPayableToCafe.Text = "0";
             // 
             // textBox14
             // 
@@ -441,7 +443,8 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.textBox24);
+            this.groupBox6.Controls.Add(this.button1);
+            this.groupBox6.Controls.Add(this.textBoxPayableToTotal);
             this.groupBox6.Controls.Add(this.pictureBox1);
             this.groupBox6.Controls.Add(this.textBox23);
             this.groupBox6.Location = new System.Drawing.Point(12, 287);
@@ -451,17 +454,28 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Всего к оплате";
             // 
-            // textBox24
+            // button1
             // 
-            this.textBox24.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox24.Enabled = false;
-            this.textBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox24.Location = new System.Drawing.Point(331, 52);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.ReadOnly = true;
-            this.textBox24.Size = new System.Drawing.Size(67, 42);
-            this.textBox24.TabIndex = 14;
-            this.textBox24.Text = "0";
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(337, 20);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(90, 74);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Посчитать";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBoxPayableToTotal
+            // 
+            this.textBoxPayableToTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPayableToTotal.Enabled = false;
+            this.textBoxPayableToTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxPayableToTotal.Location = new System.Drawing.Point(233, 52);
+            this.textBoxPayableToTotal.Name = "textBoxPayableToTotal";
+            this.textBoxPayableToTotal.ReadOnly = true;
+            this.textBoxPayableToTotal.Size = new System.Drawing.Size(74, 42);
+            this.textBoxPayableToTotal.TabIndex = 14;
+            this.textBoxPayableToTotal.Text = "0";
             // 
             // pictureBox1
             // 
@@ -476,7 +490,7 @@
             // textBox23
             // 
             this.textBox23.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox23.Location = new System.Drawing.Point(404, 79);
+            this.textBox23.Location = new System.Drawing.Point(313, 79);
             this.textBox23.Name = "textBox23";
             this.textBox23.ReadOnly = true;
             this.textBox23.Size = new System.Drawing.Size(21, 13);
@@ -519,13 +533,13 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox textBoxPayableToGas;
         private System.Windows.Forms.TextBox textBoxGasMoney;
-        private System.Windows.Forms.TextBox textBoxGasCount;
+        private System.Windows.Forms.TextBox textBoxFuelCount;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxFuelPricePerL;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -548,8 +562,9 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox23;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.TextBox textBox24;
+        private System.Windows.Forms.TextBox textBoxPayableToCafe;
+        private System.Windows.Forms.TextBox textBoxPayableToTotal;
+        private System.Windows.Forms.Button button1;
     }
 }
 
