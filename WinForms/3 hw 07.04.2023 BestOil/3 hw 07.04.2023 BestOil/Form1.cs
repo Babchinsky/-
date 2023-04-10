@@ -14,9 +14,31 @@ namespace _3_hw_07._04._2023_BestOil
     public partial class Form1 : Form
     {
         public Dictionary<string, decimal> fuelPrices;
+        MainMenu MyMenu;
+        MenuItem m1, subm1, m2, m3;
         public Form1()
         {
             InitializeComponent();
+
+            MyMenu = new MainMenu();
+
+            m1 = new MenuItem("Пункт 1");
+            MyMenu.MenuItems.Add(m1);
+
+            subm1 = new MenuItem("След. клиент");
+            m1.MenuItems.Add(subm1);
+            subm1.Click += new EventHandler(resetToolStripMenuItem_Click);
+
+            m2 = new MenuItem("Выход");
+            MyMenu.MenuItems.Add(m2);
+            m2.Click += new EventHandler(exitToolStripMenuItem_Click);
+
+            m3 = new MenuItem("Сброс");
+            MyMenu.MenuItems.Add(m3);
+            m3.Click += new EventHandler(resetToolStripMenuItem_Click);
+
+            this.Menu = MyMenu;
+
 
             CafePrice cafePrice = new CafePrice(85, 105, 95, 60);
             this.textBoxPriceHotDog.Text = cafePrice.PriceHotDog.ToString();
@@ -155,6 +177,36 @@ namespace _3_hw_07._04._2023_BestOil
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBoxFuelPricePerL.Text = fuelPrices[this.comboBox1.Text].ToString();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            comboBox1.SelectedIndex = 0;
+
+            textBoxFuelPricePerL.Text = fuelPrices[this.comboBox1.Text].ToString();
+            textBoxFuelCount.Text = "";
+            textBoxGasMoney.Text = "";
+
+            textBoxPayableToGas.Text = "0";
+            textBoxPayableToCafe.Text = "0";
+            textBoxPayableToTotal.Text = "0";
+
+
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
+            checkBox4.Checked = false;
+
+
+            textBoxCountHotDog.Text = "";
+            textBoxCountBurger.Text = "";
+            textBoxCountFry.Text = "";
+            textBoxCountCola.Text = "";
         }
     }
 }

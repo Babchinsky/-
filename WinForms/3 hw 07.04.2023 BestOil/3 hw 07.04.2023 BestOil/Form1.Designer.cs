@@ -90,7 +90,7 @@
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 30);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 268);
             this.groupBox1.TabIndex = 0;
@@ -265,7 +265,7 @@
             this.groupBox2.Controls.Add(this.textBox11);
             this.groupBox2.Controls.Add(this.checkBox1);
             this.groupBox2.Controls.Add(this.groupBox5);
-            this.groupBox2.Location = new System.Drawing.Point(245, 12);
+            this.groupBox2.Location = new System.Drawing.Point(245, 30);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 268);
             this.groupBox2.TabIndex = 12;
@@ -447,7 +447,7 @@
             this.groupBox6.Controls.Add(this.textBoxPayableToTotal);
             this.groupBox6.Controls.Add(this.pictureBox1);
             this.groupBox6.Controls.Add(this.textBox23);
-            this.groupBox6.Location = new System.Drawing.Point(12, 287);
+            this.groupBox6.Location = new System.Drawing.Point(12, 305);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(433, 100);
             this.groupBox6.TabIndex = 13;
@@ -501,10 +501,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 400);
+            this.ClientSize = new System.Drawing.Size(459, 415);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "BestOil";
             this.groupBox1.ResumeLayout(false);
