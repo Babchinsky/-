@@ -16,10 +16,16 @@ namespace _3_hw_07._04._2023_BestOil
         public Dictionary<string, decimal> fuelPrices;
         MainMenu MyMenu;
         MenuItem m1, subm1, m2, m3;
+
+        ContextMenuStrip MyContextMenuStrip;
+        //ToolStripDropDownMenu cm1;
+        ToolStripMenuItem subcm1, cm2, cm3;
+
         public Form1()
         {
             InitializeComponent();
 
+            #region Menu
             MyMenu = new MainMenu();
 
             m1 = new MenuItem("Пункт 1");
@@ -38,6 +44,29 @@ namespace _3_hw_07._04._2023_BestOil
             m3.Click += new EventHandler(resetToolStripMenuItem_Click);
 
             this.Menu = MyMenu;
+            #endregion
+
+            #region ContextMenu
+
+            MyContextMenuStrip = new ContextMenuStrip();
+
+            //cm1 = new ToolStripDropDownMenu();
+            subcm1 = new ToolStripMenuItem("Cлед. клиент");
+            cm2 = new ToolStripMenuItem("Выход");
+            cm3 = new ToolStripMenuItem("Сброс");
+
+            MyContextMenuStrip.Items.Add(subcm1);
+            MyContextMenuStrip.Items.Add(cm2);
+            MyContextMenuStrip.Items.Add(cm3);
+
+            subcm1.Click += new EventHandler(resetToolStripMenuItem_Click);
+            cm2.Click += new EventHandler(exitToolStripMenuItem_Click);
+            cm3.Click += new EventHandler(resetToolStripMenuItem_Click);
+
+
+            this.ContextMenuStrip = MyContextMenuStrip;
+
+            #endregion
 
 
             CafePrice cafePrice = new CafePrice(85, 105, 95, 60);
