@@ -45,5 +45,11 @@ namespace _4_hw_11._04._2023_Forms
             CafeForm cafeForm = new CafeForm(this);
             DialogResult res = cafeForm.ShowDialog();
         }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            EditForm editForm = new EditForm(this);
+            DialogResult res = editForm.ShowDialog();
+        }
     }
 }

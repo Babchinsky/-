@@ -76,6 +76,9 @@
     <EmbeddedResource Include="CafeForm.resx">
       <DependentUpon>CafeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditForm.resx">
+      <DependentUpon>EditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GasStationForm.resx">
       <DependentUpon>GasStationForm.cs</DependentUpon>
     </EmbeddedResource>
