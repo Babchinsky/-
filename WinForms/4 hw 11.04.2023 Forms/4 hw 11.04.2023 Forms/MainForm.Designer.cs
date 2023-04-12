@@ -51,6 +51,7 @@
             this.buttonCafe.TabIndex = 2;
             this.buttonCafe.Text = "Кафе";
             this.buttonCafe.UseVisualStyleBackColor = true;
+            this.buttonCafe.Click += new System.EventHandler(this.buttonCafe_Click);
             // 
             // buttonEdit
             // 
