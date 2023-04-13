@@ -28,55 +28,82 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.listBoxSelected = new System.Windows.Forms.ListBox();
+            this.comboBoxAllProducts = new System.Windows.Forms.ComboBox();
+            this.textBoxPriceForProduct = new System.Windows.Forms.TextBox();
+            this.textBoxTotalPrice = new System.Windows.Forms.TextBox();
+            this.buttonToSelected = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // listBox1
+            // listBoxSelected
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(13, 13);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 0;
+            this.listBoxSelected.FormattingEnabled = true;
+            this.listBoxSelected.Location = new System.Drawing.Point(13, 13);
+            this.listBoxSelected.Name = "listBoxSelected";
+            this.listBoxSelected.Size = new System.Drawing.Size(120, 160);
+            this.listBoxSelected.TabIndex = 0;
             // 
-            // comboBox1
+            // comboBoxAllProducts
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(170, 13);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 1;
+            this.comboBoxAllProducts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxAllProducts.FormattingEnabled = true;
+            this.comboBoxAllProducts.Location = new System.Drawing.Point(139, 12);
+            this.comboBoxAllProducts.Name = "comboBoxAllProducts";
+            this.comboBoxAllProducts.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxAllProducts.TabIndex = 1;
+            this.comboBoxAllProducts.SelectedIndexChanged += new System.EventHandler(this.comboBoxAllProducts_SelectedIndexChanged);
             // 
-            // textBox1
+            // textBoxPriceForProduct
             // 
-            this.textBox1.Location = new System.Drawing.Point(326, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.textBoxPriceForProduct.Location = new System.Drawing.Point(139, 39);
+            this.textBoxPriceForProduct.Name = "textBoxPriceForProduct";
+            this.textBoxPriceForProduct.ReadOnly = true;
+            this.textBoxPriceForProduct.Size = new System.Drawing.Size(121, 20);
+            this.textBoxPriceForProduct.TabIndex = 2;
             // 
-            // button1
+            // textBoxTotalPrice
             // 
-            this.button1.Location = new System.Drawing.Point(495, 127);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Вызов 2 формы";
-            this.button1.UseVisualStyleBackColor = true;
+            this.textBoxTotalPrice.Location = new System.Drawing.Point(12, 180);
+            this.textBoxTotalPrice.Name = "textBoxTotalPrice";
+            this.textBoxTotalPrice.ReadOnly = true;
+            this.textBoxTotalPrice.Size = new System.Drawing.Size(121, 20);
+            this.textBoxTotalPrice.TabIndex = 4;
+            // 
+            // buttonToSelected
+            // 
+            this.buttonToSelected.Location = new System.Drawing.Point(139, 65);
+            this.buttonToSelected.Name = "buttonToSelected";
+            this.buttonToSelected.Size = new System.Drawing.Size(121, 23);
+            this.buttonToSelected.TabIndex = 5;
+            this.buttonToSelected.Text = "В корзину";
+            this.buttonToSelected.UseVisualStyleBackColor = true;
+            this.buttonToSelected.Click += new System.EventHandler(this.buttonToSelected_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(139, 94);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(121, 23);
+            this.buttonDelete.TabIndex = 6;
+            this.buttonDelete.Text = "Убрать из корзины";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // First
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.listBox1);
+            this.ClientSize = new System.Drawing.Size(271, 212);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonToSelected);
+            this.Controls.Add(this.textBoxTotalPrice);
+            this.Controls.Add(this.textBoxPriceForProduct);
+            this.Controls.Add(this.comboBoxAllProducts);
+            this.Controls.Add(this.listBoxSelected);
+            this.MaximizeBox = false;
             this.Name = "First";
-            this.Text = "First";
+            this.Text = "Configure PC";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,9 +111,11 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox listBoxSelected;
+        private System.Windows.Forms.ComboBox comboBoxAllProducts;
+        private System.Windows.Forms.TextBox textBoxPriceForProduct;
+        private System.Windows.Forms.TextBox textBoxTotalPrice;
+        private System.Windows.Forms.Button buttonToSelected;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }
