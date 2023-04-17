@@ -1,39 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Xml.Linq;
+using System.Windows.Forms;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+//using static System.Net.Mime.MediaTypeNames;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
-namespace Test
+namespace _6_hw_13._04._2023_TabControl
 {
-    internal class Task
+    public partial class Form1 : Form
     {
-        private string Question { get; set; }
-        private Dictionary<string, bool> Answers;
+        private List<Task> randomizedTasks;
+        private int correctAnswers = 0;
 
-        public Task(string question, Dictionary<string, bool> answers)
+        public Form1()
         {
-            Question = question;
-            Answers = answers;
-        }
+            InitializeComponent();
 
-        public void Show()
-        {
-            Console.WriteLine(Question);
-
-            foreach (var answer in Answers)
-            {
-                Console.WriteLine(answer.Key + " " + answer.Value);
-            }
-        }
-    }
-
-
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
+            #region Tasks
             // Task 1
             Dictionary<string, bool> answers1 = new Dictionary<string, bool>();
             answers1.Add("Java", true);
@@ -126,15 +117,73 @@ namespace Test
             tasks.Add(task8);
             tasks.Add(task9);
 
+            randomizedTasks = tasks.OrderBy(x => Guid.NewGuid()).ToList();
+            #endregion
 
-            List<Task> randomizedTasks = tasks.OrderBy(x => Guid.NewGuid()).ToList();
 
 
-            foreach (var item in randomizedTasks)
+            // Создаем массив textBox'ов
+            TextBox[] textBoxes = new TextBox[] { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9 };
+            RadioButton[] radioButtons = new RadioButton[]
             {
-                item.Show();
-            }
+                radioButton1A, radioButton1B, radioButton1C, radioButton1D, radioButton2A, radioButton2B, radioButton2C, radioButton2D,
+                radioButton3A, radioButton3B, radioButton3C, radioButton3D, radioButton4A, radioButton4B, radioButton4C, radioButton4D,
+                radioButton5A, radioButton5B, radioButton5C, radioButton5D, radioButton6A, radioButton6B, radioButton6C, radioButton6D,
+                radioButton7A, radioButton7B, radioButton7C, radioButton7D, radioButton8A, radioButton8B, radioButton8C, radioButton8D,
+                radioButton9A, radioButton9B, radioButton9C, radioButton9D
+            };
 
+
+            progressBar1.Maximum = randomizedTasks.Count;
+
+            int radioButtonIndex = 0;
+            // Инициализация textBoxes значениями из randomizedTasks
+            for (int i = 0; i < randomizedTasks.Count; i++)
+            {
+                textBoxes[i].Text = randomizedTasks[i].Question;
+                foreach (KeyValuePair<string, bool> answer in randomizedTasks[i].Answers)
+                {
+                    radioButtons[radioButtonIndex++].Text = answer.Key;
+                }
+            }
+        }
+
+        private void radioButtons_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+            if (radioButton.Checked)
+            {
+                GroupBox groupBox = (GroupBox)radioButton.Parent; // Получаю группу, которая является родителем для кнопки
+
+                Match match = Regex.Match(radioButton.Name, @"\d+"); // Получаю число из названия кнопки. Это число означает за какой группой закреплена кнопка
+                int buttonNum = Convert.ToInt32(match.Value);
+
+
+                string findTextBox = "textBox" + buttonNum.ToString();
+
+                TextBox textBox = (TextBox)groupBox.Controls.Find(findTextBox, true)[0]; /// Ищу среди всех текстбоксов текстбокс, который содержит "textBox[число кнопки]"
+                string currentQuestionText = textBox.Text;
+
+                
+
+                //MessageBox.Show(currentQuestionText);
+
+
+
+                foreach (var item in randomizedTasks)               // перебираю задания
+                {
+                    if (item.Question == currentQuestionText)       // если в задании такой же текст, как в выбранном задании
+                    {
+                        foreach (var answer in item.Answers)        // перебираю варианты ответов в задании
+                        {
+                            if (radioButton.Text == answer.Key && answer.Value == true)
+                                progressBar1.Value++;
+                        }
+                    }
+                }
+
+                groupBox.Enabled = false;
+            }
 
         }
     }
