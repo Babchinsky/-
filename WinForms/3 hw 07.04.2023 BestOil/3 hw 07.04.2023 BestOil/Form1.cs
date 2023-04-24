@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,6 +21,8 @@ namespace _3_hw_07._04._2023_BestOil
         ContextMenuStrip MyContextMenuStrip;
         //ToolStripDropDownMenu cm1;
         ToolStripMenuItem subcm1, cm2, cm3;
+
+        private MyMutex mutex = new MyMutex();
 
         public Form1()
         {
@@ -149,6 +152,8 @@ namespace _3_hw_07._04._2023_BestOil
 
         private void button1_Click(object sender, EventArgs e)
         {
+            mutex.Acquire(); // блокировка мьютекса
+
             #region Cafe
             decimal totalPriceHotDog = 0;
             decimal totalPriceBurger = 0;
@@ -197,10 +202,13 @@ namespace _3_hw_07._04._2023_BestOil
             textBoxPayableToGas.Text = totalPriceGas.ToString();
 
             #endregion
-
-
+          
+            // вычисление суммы
             decimal totalPrice = totalPriceCafe + totalPriceGas;
             textBoxPayableToTotal.Text = totalPrice.ToString();
+
+            mutex.Release(); // освобождение мьютекса
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
