@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneKeyboard", "PhoneKeyboard\PhoneKeyboard.csproj", "{151BB507-84F6-4984-BF98-CF28B4B0942A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "18 hw 25.04.2023 PhoneKeyboard", "PhoneKeyboard\18 hw 25.04.2023 PhoneKeyboard.csproj", "{151BB507-84F6-4984-BF98-CF28B4B0942A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
