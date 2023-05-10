@@ -81,6 +81,7 @@
             this.txtPassword.Location = new System.Drawing.Point(35, 216);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(216, 28);
             this.txtPassword.TabIndex = 5;
             // 
@@ -101,6 +102,7 @@
             this.txtComPas.Location = new System.Drawing.Point(35, 284);
             this.txtComPas.Multiline = true;
             this.txtComPas.Name = "txtComPas";
+            this.txtComPas.PasswordChar = '•';
             this.txtComPas.Size = new System.Drawing.Size(216, 28);
             this.txtComPas.TabIndex = 7;
             // 
@@ -124,6 +126,7 @@
             this.checkbxShowPas.TabIndex = 8;
             this.checkbxShowPas.Text = "Show Password";
             this.checkbxShowPas.UseVisualStyleBackColor = true;
+            this.checkbxShowPas.CheckedChanged += new System.EventHandler(this.checkbxShowPas_CheckedChanged);
             // 
             // button1
             // 
@@ -138,6 +141,7 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "REGISTER";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -151,6 +155,7 @@
             this.button2.TabIndex = 10;
             this.button2.Text = "CLEAR";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label5
             // 
@@ -171,6 +176,7 @@
             this.label6.Size = new System.Drawing.Size(97, 17);
             this.label6.TabIndex = 12;
             this.label6.Text = "Back to LOGIN";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // frmRegister
             // 
@@ -193,7 +199,7 @@
             this.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.DarkGray;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "To-Do";

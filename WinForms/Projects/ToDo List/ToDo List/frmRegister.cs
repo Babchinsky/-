@@ -16,5 +16,48 @@ namespace ToDo_List
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (txtUsername.Text == "" && txtPassword.Text == "" && txtComPas.Text == "")
+            {
+                MessageBox.Show("Username and Password fields are empty", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (txtPassword.Text == txtComPas.Text)
+            {
+                MessageBox.Show("Your Account has been Successfully Created", "Registration Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Passwords does not mathc, Please Re-enter", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void checkbxShowPas_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkbxShowPas.Checked)
+            {
+                txtPassword.PasswordChar = '\0';
+                txtComPas.PasswordChar = '\0';
+            }
+            else
+            {
+                txtPassword.PasswordChar = '•';
+                txtComPas.PasswordChar = '•';
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            txtUsername.Text = "";
+            txtPassword.Text = "";
+            txtComPas.Text = "";
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            new frmLogin().Show();
+            this.Hide();
+        }
     }
 }
