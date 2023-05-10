@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace ToDo_List
 {
@@ -40,7 +41,7 @@ namespace ToDo_List
 
         private void button2_Click(object sender, EventArgs e)
         {
-            txtUsername.Text = "";
+            txtEmail.Text = "";
             txtPassword.Text = "";
         }
 

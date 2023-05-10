@@ -19,7 +19,7 @@ namespace ToDo_List
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtUsername.Text == "" && txtPassword.Text == "" && txtComPas.Text == "")
+            if (txtEmail.Text == "" && txtPassword.Text == "" && txtComPas.Text == "")
             {
                 MessageBox.Show("Username and Password fields are empty", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -49,7 +49,7 @@ namespace ToDo_List
 
         private void button2_Click(object sender, EventArgs e)
         {
-            txtUsername.Text = "";
+            txtEmail.Text = "";
             txtPassword.Text = "";
             txtComPas.Text = "";
         }
