@@ -55,7 +55,7 @@ namespace ToDo_List
             List<User> users = ReadFile();
             foreach (User user in users)
             {
-                if (user == checkedUser)
+                if (user.Email == checkedUser.Email && user.Password == checkedUser.Password)
                 {
                     return true;
                 }

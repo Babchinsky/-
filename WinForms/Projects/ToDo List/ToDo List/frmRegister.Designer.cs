@@ -37,10 +37,10 @@
             this.txtComPas = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.checkbxShowPas = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.btnBackToLogin = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -129,34 +129,34 @@
             this.checkbxShowPas.UseVisualStyleBackColor = true;
             this.checkbxShowPas.CheckedChanged += new System.EventHandler(this.checkbxShowPas_CheckedChanged);
             // 
-            // button1
+            // btnRegister
             // 
-            this.button1.BackColor = System.Drawing.Color.MediumPurple;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(35, 354);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(216, 35);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "REGISTER";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnRegister.BackColor = System.Drawing.Color.MediumPurple;
+            this.btnRegister.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegister.FlatAppearance.BorderSize = 0;
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegister.ForeColor = System.Drawing.Color.White;
+            this.btnRegister.Location = new System.Drawing.Point(35, 354);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(216, 35);
+            this.btnRegister.TabIndex = 9;
+            this.btnRegister.Text = "REGISTER";
+            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
-            // button2
+            // btnClear
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.MediumPurple;
-            this.button2.Location = new System.Drawing.Point(35, 406);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(216, 35);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "CLEAR";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnClear.BackColor = System.Drawing.Color.White;
+            this.btnClear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.ForeColor = System.Drawing.Color.MediumPurple;
+            this.btnClear.Location = new System.Drawing.Point(35, 406);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(216, 35);
+            this.btnClear.TabIndex = 10;
+            this.btnClear.Text = "CLEAR";
+            this.btnClear.UseVisualStyleBackColor = false;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // label5
             // 
@@ -167,17 +167,17 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Already Have an Account";
             // 
-            // label6
+            // btnBackToLogin
             // 
-            this.label6.AutoSize = true;
-            this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label6.ForeColor = System.Drawing.Color.MediumPurple;
-            this.label6.Location = new System.Drawing.Point(95, 471);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(97, 17);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Back to LOGIN";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.btnBackToLogin.AutoSize = true;
+            this.btnBackToLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBackToLogin.ForeColor = System.Drawing.Color.MediumPurple;
+            this.btnBackToLogin.Location = new System.Drawing.Point(95, 471);
+            this.btnBackToLogin.Name = "btnBackToLogin";
+            this.btnBackToLogin.Size = new System.Drawing.Size(97, 17);
+            this.btnBackToLogin.TabIndex = 12;
+            this.btnBackToLogin.Text = "Back to LOGIN";
+            this.btnBackToLogin.Click += new System.EventHandler(this.btnBackToLogin_Click);
             // 
             // frmRegister
             // 
@@ -185,10 +185,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(285, 544);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnBackToLogin);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.checkbxShowPas);
             this.Controls.Add(this.txtComPas);
             this.Controls.Add(this.label4);
@@ -220,10 +220,10 @@
         private System.Windows.Forms.TextBox txtComPas;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkbxShowPas;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label btnBackToLogin;
     }
 }
 
