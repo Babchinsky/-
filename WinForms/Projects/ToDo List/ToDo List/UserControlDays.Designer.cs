@@ -36,6 +36,7 @@
             this.lDays.AutoSize = true;
             this.lDays.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lDays.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lDays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.lDays.Location = new System.Drawing.Point(0, 0);
             this.lDays.Name = "lDays";
             this.lDays.Size = new System.Drawing.Size(32, 22);
@@ -46,7 +47,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gold;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(179)))));
             this.Controls.Add(this.lDays);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserControlDays";

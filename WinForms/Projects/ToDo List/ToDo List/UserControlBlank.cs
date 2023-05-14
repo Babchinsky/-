@@ -19,7 +19,12 @@ namespace ToDo_List
 
         private void UserControlBlank_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        public void Days(int dayNum)
+        {
+            lDays.Text = dayNum.ToString();
         }
     }
 }

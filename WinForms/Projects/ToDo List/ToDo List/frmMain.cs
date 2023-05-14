@@ -29,31 +29,77 @@ namespace ToDo_List
 
         private void DisplayDays()
         {
-            // Lets get the first day of the month
+            // Получаем первый день месяца
             CultureInfo culture = new CultureInfo("en-US");
             string monthName = culture.DateTimeFormat.GetMonthName(month);
-
+            labelMonthYear.Text = monthName + " " + year;
 
             DateTime startOfTheMonth = new DateTime(year, month, 1);
-            // Get the count of days of the month
+            // Получаем кол-во дней в месяце
             int days = DateTime.DaysInMonth(year, month);
-            // Convert the start of the month to integer
+            // Конвертируем начальный день недели в int
             int dayOfTheWeek = Convert.ToInt32(startOfTheMonth.DayOfWeek.ToString("d"));
-            
-            // first lets create a blank usercontrol
+
+
+
+            #region pre and next Months, Years 
+
+            int daysInCalendar = 42;
+            int preMonth = month;
+            int yearOfPreMonth = year;
+
+            if (month == 1)
+            {
+                yearOfPreMonth--;
+                preMonth = 12;
+            }
+            else preMonth--;
+
+            int nextMonth = month;
+            int yearOfNextMonth = year;
+
+            if (month == 12)
+            {
+                yearOfNextMonth++;
+                nextMonth = 1;
+            }
+            else nextMonth++;
+
+            #endregion
+
+
+
+            // Дни прошлого месяца
             for (int i = 1; i < dayOfTheWeek; i++)
             {
                 UserControlBlank userControlBlank = new UserControlBlank();
+
+                int daysInPreMonth = DateTime.DaysInMonth(yearOfPreMonth, preMonth);
+
+                userControlBlank.Days(daysInPreMonth - dayOfTheWeek + i + 1);
+
                 LayPanDayContainer.Controls.Add(userControlBlank);
             }
 
+            // Дни этого месяца
             for (int i = 1;i <= days; i++) 
             {
                 UserControlDays userControlDays = new UserControlDays();
                 userControlDays.Days(i);
                 LayPanDayContainer.Controls.Add(userControlDays);
             }
-            labelMonthYear.Text = monthName + " " + year; 
+
+            // Дни следующего месяца
+            for (int i = LayPanDayContainer.Controls.Count, j = 1; i < daysInCalendar; i++, j++)
+            {
+                UserControlBlank userControlBlank = new UserControlBlank();
+
+                int daysInNextMonth = DateTime.DaysInMonth(yearOfNextMonth, nextMonth);
+
+                userControlBlank.Days(j);
+
+                LayPanDayContainer.Controls.Add(userControlBlank);
+            }
         }
 
         private void btnPrev_Click(object sender, EventArgs e)
