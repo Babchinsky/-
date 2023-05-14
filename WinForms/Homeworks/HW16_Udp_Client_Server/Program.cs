@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ToDo_List
+namespace HW16_Udp_Client_Server
 {
     internal static class Program
     {
@@ -16,7 +16,7 @@ namespace ToDo_List
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new Chat());
         }
     }
 }
