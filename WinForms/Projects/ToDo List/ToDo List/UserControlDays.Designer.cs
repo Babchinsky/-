@@ -42,6 +42,7 @@
             this.lDays.Size = new System.Drawing.Size(32, 22);
             this.lDays.TabIndex = 1;
             this.lDays.Text = "00";
+            this.lDays.Click += new System.EventHandler(this.lDays_Click);
             // 
             // UserControlDays
             // 
@@ -52,7 +53,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserControlDays";
             this.Size = new System.Drawing.Size(30, 30);
-            this.Load += new System.EventHandler(this.UserControlDays_Load);
+            this.Click += new System.EventHandler(this.UserControlDays_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 

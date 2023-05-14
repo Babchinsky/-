@@ -13,11 +13,14 @@ namespace ToDo_List
 {
     public partial class frmMain : Form
     {
-        int month, year;
-        UserControlDays userControlDays;
+        private int month, year;
+        //public static frmMain Instance;
+
+        //UserControlDays userControlDays;
         public frmMain()
         {
             InitializeComponent();
+            //Instance = this;
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -26,8 +29,13 @@ namespace ToDo_List
             year = now.Year;
             DisplayDays();
         }
+        
+        public void ClearDays()
+        {
+            LayPanDayContainer.Controls.Clear();
+        }
 
-        private void DisplayDays()
+        public void DisplayDays()
         {
             // Получаем первый день месяца
             CultureInfo culture = new CultureInfo("en-US");
