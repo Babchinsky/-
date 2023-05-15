@@ -12,14 +12,14 @@ namespace ToDo_List
 {
     public partial class frmRegister : Form
     {
-        private JsonFileManager jsonManager;
+        private UsersFileManager jsonManager;
 
         public frmRegister()
         {
             InitializeComponent();
 
             //Создание экземпляра класса JsonFileManager с указанием пути к файлу JSON
-            jsonManager = new JsonFileManager("users.json");
+            jsonManager = new UsersFileManager("users.json");
         }
 
         private void btnRegister_Click(object sender, EventArgs e)

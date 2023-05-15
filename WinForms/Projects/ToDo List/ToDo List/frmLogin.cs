@@ -14,14 +14,14 @@ namespace ToDo_List
     
     public partial class frmLogin : Form
     {
-        private JsonFileManager jsonManager;
+        private UsersFileManager jsonManager;
 
         public frmLogin()
         {
             InitializeComponent();
 
             //Создание экземпляра класса JsonFileManager с указанием пути к файлу JSON
-            jsonManager = new JsonFileManager("users.json");
+            jsonManager = new UsersFileManager("users.json");
         }
 
         private void checkbxShowPas_CheckedChanged(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace ToDo_List
         {
             if (jsonManager.IsUserExists(new User(txtEmail.Text, txtPassword.Text))) // Если есть такой пользователь
             {
-                new frmMain().Show();
+                new frmMain(txtEmail.Text).Show();
                 this.Hide();
             }
             else

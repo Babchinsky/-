@@ -14,20 +14,42 @@ namespace ToDo_List
     public partial class frmMain : Form
     {
         private int month, year;
+        string userEmail;
+        //private Panel[] panelsInCalendar = new Panel[42];
         //public static frmMain Instance;
 
         //UserControlDays userControlDays;
-        public frmMain()
+        public frmMain(string email)
         {
             InitializeComponent();
+            this.userEmail = email; 
             //Instance = this;
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            //// Загоняю каждую панель в массив панелей
+            //for (int i = 0; i < 42; i++)
+            //{
+            //    string panelName = "panel" + (i + 1);
+            //    Panel panel = Controls.Find(panelName, true).FirstOrDefault() as Panel;
+
+            //    if (panel != null)
+            //    {
+            //        panelsInCalendar[i] = panel;
+            //    }
+            //    else
+            //    {
+            //        // Обработка ошибки, если панель не найдена
+            //    }
+            //}
+
+            labelAccount.Text = userEmail;
+
             DateTime now = DateTime.Now;
             month = now.Month;
             year = now.Year;
             DisplayDays();
+
         }
         
         public void ClearDays()
@@ -76,6 +98,7 @@ namespace ToDo_List
             #endregion
 
 
+            //int idOfPanel = 0;
 
             // Дни прошлого месяца
             for (int i = 1; i < dayOfTheWeek; i++)
@@ -124,6 +147,12 @@ namespace ToDo_List
             
             DisplayDays();
             //MessageBox.Show(string.Format(month.ToString() + " " + year.ToString()));
+        }
+
+        private void btnAcExit_Click(object sender, EventArgs e)
+        {
+            new frmRegister().Show();
+            this.Hide();
         }
 
         private void btnNext_Click(object sender, EventArgs e)
