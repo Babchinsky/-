@@ -29,11 +29,13 @@ namespace ToDo_List
         private void UserControlDays_Click(object sender, EventArgs e)
         {
 
-            //frmMain parentForm = frmMain.Instance;
+            frmMain parentForm = frmMain.Instance;
 
             
             //parentForm.ClearDays();
             //parentForm.DisplayDays();
+
+            MessageBox.Show(parentForm.ToString());
 
             this.BackColor = Color.FromArgb(164, 164, 139);
             lDays.ForeColor = Color.FromArgb(173, 45, 89);
@@ -43,6 +45,11 @@ namespace ToDo_List
         private void lDays_Click(object sender, EventArgs e)
         {
             UserControlDays_Click((object)this, new EventArgs());
+        }
+
+        private void UserControlDays_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
