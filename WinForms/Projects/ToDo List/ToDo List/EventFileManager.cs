@@ -36,6 +36,11 @@ namespace ToDo_List
             Console.WriteLine("Список событий успешно записан в файл JSON.");
         }
 
+        public void CreateEmptyFile()
+        {
+            File.WriteAllText(filePath, "");
+        }
+
 
         public void AddEvent(Event selEvent)
         {

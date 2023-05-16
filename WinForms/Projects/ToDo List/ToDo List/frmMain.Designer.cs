@@ -30,6 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.panelEvent1 = new System.Windows.Forms.Panel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.rbtnPending = new System.Windows.Forms.RadioButton();
             this.rbtnDone = new System.Windows.Forms.RadioButton();
             this.rbtnFavourite = new System.Windows.Forms.RadioButton();
@@ -93,24 +99,19 @@
             this.btnAcExit = new System.Windows.Forms.Button();
             this.labelAccount = new System.Windows.Forms.Label();
             this.panelBottom = new System.Windows.Forms.Panel();
+            this.btnSave = new System.Windows.Forms.Button();
             this.txtBox = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panelTitle = new System.Windows.Forms.Panel();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelEvents = new System.Windows.Forms.Panel();
-            this.panelEvent1 = new System.Windows.Forms.Panel();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panelMenu.SuspendLayout();
+            this.panelEvent1.SuspendLayout();
             this.panelCalendar.SuspendLayout();
             this.LayPanDayContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelMain.SuspendLayout();
-            this.panelEvent1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -130,6 +131,64 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(329, 800);
             this.panelMenu.TabIndex = 13;
+            // 
+            // panelEvent1
+            // 
+            this.panelEvent1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelEvent1.Controls.Add(this.textBox3);
+            this.panelEvent1.Controls.Add(this.textBox2);
+            this.panelEvent1.Controls.Add(this.checkBox2);
+            this.panelEvent1.Controls.Add(this.checkBox1);
+            this.panelEvent1.Controls.Add(this.textBox1);
+            this.panelEvent1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelEvent1.Location = new System.Drawing.Point(0, 588);
+            this.panelEvent1.Name = "panelEvent1";
+            this.panelEvent1.Size = new System.Drawing.Size(329, 43);
+            this.panelEvent1.TabIndex = 41;
+            this.panelEvent1.Visible = false;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(634, 9);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(148, 25);
+            this.textBox3.TabIndex = 6;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(479, 9);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(148, 25);
+            this.textBox2.TabIndex = 5;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(13, 15);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(15, 14);
+            this.checkBox2.TabIndex = 4;
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("checkBox1.BackgroundImage")));
+            this.checkBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.checkBox1.FlatAppearance.BorderSize = 0;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox1.Location = new System.Drawing.Point(788, 10);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(25, 25);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(34, 9);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(439, 25);
+            this.textBox1.TabIndex = 0;
             // 
             // rbtnPending
             // 
@@ -349,7 +408,7 @@
             this.radioButton1.Text = "10";
             this.radioButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton1.UseVisualStyleBackColor = false;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -369,7 +428,7 @@
             this.radioButton2.Text = "10";
             this.radioButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton2.UseVisualStyleBackColor = false;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -389,7 +448,7 @@
             this.radioButton3.Text = "10";
             this.radioButton3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton3.UseVisualStyleBackColor = false;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton4
             // 
@@ -409,6 +468,7 @@
             this.radioButton4.Text = "10";
             this.radioButton4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton4.UseVisualStyleBackColor = false;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton5
             // 
@@ -428,7 +488,7 @@
             this.radioButton5.Text = "10";
             this.radioButton5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton5.UseVisualStyleBackColor = false;
-            this.radioButton5.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton6
             // 
@@ -448,7 +508,7 @@
             this.radioButton6.Text = "10";
             this.radioButton6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton6.UseVisualStyleBackColor = false;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton7
             // 
@@ -468,7 +528,7 @@
             this.radioButton7.Text = "10";
             this.radioButton7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton7.UseVisualStyleBackColor = false;
-            this.radioButton7.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton7.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton8
             // 
@@ -488,7 +548,7 @@
             this.radioButton8.Text = "10";
             this.radioButton8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton8.UseVisualStyleBackColor = false;
-            this.radioButton8.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton8.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton9
             // 
@@ -508,7 +568,7 @@
             this.radioButton9.Text = "10";
             this.radioButton9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton9.UseVisualStyleBackColor = false;
-            this.radioButton9.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton9.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton10
             // 
@@ -528,7 +588,7 @@
             this.radioButton10.Text = "10";
             this.radioButton10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton10.UseVisualStyleBackColor = false;
-            this.radioButton10.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton10.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton11
             // 
@@ -548,7 +608,7 @@
             this.radioButton11.Text = "10";
             this.radioButton11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton11.UseVisualStyleBackColor = false;
-            this.radioButton11.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton11.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton12
             // 
@@ -568,7 +628,7 @@
             this.radioButton12.Text = "10";
             this.radioButton12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton12.UseVisualStyleBackColor = false;
-            this.radioButton12.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton12.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton13
             // 
@@ -588,7 +648,7 @@
             this.radioButton13.Text = "10";
             this.radioButton13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton13.UseVisualStyleBackColor = false;
-            this.radioButton13.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton13.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton14
             // 
@@ -608,7 +668,7 @@
             this.radioButton14.Text = "10";
             this.radioButton14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton14.UseVisualStyleBackColor = false;
-            this.radioButton14.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton14.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton15
             // 
@@ -628,7 +688,7 @@
             this.radioButton15.Text = "10";
             this.radioButton15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton15.UseVisualStyleBackColor = false;
-            this.radioButton15.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton15.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton16
             // 
@@ -648,7 +708,7 @@
             this.radioButton16.Text = "10";
             this.radioButton16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton16.UseVisualStyleBackColor = false;
-            this.radioButton16.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton16.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton17
             // 
@@ -668,7 +728,7 @@
             this.radioButton17.Text = "10";
             this.radioButton17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton17.UseVisualStyleBackColor = false;
-            this.radioButton17.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton17.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton18
             // 
@@ -688,7 +748,7 @@
             this.radioButton18.Text = "10";
             this.radioButton18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton18.UseVisualStyleBackColor = false;
-            this.radioButton18.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton18.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton19
             // 
@@ -708,7 +768,7 @@
             this.radioButton19.Text = "10";
             this.radioButton19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton19.UseVisualStyleBackColor = false;
-            this.radioButton19.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton19.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton20
             // 
@@ -728,7 +788,7 @@
             this.radioButton20.Text = "10";
             this.radioButton20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton20.UseVisualStyleBackColor = false;
-            this.radioButton20.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton20.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton21
             // 
@@ -748,7 +808,7 @@
             this.radioButton21.Text = "10";
             this.radioButton21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton21.UseVisualStyleBackColor = false;
-            this.radioButton21.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton21.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton22
             // 
@@ -768,7 +828,7 @@
             this.radioButton22.Text = "10";
             this.radioButton22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton22.UseVisualStyleBackColor = false;
-            this.radioButton22.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton22.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton23
             // 
@@ -788,7 +848,7 @@
             this.radioButton23.Text = "10";
             this.radioButton23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton23.UseVisualStyleBackColor = false;
-            this.radioButton23.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton23.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton24
             // 
@@ -808,7 +868,7 @@
             this.radioButton24.Text = "10";
             this.radioButton24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton24.UseVisualStyleBackColor = false;
-            this.radioButton24.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton24.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton25
             // 
@@ -828,7 +888,7 @@
             this.radioButton25.Text = "10";
             this.radioButton25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton25.UseVisualStyleBackColor = false;
-            this.radioButton25.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton25.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton26
             // 
@@ -848,7 +908,7 @@
             this.radioButton26.Text = "10";
             this.radioButton26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton26.UseVisualStyleBackColor = false;
-            this.radioButton26.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton26.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton27
             // 
@@ -868,7 +928,7 @@
             this.radioButton27.Text = "10";
             this.radioButton27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton27.UseVisualStyleBackColor = false;
-            this.radioButton27.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton27.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton28
             // 
@@ -888,7 +948,7 @@
             this.radioButton28.Text = "10";
             this.radioButton28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton28.UseVisualStyleBackColor = false;
-            this.radioButton28.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton28.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton29
             // 
@@ -908,7 +968,7 @@
             this.radioButton29.Text = "10";
             this.radioButton29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton29.UseVisualStyleBackColor = false;
-            this.radioButton29.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton29.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton30
             // 
@@ -928,7 +988,7 @@
             this.radioButton30.Text = "10";
             this.radioButton30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton30.UseVisualStyleBackColor = false;
-            this.radioButton30.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton30.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton31
             // 
@@ -948,7 +1008,7 @@
             this.radioButton31.Text = "10";
             this.radioButton31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton31.UseVisualStyleBackColor = false;
-            this.radioButton31.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton31.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton32
             // 
@@ -968,7 +1028,7 @@
             this.radioButton32.Text = "10";
             this.radioButton32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton32.UseVisualStyleBackColor = false;
-            this.radioButton32.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton32.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton33
             // 
@@ -988,7 +1048,7 @@
             this.radioButton33.Text = "10";
             this.radioButton33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton33.UseVisualStyleBackColor = false;
-            this.radioButton33.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton33.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton34
             // 
@@ -1008,7 +1068,7 @@
             this.radioButton34.Text = "10";
             this.radioButton34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton34.UseVisualStyleBackColor = false;
-            this.radioButton34.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton34.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton35
             // 
@@ -1028,7 +1088,7 @@
             this.radioButton35.Text = "10";
             this.radioButton35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton35.UseVisualStyleBackColor = false;
-            this.radioButton35.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton35.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton36
             // 
@@ -1048,7 +1108,7 @@
             this.radioButton36.Text = "10";
             this.radioButton36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton36.UseVisualStyleBackColor = false;
-            this.radioButton36.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton36.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton37
             // 
@@ -1068,7 +1128,7 @@
             this.radioButton37.Text = "10";
             this.radioButton37.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton37.UseVisualStyleBackColor = false;
-            this.radioButton37.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton37.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton38
             // 
@@ -1088,7 +1148,7 @@
             this.radioButton38.Text = "10";
             this.radioButton38.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton38.UseVisualStyleBackColor = false;
-            this.radioButton38.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton38.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton39
             // 
@@ -1108,7 +1168,7 @@
             this.radioButton39.Text = "10";
             this.radioButton39.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton39.UseVisualStyleBackColor = false;
-            this.radioButton39.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton39.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton40
             // 
@@ -1128,7 +1188,7 @@
             this.radioButton40.Text = "10";
             this.radioButton40.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton40.UseVisualStyleBackColor = false;
-            this.radioButton40.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton40.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton41
             // 
@@ -1148,7 +1208,7 @@
             this.radioButton41.Text = "10";
             this.radioButton41.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton41.UseVisualStyleBackColor = false;
-            this.radioButton41.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton41.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton42
             // 
@@ -1168,7 +1228,7 @@
             this.radioButton42.Text = "10";
             this.radioButton42.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.radioButton42.UseVisualStyleBackColor = false;
-            this.radioButton42.CheckedChanged += new System.EventHandler(this.rBtns_CheckedChanged);
+            this.radioButton42.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // label8
             // 
@@ -1285,6 +1345,7 @@
             // panelBottom
             // 
             this.panelBottom.BackColor = System.Drawing.Color.Transparent;
+            this.panelBottom.Controls.Add(this.btnSave);
             this.panelBottom.Controls.Add(this.txtBox);
             this.panelBottom.Controls.Add(this.btnAdd);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -1293,6 +1354,21 @@
             this.panelBottom.Size = new System.Drawing.Size(845, 49);
             this.panelBottom.TabIndex = 3;
             // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnSave.Location = new System.Drawing.Point(759, 12);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            // 
             // txtBox
             // 
             this.txtBox.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -1300,23 +1376,25 @@
             this.txtBox.Location = new System.Drawing.Point(10, 12);
             this.txtBox.Multiline = true;
             this.txtBox.Name = "txtBox";
-            this.txtBox.Size = new System.Drawing.Size(742, 23);
+            this.txtBox.Size = new System.Drawing.Size(662, 23);
             this.txtBox.TabIndex = 1;
             // 
             // btnAdd
             // 
             this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.Enabled = false;
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnAdd.Location = new System.Drawing.Point(758, 12);
+            this.btnAdd.Location = new System.Drawing.Point(678, 12);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // panelTitle
             // 
@@ -1353,63 +1431,6 @@
             this.panelEvents.Size = new System.Drawing.Size(845, 723);
             this.panelEvents.TabIndex = 5;
             // 
-            // panelEvent1
-            // 
-            this.panelEvent1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelEvent1.Controls.Add(this.textBox3);
-            this.panelEvent1.Controls.Add(this.textBox2);
-            this.panelEvent1.Controls.Add(this.checkBox2);
-            this.panelEvent1.Controls.Add(this.checkBox1);
-            this.panelEvent1.Controls.Add(this.textBox1);
-            this.panelEvent1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelEvent1.Location = new System.Drawing.Point(0, 588);
-            this.panelEvent1.Name = "panelEvent1";
-            this.panelEvent1.Size = new System.Drawing.Size(329, 43);
-            this.panelEvent1.TabIndex = 41;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(634, 9);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(148, 25);
-            this.textBox3.TabIndex = 6;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(479, 9);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(148, 25);
-            this.textBox2.TabIndex = 5;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(13, 15);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(15, 14);
-            this.checkBox2.TabIndex = 4;
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
-            this.checkBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("checkBox1.BackgroundImage")));
-            this.checkBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.checkBox1.FlatAppearance.BorderSize = 0;
-            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox1.Location = new System.Drawing.Point(788, 10);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(25, 25);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(34, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(439, 25);
-            this.textBox1.TabIndex = 0;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1427,6 +1448,8 @@
             this.Text = "frmMain";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.panelMenu.ResumeLayout(false);
+            this.panelEvent1.ResumeLayout(false);
+            this.panelEvent1.PerformLayout();
             this.panelCalendar.ResumeLayout(false);
             this.panelCalendar.PerformLayout();
             this.LayPanDayContainer.ResumeLayout(false);
@@ -1435,8 +1458,6 @@
             this.panelBottom.ResumeLayout(false);
             this.panelBottom.PerformLayout();
             this.panelMain.ResumeLayout(false);
-            this.panelEvent1.ResumeLayout(false);
-            this.panelEvent1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1517,5 +1538,6 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnSave;
     }
 }
