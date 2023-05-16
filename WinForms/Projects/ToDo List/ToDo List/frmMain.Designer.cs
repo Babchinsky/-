@@ -91,7 +91,6 @@
             this.btnPrev = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAcExit = new System.Windows.Forms.Button();
             this.labelAccount = new System.Windows.Forms.Label();
             this.panelBottom = new System.Windows.Forms.Panel();
             this.btnEditAndSave = new System.Windows.Forms.Button();
@@ -111,6 +110,7 @@
             this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.doneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.favouriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAcExit = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelCalendar.SuspendLayout();
             this.LayPanDayContainer.SuspendLayout();
@@ -1270,27 +1270,12 @@
             this.panel1.Size = new System.Drawing.Size(329, 28);
             this.panel1.TabIndex = 0;
             // 
-            // btnAcExit
-            // 
-            this.btnAcExit.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnAcExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAcExit.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnAcExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAcExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.btnAcExit.Location = new System.Drawing.Point(279, 0);
-            this.btnAcExit.Name = "btnAcExit";
-            this.btnAcExit.Size = new System.Drawing.Size(50, 28);
-            this.btnAcExit.TabIndex = 1;
-            this.btnAcExit.Text = "Exit";
-            this.btnAcExit.UseVisualStyleBackColor = false;
-            this.btnAcExit.Click += new System.EventHandler(this.btnAcExit_Click);
-            // 
             // labelAccount
             // 
             this.labelAccount.AutoSize = true;
-            this.labelAccount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelAccount.Dock = System.Windows.Forms.DockStyle.Right;
             this.labelAccount.Font = new System.Drawing.Font("Montserrat SemiBold", 15.75F, System.Drawing.FontStyle.Bold);
-            this.labelAccount.Location = new System.Drawing.Point(0, 0);
+            this.labelAccount.Location = new System.Drawing.Point(225, 0);
             this.labelAccount.Name = "labelAccount";
             this.labelAccount.Size = new System.Drawing.Size(104, 29);
             this.labelAccount.TabIndex = 0;
@@ -1303,9 +1288,9 @@
             this.panelBottom.Controls.Add(this.txtBox);
             this.panelBottom.Controls.Add(this.btnAdd);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 751);
+            this.panelBottom.Location = new System.Drawing.Point(0, 740);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(845, 49);
+            this.panelBottom.Size = new System.Drawing.Size(845, 60);
             this.panelBottom.TabIndex = 3;
             // 
             // btnEditAndSave
@@ -1316,9 +1301,9 @@
             this.btnEditAndSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditAndSave.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditAndSave.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnEditAndSave.Location = new System.Drawing.Point(759, 12);
+            this.btnEditAndSave.Location = new System.Drawing.Point(760, 3);
             this.btnEditAndSave.Name = "btnEditAndSave";
-            this.btnEditAndSave.Size = new System.Drawing.Size(75, 25);
+            this.btnEditAndSave.Size = new System.Drawing.Size(75, 43);
             this.btnEditAndSave.TabIndex = 3;
             this.btnEditAndSave.Text = "Save";
             this.btnEditAndSave.UseVisualStyleBackColor = false;
@@ -1328,10 +1313,11 @@
             // 
             this.txtBox.BackColor = System.Drawing.Color.WhiteSmoke;
             this.txtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtBox.Location = new System.Drawing.Point(10, 12);
+            this.txtBox.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBox.Location = new System.Drawing.Point(10, 3);
             this.txtBox.Multiline = true;
             this.txtBox.Name = "txtBox";
-            this.txtBox.Size = new System.Drawing.Size(662, 25);
+            this.txtBox.Size = new System.Drawing.Size(654, 43);
             this.txtBox.TabIndex = 1;
             // 
             // btnAdd
@@ -1343,9 +1329,9 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnAdd.Location = new System.Drawing.Point(678, 12);
+            this.btnAdd.Location = new System.Drawing.Point(670, 3);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 25);
+            this.btnAdd.Size = new System.Drawing.Size(84, 43);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -1384,7 +1370,7 @@
             this.panelEvents.Location = new System.Drawing.Point(0, 28);
             this.panelEvents.Name = "panelEvents";
             this.panelEvents.Padding = new System.Windows.Forms.Padding(10);
-            this.panelEvents.Size = new System.Drawing.Size(845, 723);
+            this.panelEvents.Size = new System.Drawing.Size(845, 712);
             this.panelEvents.TabIndex = 5;
             // 
             // panelEvent1
@@ -1492,6 +1478,21 @@
             this.favouriteToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
             this.favouriteToolStripMenuItem.Text = "Favourite";
             // 
+            // btnAcExit
+            // 
+            this.btnAcExit.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnAcExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAcExit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAcExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAcExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnAcExit.Location = new System.Drawing.Point(0, 0);
+            this.btnAcExit.Name = "btnAcExit";
+            this.btnAcExit.Size = new System.Drawing.Size(50, 28);
+            this.btnAcExit.TabIndex = 44;
+            this.btnAcExit.Text = "Exit";
+            this.btnAcExit.UseVisualStyleBackColor = false;
+            this.btnAcExit.Click += new System.EventHandler(this.btnAcExit_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1528,7 +1529,6 @@
         #endregion
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnAcExit;
         private System.Windows.Forms.Label labelAccount;
         private System.Windows.Forms.Panel panelCalendar;
         private System.Windows.Forms.Label labelMonthYear;
@@ -1607,5 +1607,6 @@
         private System.Windows.Forms.ToolStripMenuItem favouriteToolStripMenuItem;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button btnAcExit;
     }
 }
