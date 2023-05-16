@@ -99,6 +99,11 @@
             this.panelTitle = new System.Windows.Forms.Panel();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelEvents = new System.Windows.Forms.Panel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.doneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.favouriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAcExit = new System.Windows.Forms.Button();
             this.panelEvent1 = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.btnRemove = new System.Windows.Forms.Button();
@@ -106,25 +111,20 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.doneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.favouriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnAcExit = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
             this.panelCalendar.SuspendLayout();
             this.LayPanDayContainer.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelBottom.SuspendLayout();
             this.panelMain.SuspendLayout();
-            this.panelEvents.SuspendLayout();
-            this.panelEvent1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            this.panelEvent1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panelMenu.Controls.Add(this.panelEvent1);
             this.panelMenu.Controls.Add(this.rbtnPending);
             this.panelMenu.Controls.Add(this.rbtnDone);
             this.panelMenu.Controls.Add(this.rbtnFavourite);
@@ -1319,6 +1319,7 @@
             this.txtBox.Name = "txtBox";
             this.txtBox.Size = new System.Drawing.Size(654, 43);
             this.txtBox.TabIndex = 1;
+            this.txtBox.TextChanged += new System.EventHandler(this.txtBox_TextChanged);
             // 
             // btnAdd
             // 
@@ -1365,13 +1366,54 @@
             // 
             this.panelEvents.AutoScroll = true;
             this.panelEvents.BackColor = System.Drawing.Color.Transparent;
-            this.panelEvents.Controls.Add(this.panelEvent1);
             this.panelEvents.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEvents.Location = new System.Drawing.Point(0, 28);
             this.panelEvents.Name = "panelEvents";
             this.panelEvents.Padding = new System.Windows.Forms.Padding(10);
             this.panelEvents.Size = new System.Drawing.Size(845, 712);
             this.panelEvents.TabIndex = 5;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeToolStripMenuItem,
+            this.doneToolStripMenuItem,
+            this.favouriteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(139, 76);
+            // 
+            // removeToolStripMenuItem
+            // 
+            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
+            this.removeToolStripMenuItem.Text = "Remove";
+            // 
+            // doneToolStripMenuItem
+            // 
+            this.doneToolStripMenuItem.Name = "doneToolStripMenuItem";
+            this.doneToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
+            this.doneToolStripMenuItem.Text = "Done";
+            // 
+            // favouriteToolStripMenuItem
+            // 
+            this.favouriteToolStripMenuItem.Name = "favouriteToolStripMenuItem";
+            this.favouriteToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
+            this.favouriteToolStripMenuItem.Text = "Favourite";
+            // 
+            // btnAcExit
+            // 
+            this.btnAcExit.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnAcExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAcExit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAcExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAcExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnAcExit.Location = new System.Drawing.Point(0, 0);
+            this.btnAcExit.Name = "btnAcExit";
+            this.btnAcExit.Size = new System.Drawing.Size(50, 28);
+            this.btnAcExit.TabIndex = 44;
+            this.btnAcExit.Text = "Exit";
+            this.btnAcExit.UseVisualStyleBackColor = false;
+            this.btnAcExit.Click += new System.EventHandler(this.btnAcExit_Click);
             // 
             // panelEvent1
             // 
@@ -1383,10 +1425,10 @@
             this.panelEvent1.Controls.Add(this.checkBox1);
             this.panelEvent1.Controls.Add(this.textBox1);
             this.panelEvent1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelEvent1.Location = new System.Drawing.Point(10, 10);
+            this.panelEvent1.Location = new System.Drawing.Point(0, 588);
             this.panelEvent1.Name = "panelEvent1";
-            this.panelEvent1.Size = new System.Drawing.Size(825, 43);
-            this.panelEvent1.TabIndex = 42;
+            this.panelEvent1.Size = new System.Drawing.Size(329, 43);
+            this.panelEvent1.TabIndex = 43;
             this.panelEvent1.Visible = false;
             // 
             // textBox3
@@ -1451,48 +1493,6 @@
             this.textBox1.Size = new System.Drawing.Size(369, 25);
             this.textBox1.TabIndex = 0;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.removeToolStripMenuItem,
-            this.doneToolStripMenuItem,
-            this.favouriteToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(139, 76);
-            // 
-            // removeToolStripMenuItem
-            // 
-            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
-            this.removeToolStripMenuItem.Text = "Remove";
-            // 
-            // doneToolStripMenuItem
-            // 
-            this.doneToolStripMenuItem.Name = "doneToolStripMenuItem";
-            this.doneToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
-            this.doneToolStripMenuItem.Text = "Done";
-            // 
-            // favouriteToolStripMenuItem
-            // 
-            this.favouriteToolStripMenuItem.Name = "favouriteToolStripMenuItem";
-            this.favouriteToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
-            this.favouriteToolStripMenuItem.Text = "Favourite";
-            // 
-            // btnAcExit
-            // 
-            this.btnAcExit.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnAcExit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAcExit.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAcExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAcExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.btnAcExit.Location = new System.Drawing.Point(0, 0);
-            this.btnAcExit.Name = "btnAcExit";
-            this.btnAcExit.Size = new System.Drawing.Size(50, 28);
-            this.btnAcExit.TabIndex = 44;
-            this.btnAcExit.Text = "Exit";
-            this.btnAcExit.UseVisualStyleBackColor = false;
-            this.btnAcExit.Click += new System.EventHandler(this.btnAcExit_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1518,10 +1518,9 @@
             this.panelBottom.ResumeLayout(false);
             this.panelBottom.PerformLayout();
             this.panelMain.ResumeLayout(false);
-            this.panelEvents.ResumeLayout(false);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.panelEvent1.ResumeLayout(false);
             this.panelEvent1.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1593,11 +1592,6 @@
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelEvents;
         private System.Windows.Forms.Button btnEditAndSave;
-        private System.Windows.Forms.Panel panelEvent1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.RadioButton rbtnPending;
         private System.Windows.Forms.RadioButton rbtnDone;
         private System.Windows.Forms.RadioButton rbtnFavourite;
@@ -1605,8 +1599,13 @@
         private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem doneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem favouriteToolStripMenuItem;
-        private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button btnAcExit;
+        private System.Windows.Forms.Panel panelEvent1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

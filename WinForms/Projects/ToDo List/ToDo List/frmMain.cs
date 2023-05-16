@@ -8,12 +8,14 @@ using System.Drawing.Printing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.ComponentModel.Design.ObjectSelectorEditor;
 using static System.Net.Mime.MediaTypeNames;
 //using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Threading;
 
 namespace ToDo_List
 {
@@ -191,29 +193,100 @@ namespace ToDo_List
         
         public void ClearEvents()
         {
-            eventsOnScreen = 0;
+            //panelEvents.Visible = false;
+            //foreach (var item in panelEvents.Controls)
+            //{
+            //    Panel control = item as Panel;
+            //    control.Visible = false;
+            //}
+
+            // Приостанавливаем обновление макета контролов
+            //this.SuspendLayout();
+
+            //// Удаляем элементы управления
+            //panelEvents.Dispose();
+
             panelEvents.Controls.Clear();
+            eventsOnScreen = 0;
+            //foreach (var item in panelEvents.Controls)
+            //{
+            //    Panel control = item as Panel;
+            //    //messagebox.show(control.name);
+            //    //control.dispose();
+            //    control.Visible = false;
+            //}
+
+            //Thread.Sleep(100);
+            //control2.Dispose();
+            //control3.Dispose();
+            //this.ResumeLayout();
+
+            //// Возобновляем обновление макета контролов
+            //this.ResumeLayout();
+            
+            
         }
 
         public void DisplayEvents(List<Event> events)
         {
+            //panelEvents.Visible = false;
+            //Control[] controls = new Control[events.Count];
+
+
+            //this.SuspendLayout();
+
+
             foreach (var item in events)
             {
                 AddEventToInterface(item.IsDone, item.Name, item.Date, item.IsFavourite);
             }
+
+            //foreach (var item in panelEvents.Controls)
+            //{
+            //    Panel control = item as Panel;
+            //    //MessageBox.Show(control.Name);
+            //    //control.Dispose();
+            //    control.Visible = true;
+            //}
+
+            //this.ResumeLayout();
+
+            //foreach (var item in panelEvents.Controls)
+            //{
+            //    Panel control = item as Panel;
+            //    control.Visible = true;
+            //}
+
+            //Thread.Sleep(250);
+            //panelEvents.Visible = true;
+            //foreach (var item in panelEvents.Controls)
+            //{
+            //    Panel control = item as Panel;
+            //    control.Visible = true;
+            //}
+
+
+
         }
 
         public void AddEventToInterface(bool isDone, string name, DateTime dateAndTime, bool isFavourite)
         {
+            #region reg
             Panel panel = new Panel();
+            //panel.Visible = false;
+
+
+
             panel.Width = 810;
             panel.Height = 40;
             panel.Location = new Point(10, eventsOnScreen * 50);
-            //panel.Margin = new Padding(0, 10, 0, 0);
+            panel.Margin = new Padding(0, 10, 0, 0);
             panel.BackColor = Color.Gainsboro;
-            //panel.Dock = DockStyle.Top;
+
+            
 
             panelEvents.Controls.Add(panel);
+            //panel.Dock = DockStyle.Top;
 
             CheckBox chkDone = new CheckBox();
             TextBox txtName = new TextBox();
@@ -323,6 +396,10 @@ namespace ToDo_List
             txtTime.TextChanged += txtDateAndTime_TextChanged;
             //eventsCount++;
             eventsOnScreen++;
+
+
+            
+            #endregion
         }
 
         private void txtDateAndTime_TextChanged(object sender, EventArgs e)
@@ -429,10 +506,22 @@ namespace ToDo_List
             {
                 rbtnFavourite_CheckedChanged(null, null);
             }
-            else 
+            if (rbtnAll.Checked)
             {
                 ClearEvents();
                 DisplayEvents(eventsInFile);
+            }
+            if (rbtnSelectedDay.Checked)
+            {
+                rbtnSelectedDay_CheckedChanged(null, null);
+            }
+            if (rbtnDone.Checked)
+            {
+                rbtnDone_CheckedChanged(null, null);
+            }
+            if (rbtnPending.Checked)
+            {
+                rbtnPending_CheckedChanged(null, null);
             }
         }
 
@@ -490,7 +579,9 @@ namespace ToDo_List
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            btnAdd.Enabled = true;
+            //btnAdd.Enabled = true;
+
+            if (!String.IsNullOrEmpty(txtBox.Text)) btnAdd.Enabled = true;
 
             for (int i = 0; i < radioBtnsDaysInCalendar.Length; i++)
             {
@@ -507,19 +598,22 @@ namespace ToDo_List
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
             int day = 1;
 
 
-            foreach (RadioButton radio in  radioBtnsDaysInCalendar)
+            foreach (RadioButton radio in radioBtnsDaysInCalendar)
             {
                 if (radio.Checked) day = Convert.ToInt32(radio.Text);
             }
-            
+
 
             DateTime dateTimeToAdd = new DateTime(year, month, day);
 
             eventsInFile.Add(new Event(dateTimeToAdd, txtBox.Text, false, false));
             AddEventToInterface(false, txtBox.Text, dateTimeToAdd, false);
+            txtBox.Text = string.Empty;
+            btnAdd.Enabled = true;
         }
 
         private void rbtnAll_CheckedChanged(object sender, EventArgs e)
@@ -655,6 +749,21 @@ namespace ToDo_List
         {
             new frmRegister().Show();
             this.Hide();
+        }
+
+        private void txtBox_TextChanged(object sender, EventArgs e)
+        {
+            bool isCheck = false;
+            foreach (var item in radioBtnsDaysInCalendar)
+            {
+                if (item.Checked) isCheck = true;
+            }
+
+            if (!String.IsNullOrEmpty(txtBox.Text) && isCheck == true )
+            {
+                btnAdd.Enabled = true;
+            }
+            else btnAdd.Enabled = false;
         }
 
         private void btnRemoveEvent_Click(object sender, EventArgs e)
