@@ -94,7 +94,7 @@ namespace ToDo_List
             year = now.Year;
 
             DisplayDays();
-            DisplayEvents();
+            DisplayEvents(eventsInFile);
         }
 
         public void CreateNewEventsFileWithExample()
@@ -194,27 +194,26 @@ namespace ToDo_List
         
         public void ClearEvents()
         {
+            eventsOnScreen = 0;
             panelEvents.Controls.Clear();
         }
 
-        public void DisplayEvents()
+        public void DisplayEvents(List<Event> events)
         {
-            //MessageBox.Show(eventsCount.ToString());
-
-            foreach (var item in eventsInFile)
+            foreach (var item in events)
             {
-                DisplayAddingEvent(item.IsDone, item.Name, item.Date, item.IsFavourite);
+                AddToInterfaceEvent(item.IsDone, item.Name, item.Date, item.IsFavourite);
             }
         }
 
-        public void DisplayAddingEvent(bool isDone, string name, DateTime dateAndTime, bool isFavourite)
+        public void AddToInterfaceEvent(bool isDone, string name, DateTime dateAndTime, bool isFavourite)
         {
             Panel panel = new Panel();
             panel.Width = 810;
             panel.Height = 40;
             panel.Location = new Point(10, eventsOnScreen * 50);
             //panel.Margin = new Padding(0, 10, 0, 0);
-            panel.BackColor = Color.White;
+            panel.BackColor = Color.Gainsboro;
             //panel.Dock = DockStyle.Top;
 
             panelEvents.Controls.Add(panel);
@@ -237,25 +236,34 @@ namespace ToDo_List
             txtName.Text = name;
             txtName.BackColor = SystemColors.Window;
             txtName.ForeColor = Color.Black;
-            txtName.Location = new Point(34, 9);
+            txtName.Location = new Point(34, 12);
             txtName.Width = 439;
             txtName.Height = 25;
+            txtName.BorderStyle = BorderStyle.None;
+            txtName.Multiline = true;
+            txtName.BackColor = Color.Gainsboro;
             panel.Controls.Add(txtName);
 
             txtDate.Text = dateAndTime.ToString("dd-MM-yyyy");
             txtDate.BackColor = SystemColors.Window;
             txtDate.ForeColor = Color.Black;
-            txtDate.Location = new Point(479, 9);
+            txtDate.Location = new Point(479, 12);
             txtDate.Width = 148;
             txtDate.Height = 25;
+            txtDate.BorderStyle = BorderStyle.None;
+            txtDate.Multiline = true;
+            txtDate.BackColor = Color.Gainsboro;
             panel.Controls.Add(txtDate);
 
             txtTime.Text = dateAndTime.ToString("t"); ;
             txtTime.BackColor = SystemColors.Window;
             txtTime.ForeColor = Color.Black;
-            txtTime.Location = new Point(634, 9);
+            txtTime.Location = new Point(634, 12);
             txtTime.Width = 148;
             txtTime.Height = 25;
+            txtTime.BorderStyle = BorderStyle.None;
+            txtTime.Multiline = true;
+            txtTime.BackColor = Color.Gainsboro;
             panel.Controls.Add(txtTime);
 
 
@@ -283,13 +291,16 @@ namespace ToDo_List
 
 
             DisplayDays();
+
             ClearEvents();
+
             //MessageBox.Show(string.Format(month.ToString() + " " + year.ToString()));
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            DisplayEvents();
+            DisplayEvents(eventsInFile);
+
             //LayPanDayContainer.Controls.Clear();
             if (month == 12)
             {
@@ -327,12 +338,127 @@ namespace ToDo_List
             {
                 radioBtnsDaysInCalendar[i].ForeColor = Color.FromArgb(39, 39, 58);
             }
-            ((RadioButton)sender as RadioButton).ForeColor = Color.Red;
+            ((RadioButton)sender as RadioButton).ForeColor = Color.Maroon;
+
+            if (rbtnSelectedDay.Checked == true)
+            {
+                rbtnSelectedDay_CheckedChanged(sender,e);
+            }
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            DisplayAddingEvent(false, txtBox.Text, DateTime.Now, false);
+            int day = 1;
+
+
+            foreach (RadioButton radio in  radioBtnsDaysInCalendar)
+            {
+                if (radio.Checked) day = Convert.ToInt32(radio.Text);
+            }
+            
+
+            DateTime dateTimeToAdd = new DateTime(year, month, day);
+
+            AddToInterfaceEvent(false, txtBox.Text, dateTimeToAdd, false);
+        }
+
+        private void rbtnAll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtnAll.Checked == true)
+            {
+                ClearEvents();
+                DisplayEvents(eventsInFile);
+            }
+        }
+
+        private void rbtnSelectedDay_CheckedChanged(object sender, EventArgs e)
+        {
+            ClearEvents();
+
+            int day = 1;// по умолчанию
+            RadioButton selected;
+
+            foreach (RadioButton radio in radioBtnsDaysInCalendar)
+            {
+                if (radio.Checked)
+                {
+                    day = Convert.ToInt32(radio.Text);
+                    selected = radio;
+                }
+            }
+
+            DateTime dateTime = new DateTime(year, month, day);
+
+            List<Event> eventsPerSDay = new List<Event>();
+
+            foreach (var item in eventsInFile)
+            {
+                if (item.Date == dateTime) eventsPerSDay.Add(item);
+            }
+
+
+
+            foreach (RadioButton radio in radioBtnsDaysInCalendar)
+            {
+                if (radio.Checked)
+                {
+                    if (rbtnSelectedDay.Checked == true)
+                    {
+                        DisplayEvents(eventsPerSDay);
+                    }
+                }
+            }
+            
+
+            
+            
+
+            
+
+
+            
+
+            
+        }
+
+        private void rbtnFavourite_CheckedChanged(object sender, EventArgs e)
+        {
+            ClearEvents();
+
+            List<Event> favouriteEvents = new List<Event>();
+            foreach (var item in eventsInFile)
+            {
+                if (item.IsFavourite == true) favouriteEvents.Add(item);
+            }
+
+            DisplayEvents(favouriteEvents);
+        }
+
+        private void rbtnDone_CheckedChanged(object sender, EventArgs e)
+        {
+            ClearEvents();
+
+            List<Event> doneEvents = new List<Event>();
+            foreach (var item in eventsInFile)
+            {
+                if (item.IsDone == true) doneEvents.Add(item);
+            }
+
+            DisplayEvents(doneEvents);
+        }
+
+        private void rbtnPending_CheckedChanged(object sender, EventArgs e)
+        {
+            ClearEvents();
+
+            List<Event> pendingEvents = new List<Event>();
+            foreach (var item in eventsInFile)
+            {
+                if (item.Date > DateTime.Now) pendingEvents.Add(item);
+            }
+
+            DisplayEvents(pendingEvents);
         }
 
         private void btnAcExit_Click(object sender, EventArgs e)
