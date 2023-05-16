@@ -14,6 +14,7 @@ namespace ToDo_List
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain("example@gmail.com"));
+            //Application.Run(new frmRegister());
         }
     }
 }

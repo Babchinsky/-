@@ -15,35 +15,32 @@ namespace ToDo_List
     {
         private int month, year;
         string userEmail;
-        //private Panel[] panelsInCalendar = new Panel[42];
-        private Button[] btnsDaysInCalendar = new Button[42];
-        public static frmMain Instance;
+        private RadioButton[] radioBtnsDaysInCalendar = new RadioButton[42];
 
-        //UserControlDays userControlDays;
         public frmMain(string email)
         {
             InitializeComponent();
-            this.userEmail = email; 
-            Instance = this;
+            this.userEmail = email;
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
-            // Загоняю каждую панель в массив панелей
+            // Загоняю каждую кнопку в массив кнопок
             for (int i = 0; i < 42; i++)
             {
-                string buttonName = "button" + (i + 1);
-                Button button = Controls.Find(buttonName, true).FirstOrDefault() as Button;
+                string rButtonName = "radioButton" + (i + 1);
+                RadioButton rButton = Controls.Find(rButtonName, true).FirstOrDefault() as RadioButton;
 
-                if (button != null)
+                if (rButton != null)
                 {
-                    btnsDaysInCalendar[i] = button;
-                    //MessageBox.Show(btnsDaysInCalendar[i].Name);
+                    radioBtnsDaysInCalendar[i] = rButton;
+                    //MessageBox.Show(radioBtnsDaysInCalendar[i].Name);
                 }
                 else
                 {
-                    // Обработка ошибки, если панель не найдена
+                    // Обработка ошибки, если кнопка не найдена
                 }
             }
+
 
             labelAccount.Text = userEmail;
 
@@ -52,8 +49,10 @@ namespace ToDo_List
             year = now.Year;
             DisplayDays();
 
+            //listView1.ColorStyle.TransparencyLevel = TransparencyLevel.Full;
+
         }
-        
+
         public void ClearDays()
         {
             LayPanDayContainer.Controls.Clear();
@@ -74,7 +73,7 @@ namespace ToDo_List
 
 
 
-            #region pre and next Months, Years 
+            #region pre Month, YearOfPreMonth 
 
             int daysInCalendar = 42;
             int preMonth = month;
@@ -98,60 +97,49 @@ namespace ToDo_List
             else nextMonth++;
 
             #endregion
-
-
-            int idOfButton = 0;
+            int idOfRadButton = 0;
 
             // Дни прошлого месяца
             for (int i = 1; i < dayOfTheWeek; i++)
             {
-
-                //UserControlBlank userControlBlank = new UserControlBlank();
-
-                //int daysInPreMonth = DateTime.DaysInMonth(yearOfPreMonth, preMonth);
-
-                //userControlBlank.Days(daysInPreMonth - dayOfTheWeek + i + 1);
-
-                //LayPanDayContainer.Controls.Add(userControlBlank);
-
-                btnsDaysInCalendar[idOfButton].ForeColor = Color.FromArgb(204, 204, 179);
-                btnsDaysInCalendar[idOfButton].BackColor = Color.FromArgb(39, 39, 58);
-                btnsDaysInCalendar[idOfButton++].Text = "0";
+                radioBtnsDaysInCalendar[idOfRadButton].Enabled = false;
+                int daysInPreMonth = DateTime.DaysInMonth(yearOfPreMonth, preMonth);
+                //radioBtnsDaysInCalendar[idOfRadButton].ForeColor = Color.FromArgb(204, 204, 179);
+                radioBtnsDaysInCalendar[idOfRadButton].ForeColor = Color.Gainsboro;
+                //radioBtnsDaysInCalendar[idOfRadButton].BackColor = Color.FromArgb(39, 39, 58);
+                radioBtnsDaysInCalendar[idOfRadButton].BackColor = Color.Gray;
+                radioBtnsDaysInCalendar[idOfRadButton++].Text = (daysInPreMonth - dayOfTheWeek + i + 1).ToString();
             }
 
             // Дни этого месяца
-            for (int i = 1;i <= days; i++) 
+            for (int i = 1; i <= days; i++)
             {
-                //UserControlDays userControlDays = new UserControlDays();
-                //userControlDays.Days(i);
-                //LayPanDayContainer.Controls.Add(userControlDays);
-                btnsDaysInCalendar[idOfButton].Text = i.ToString();
-                btnsDaysInCalendar[idOfButton].BackColor = Color.Gainsboro;
-                btnsDaysInCalendar[idOfButton++].ForeColor = Color.FromArgb(51, 51, 76);
-                
+                radioBtnsDaysInCalendar[idOfRadButton].Enabled = true;
+                radioBtnsDaysInCalendar[idOfRadButton].Cursor = Cursors.Hand;
+                radioBtnsDaysInCalendar[idOfRadButton].Text = i.ToString();
+                radioBtnsDaysInCalendar[idOfRadButton].BackColor = Color.Gainsboro;
+                radioBtnsDaysInCalendar[idOfRadButton++].ForeColor = Color.FromArgb(51, 51, 76);
             }
+
+            int step = idOfRadButton;
 
             // Дни следующего месяца
-            for (int i = LayPanDayContainer.Controls.Count, j = 1; i < daysInCalendar; i++, j++)
+            for (int i = step, j = 1; i < daysInCalendar; i++, j++)
             {
-                //UserControlBlank userControlBlank = new UserControlBlank();
-
-                //int daysInNextMonth = DateTime.DaysInMonth(yearOfNextMonth, nextMonth);
-
-                //userControlBlank.Days(j);
-
-                //LayPanDayContainer.Controls.Add(userControlBlank);
-
-                btnsDaysInCalendar[idOfButton].ForeColor = Color.FromArgb(204, 204, 179);
-                btnsDaysInCalendar[idOfButton].BackColor = Color.FromArgb(39, 39, 58);
-                btnsDaysInCalendar[idOfButton++].Text = "0";
+                radioBtnsDaysInCalendar[idOfRadButton].Enabled = false;
+                //radioBtnsDaysInCalendar[idOfRadButton].ForeColor = Color.FromArgb(204, 204, 179);
+                radioBtnsDaysInCalendar[idOfRadButton].ForeColor = Color.Gainsboro;
+                //radioBtnsDaysInCalendar[idOfRadButton].BackColor = Color.FromArgb(39, 39, 58);
+                radioBtnsDaysInCalendar[idOfRadButton].BackColor = Color.Gray;
+                radioBtnsDaysInCalendar[idOfRadButton++].Text = j.ToString();
             }
         }
+
 
         private void btnPrev_Click(object sender, EventArgs e)
         {
             //LayPanDayContainer.Controls.Clear();
-            
+
             if (month == 1)
             {
                 year--;
@@ -159,7 +147,7 @@ namespace ToDo_List
             }
             else month--;
 
-            
+
             DisplayDays();
             //MessageBox.Show(string.Format(month.ToString() + " " + year.ToString()));
         }
@@ -174,10 +162,41 @@ namespace ToDo_List
             }
             else month++;
 
-            
+
             DisplayDays();
             //MessageBox.Show(string.Format(month.ToString() + " " + year.ToString()));
         }
+
+
+
+        private void rBtns_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton clickedControl = sender as RadioButton;
+
+            for (int i = 0; i < radioBtnsDaysInCalendar.Length; i++)
+            {
+                if (radioBtnsDaysInCalendar[i].Enabled == true)
+                {
+                    radioBtnsDaysInCalendar[i].ForeColor = Color.FromArgb(39, 39, 58);
+                }
+            }
+
+            clickedControl.ForeColor = Color.DarkRed;
+            rbtnSelectedDay.Checked = true;
+        }
+
+        private void rbtnMenus_Enter(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton)sender;
+
+            // Сохраняем исходный цвет фона
+            Color originalBackColor = radioButton.BackColor;
+
+            // Устанавливаем пользовательский цвет фона, чтобы предотвратить изменение при наведении
+            radioButton.BackColor = originalBackColor;
+        }
+
+
 
         private void btnAcExit_Click(object sender, EventArgs e)
         {
