@@ -1402,7 +1402,7 @@
             // btnRemove
             // 
             this.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRemove.Location = new System.Drawing.Point(707, 9);
+            this.btnRemove.Location = new System.Drawing.Point(689, 9);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 25);
             this.btnRemove.TabIndex = 7;
@@ -1435,7 +1435,7 @@
             this.checkBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.checkBox1.FlatAppearance.BorderSize = 0;
             this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox1.Location = new System.Drawing.Point(788, 10);
+            this.checkBox1.Location = new System.Drawing.Point(770, 9);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(25, 25);
             this.checkBox1.TabIndex = 3;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Globalization;
@@ -267,7 +268,7 @@ namespace ToDo_List
 
 
             btnRemove.Text = "Remove";
-            btnRemove.Location = new Point(707, 9);
+            btnRemove.Location = new Point(689, 9);
             btnRemove.Width = 75;
             btnRemove.Height = 25;
             //btnRemove.Cursor = Cursor.CureHand;
@@ -276,21 +277,39 @@ namespace ToDo_List
 
             if (isFavourite) chkFavourite.Checked = true;
             else chkFavourite.Checked = false;
-            chkFavourite.Location = new Point(788, 10);
+            chkFavourite.Location = new Point(770, 10);
             chkFavourite.Width = 25;
             chkFavourite.Height = 25;
+            chkFavourite.BackColor = Color.Gainsboro;
+            
+            chkFavourite.FlatAppearance.BorderSize = 0;
+            //chkFavourite.Enabled = false;
+            chkFavourite.Appearance = Appearance.Button;
+            chkFavourite.FlatStyle = FlatStyle.Standard;
+            chkFavourite.BackgroundImageLayout = ImageLayout.Stretch;
 
+            //string imagePath = Path.Combine(System.Windows.Forms.Application.StartupPath, "src", "star_unchecked.png"); // Путь к изображению
             //string imagePath = @"src\star_unchecked.png"; // Путь к изображению относительно текущего расположения исполняемого файла
 
-            //// Проверяем, существует ли файл изображения
-            //if (File.Exists(imagePath))
-            //{
-            //    // Загружаем изображение
-            //    Image backgroundImage = Image.FromFile(imagePath);
+            string imagePath;
+            if (isFavourite) imagePath = @"C:\0 My Files\.NET\WinForms\Projects\ToDo List\ToDo List\src\star_checked.png";
+            else imagePath = @"C:\0 My Files\.NET\WinForms\Projects\ToDo List\ToDo List\src\star_unchecked.png";
 
-            //    // Устанавливаем фоновое изображение для checkBox1
-            //    checkBox1.BackgroundImage = backgroundImage;
-            //}
+            // Проверяем, существует ли файл изображения
+            if (File.Exists(imagePath))
+            {
+                // Загружаем изображение как Bitmap
+                Bitmap backgroundImage = new Bitmap(imagePath);
+
+                // Устанавливаем фоновое изображение для checkBox1
+                chkFavourite.BackgroundImage = backgroundImage;
+            }
+            else
+            {
+                // Если файл изображения не найден, можно предпринять соответствующие действия
+                MessageBox.Show("Изображение не найдено!");
+            }
+
 
             panel.Controls.Add(chkFavourite);
 
@@ -380,10 +399,14 @@ namespace ToDo_List
                 if (eventsInFile[i].Name == evnt.Name && eventsInFile[i].Date == evnt.Date) eventsInFile[i].IsDone = !(eventsInFile[i].IsDone);
             }
 
+            //ClearEvents();
+            //DisplayEvents(eventsInFile);
+
             if (rbtnDone.Checked)
             {
                 rbtnDone_CheckedChanged(null, null);
             }
+
         }
 
         private void chkFavourite_CheckedChanged(object sender, EventArgs e)
@@ -392,15 +415,24 @@ namespace ToDo_List
             Event evnt = GetSelectedEventFromDisplay(selected);
             //MessageBox.Show(evnt.Name.ToString());
 
+
             // Меняю evnt в eventsInFile
             for (int i = 0; i < eventsInFile.Count; i++)
             {
                 if (eventsInFile[i].Name == evnt.Name && eventsInFile[i].Date == evnt.Date) eventsInFile[i].IsFavourite = !(eventsInFile[i].IsFavourite);
+                
             }
+
+
 
             if (rbtnFavourite.Checked)
             {
                 rbtnFavourite_CheckedChanged(null, null);
+            }
+            else 
+            {
+                ClearEvents();
+                DisplayEvents(eventsInFile);
             }
         }
 
