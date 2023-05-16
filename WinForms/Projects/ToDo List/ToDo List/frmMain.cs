@@ -10,6 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ToDo_List
 {
@@ -49,7 +51,9 @@ namespace ToDo_List
             eventsOnScreen = 0;
 
             //eventFileManager.Wr\
-            CreateNewEventsFileWithExample();
+
+
+            
 
             eventFileManager = new EventFileManager(filepath);
 
@@ -57,6 +61,7 @@ namespace ToDo_List
             if (!File.Exists(filepath))
             {
                 eventFileManager.CreateEmptyFile();
+                CreateNewEventsFileWithExample();
                 eventsCount = 0;
             }
             else
@@ -222,6 +227,7 @@ namespace ToDo_List
             TextBox txtName = new TextBox();
             TextBox txtDate = new TextBox();
             TextBox txtTime = new TextBox();
+            Button btnRemove =  new Button();
             CheckBox chkFavourite = new CheckBox();
 
             if (isDone) chkDone.Checked = true;
@@ -236,19 +242,20 @@ namespace ToDo_List
             txtName.Text = name;
             txtName.BackColor = SystemColors.Window;
             txtName.ForeColor = Color.Black;
-            txtName.Location = new Point(34, 12);
-            txtName.Width = 439;
+            txtName.Location = new Point(34, 13);
+            txtName.Width = 369;
             txtName.Height = 25;
             txtName.BorderStyle = BorderStyle.None;
             txtName.Multiline = true;
             txtName.BackColor = Color.Gainsboro;
+            //txtName.TextAlign = Tex
             panel.Controls.Add(txtName);
 
             txtDate.Text = dateAndTime.ToString("dd-MM-yyyy");
             txtDate.BackColor = SystemColors.Window;
             txtDate.ForeColor = Color.Black;
-            txtDate.Location = new Point(479, 12);
-            txtDate.Width = 148;
+            txtDate.Location = new Point(409, 13);
+            txtDate.Width = 134;
             txtDate.Height = 25;
             txtDate.BorderStyle = BorderStyle.None;
             txtDate.Multiline = true;
@@ -258,13 +265,21 @@ namespace ToDo_List
             txtTime.Text = dateAndTime.ToString("t"); ;
             txtTime.BackColor = SystemColors.Window;
             txtTime.ForeColor = Color.Black;
-            txtTime.Location = new Point(634, 12);
-            txtTime.Width = 148;
+            txtTime.Location = new Point(549, 13);
+            txtTime.Width = 134;
             txtTime.Height = 25;
             txtTime.BorderStyle = BorderStyle.None;
             txtTime.Multiline = true;
             txtTime.BackColor = Color.Gainsboro;
             panel.Controls.Add(txtTime);
+
+
+            btnRemove.Text = "Remove";
+            btnRemove.Location = new Point(707, 9);
+            btnRemove.Width = 75;
+            btnRemove.Height = 25;
+            //btnRemove.Cursor = Cursor.CureHand;
+            panel.Controls.Add(btnRemove);
 
 
             if (isFavourite) chkFavourite.Checked = true;
@@ -274,10 +289,12 @@ namespace ToDo_List
             chkFavourite.Height = 25;
             panel.Controls.Add(chkFavourite);
 
+
+            btnRemove.Click += btnRemoveEvent_Click;
             //eventsCount++;
             eventsOnScreen++;
         }
-
+        
         private void btnPrev_Click(object sender, EventArgs e)
         {
             //LayPanDayContainer.Controls.Clear();
@@ -360,6 +377,7 @@ namespace ToDo_List
 
             DateTime dateTimeToAdd = new DateTime(year, month, day);
 
+            eventsInFile.Add(new Event(dateTimeToAdd, txtBox.Text, false, false));
             AddToInterfaceEvent(false, txtBox.Text, dateTimeToAdd, false);
         }
 
@@ -408,18 +426,7 @@ namespace ToDo_List
                         DisplayEvents(eventsPerSDay);
                     }
                 }
-            }
-            
-
-            
-            
-
-            
-
-
-            
-
-            
+            }            
         }
 
         private void rbtnFavourite_CheckedChanged(object sender, EventArgs e)
@@ -460,11 +467,119 @@ namespace ToDo_List
 
             DisplayEvents(pendingEvents);
         }
+        
+        /// <summary>
+        /// //////////////////////////////////////////////////////////////////////////////
+        /// </summary>
+        /// <returns></returns>
+        private List<Event> GetEventsFromDisplay()
+        {
+
+
+
+            return new List<Event>();
+        }
+
+        private Event GetSelectedEventFromDisplay(Button selected)
+        {
+            Control parent = selected.Parent;
+
+            // Панель является родительской панелью
+            Panel myParentPanel = (Panel)parent;
+            // Выполнение нужных операций с родительской панелью
+            // ...
+
+            Control[] controlsInPanel = new Control[6];
+
+            for (int i = 0; i < controlsInPanel.Length; i++)
+            {
+                controlsInPanel[i] = myParentPanel.Controls[i];
+            }
+
+            CheckBox chkDone = controlsInPanel[0] as CheckBox;
+            TextBox txtName = controlsInPanel[1] as TextBox;
+            TextBox txtDate = controlsInPanel[2] as TextBox;
+            TextBox txtTime = controlsInPanel[3] as TextBox;
+            CheckBox chkFavourite = controlsInPanel[5] as CheckBox;
+
+            //if (chkDone.Checked == false) chkDone.Checked = true;
+            //else chkDone.Checked = false;
+
+
+            //string dateString = "2023-05-14";
+            //string timeString = "13:14";
+
+            //string format = "yyyy-MM-dd HH:mm";
+            //DateTime dateTime = DateTime.ParseExact(txtDate.Text + " " + txtTime.Text, format, CultureInfo.InvariantCulture);
+            DateTime dateTime = DateTime.Parse(txtDate.Text + " " + txtTime.Text);
+
+            return new Event(dateTime, txtName.Text, chkDone.Checked, chkFavourite.Checked);
+        }
+
+        private void btnEditAndSave_Click(object sender, EventArgs e)
+        {
+            eventFileManager.WriteToFile(eventsInFile);
+            MessageBox.Show("File is succesfully saved");
+        }
 
         private void btnAcExit_Click(object sender, EventArgs e)
         {
             new frmRegister().Show();
             this.Hide();
+        }
+
+        private void btnRemoveEvent_Click(object sender, EventArgs e)
+        {
+            Button selected = (Button)sender;
+            Event evnt = GetSelectedEventFromDisplay(selected);
+
+            //MessageBox.Show(string.Format(evnt.Date.ToString() + " " + evnt.Name + " " + evnt.IsDone.ToString() + " " + evnt.IsFavourite.ToString()));
+
+            for (int i = 0; i < eventsInFile.Count; i++)
+            {
+                if (eventsInFile[i].Name == evnt.Name && eventsInFile[i].Date == evnt.Date) eventsInFile.Remove(eventsInFile[i]);
+            }
+
+            //foreach (var item in eventsInFile)
+            //{
+            //    if (item.Name == evnt.Name && item.Date = evnt.Date)
+            //}
+
+
+            //eventsInFile.Remove(evnt);
+
+            eventsOnScreen--;
+
+            Control parent = selected.Parent;
+
+            // Панель является родительской панелью
+            Panel myParentPanel = (Panel)parent;
+
+            panelEvents.Controls.Remove(myParentPanel);
+            
+
+            if (rbtnAll.Checked)
+            {
+                ClearEvents();
+                DisplayEvents(eventsInFile);
+            }
+            if (rbtnSelectedDay.Checked)
+            {
+                rbtnDone_CheckedChanged(null, null);
+            }
+            if (rbtnFavourite.Checked)
+            {
+                rbtnFavourite_CheckedChanged(null, null);
+            }
+            if (rbtnDone.Checked)
+            {
+                rbtnDone_CheckedChanged(null, null);
+            }
+            if (rbtnPending.Checked)
+            {
+                rbtnPending_CheckedChanged(null, null);
+            }
+
         }
     }
 }

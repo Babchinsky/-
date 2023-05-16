@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.rbtnPending = new System.Windows.Forms.RadioButton();
@@ -93,7 +94,7 @@
             this.btnAcExit = new System.Windows.Forms.Button();
             this.labelAccount = new System.Windows.Forms.Label();
             this.panelBottom = new System.Windows.Forms.Panel();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnEditAndSave = new System.Windows.Forms.Button();
             this.txtBox = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.panelTitle = new System.Windows.Forms.Panel();
@@ -101,10 +102,15 @@
             this.panelEvents = new System.Windows.Forms.Panel();
             this.panelEvent1 = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.btnRemove = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.doneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.favouriteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMenu.SuspendLayout();
             this.panelCalendar.SuspendLayout();
             this.LayPanDayContainer.SuspendLayout();
@@ -113,6 +119,7 @@
             this.panelMain.SuspendLayout();
             this.panelEvents.SuspendLayout();
             this.panelEvent1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -1292,7 +1299,7 @@
             // panelBottom
             // 
             this.panelBottom.BackColor = System.Drawing.Color.Transparent;
-            this.panelBottom.Controls.Add(this.btnSave);
+            this.panelBottom.Controls.Add(this.btnEditAndSave);
             this.panelBottom.Controls.Add(this.txtBox);
             this.panelBottom.Controls.Add(this.btnAdd);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -1301,20 +1308,21 @@
             this.panelBottom.Size = new System.Drawing.Size(845, 49);
             this.panelBottom.TabIndex = 3;
             // 
-            // btnSave
+            // btnEditAndSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnSave.Location = new System.Drawing.Point(759, 12);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 3;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnEditAndSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnEditAndSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEditAndSave.FlatAppearance.BorderSize = 0;
+            this.btnEditAndSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditAndSave.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditAndSave.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnEditAndSave.Location = new System.Drawing.Point(759, 12);
+            this.btnEditAndSave.Name = "btnEditAndSave";
+            this.btnEditAndSave.Size = new System.Drawing.Size(75, 25);
+            this.btnEditAndSave.TabIndex = 3;
+            this.btnEditAndSave.Text = "Save";
+            this.btnEditAndSave.UseVisualStyleBackColor = false;
+            this.btnEditAndSave.Click += new System.EventHandler(this.btnEditAndSave_Click);
             // 
             // txtBox
             // 
@@ -1323,7 +1331,7 @@
             this.txtBox.Location = new System.Drawing.Point(10, 12);
             this.txtBox.Multiline = true;
             this.txtBox.Name = "txtBox";
-            this.txtBox.Size = new System.Drawing.Size(662, 23);
+            this.txtBox.Size = new System.Drawing.Size(662, 25);
             this.txtBox.TabIndex = 1;
             // 
             // btnAdd
@@ -1337,7 +1345,7 @@
             this.btnAdd.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnAdd.Location = new System.Drawing.Point(678, 12);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(75, 25);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -1346,7 +1354,7 @@
             // panelTitle
             // 
             this.panelTitle.AutoScroll = true;
-            this.panelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panelTitle.BackColor = System.Drawing.Color.Transparent;
             this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitle.Location = new System.Drawing.Point(0, 0);
             this.panelTitle.Margin = new System.Windows.Forms.Padding(0);
@@ -1383,6 +1391,7 @@
             // 
             this.panelEvent1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panelEvent1.Controls.Add(this.textBox3);
+            this.panelEvent1.Controls.Add(this.btnRemove);
             this.panelEvent1.Controls.Add(this.textBox2);
             this.panelEvent1.Controls.Add(this.checkBox2);
             this.panelEvent1.Controls.Add(this.checkBox1);
@@ -1398,20 +1407,30 @@
             // 
             this.textBox3.BackColor = System.Drawing.Color.White;
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Location = new System.Drawing.Point(634, 9);
+            this.textBox3.Location = new System.Drawing.Point(549, 9);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(148, 25);
-            this.textBox3.TabIndex = 6;
+            this.textBox3.Size = new System.Drawing.Size(134, 25);
+            this.textBox3.TabIndex = 8;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRemove.Location = new System.Drawing.Point(707, 9);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(75, 25);
+            this.btnRemove.TabIndex = 7;
+            this.btnRemove.Text = "Remove";
+            this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.White;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Location = new System.Drawing.Point(479, 9);
+            this.textBox2.Location = new System.Drawing.Point(409, 9);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(148, 25);
+            this.textBox2.Size = new System.Drawing.Size(134, 25);
             this.textBox2.TabIndex = 5;
             // 
             // checkBox2
@@ -1443,8 +1462,35 @@
             this.textBox1.Location = new System.Drawing.Point(34, 9);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(439, 25);
+            this.textBox1.Size = new System.Drawing.Size(369, 25);
             this.textBox1.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeToolStripMenuItem,
+            this.doneToolStripMenuItem,
+            this.favouriteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(139, 76);
+            // 
+            // removeToolStripMenuItem
+            // 
+            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
+            this.removeToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
+            this.removeToolStripMenuItem.Text = "Remove";
+            // 
+            // doneToolStripMenuItem
+            // 
+            this.doneToolStripMenuItem.Name = "doneToolStripMenuItem";
+            this.doneToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
+            this.doneToolStripMenuItem.Text = "Done";
+            // 
+            // favouriteToolStripMenuItem
+            // 
+            this.favouriteToolStripMenuItem.Name = "favouriteToolStripMenuItem";
+            this.favouriteToolStripMenuItem.Size = new System.Drawing.Size(138, 24);
+            this.favouriteToolStripMenuItem.Text = "Favourite";
             // 
             // frmMain
             // 
@@ -1474,6 +1520,7 @@
             this.panelEvents.ResumeLayout(false);
             this.panelEvent1.ResumeLayout(false);
             this.panelEvent1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1545,9 +1592,8 @@
         private System.Windows.Forms.Panel panelTitle;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelEvents;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnEditAndSave;
         private System.Windows.Forms.Panel panelEvent1;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox1;
@@ -1555,5 +1601,11 @@
         private System.Windows.Forms.RadioButton rbtnPending;
         private System.Windows.Forms.RadioButton rbtnDone;
         private System.Windows.Forms.RadioButton rbtnFavourite;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem doneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem favouriteToolStripMenuItem;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }
