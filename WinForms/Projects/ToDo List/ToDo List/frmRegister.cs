@@ -12,14 +12,16 @@ namespace ToDo_List
 {
     public partial class frmRegister : Form
     {
-        private UsersFileManager jsonManager;
+        private UsersFileManager usersFileManager;
 
         public frmRegister()
         {
             InitializeComponent();
 
             //Создание экземпляра класса JsonFileManager с указанием пути к файлу JSON
-            jsonManager = new UsersFileManager("users.json");
+            usersFileManager = new UsersFileManager("users.json");
+
+            
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -30,13 +32,13 @@ namespace ToDo_List
             }
             else if (txtPassword.Text == txtComPas.Text)
             {
-                if (jsonManager.IsEmailExists(txtEmail.Text))
+                if (usersFileManager.IsEmailExists(txtEmail.Text))
                 {
                     MessageBox.Show("Your Account has been Created Earlier, Please Try to Login", "Registration Succes", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    jsonManager.AddUser(new User(txtEmail.Text, txtPassword.Text));
+                    usersFileManager.AddUser(new User(txtEmail.Text, txtPassword.Text));
                     MessageBox.Show("Your Account has been Successfully Created", "Registration Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }     
             }

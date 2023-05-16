@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.panelMenu = new System.Windows.Forms.Panel();
             this.rbtnPending = new System.Windows.Forms.RadioButton();
-            this.rbtnCompleted = new System.Windows.Forms.RadioButton();
-            this.rbtnImportant = new System.Windows.Forms.RadioButton();
+            this.rbtnDone = new System.Windows.Forms.RadioButton();
+            this.rbtnFavourite = new System.Windows.Forms.RadioButton();
             this.rbtnSelectedDay = new System.Windows.Forms.RadioButton();
             this.rbtnAll = new System.Windows.Forms.RadioButton();
             this.panelCalendar = new System.Windows.Forms.Panel();
@@ -92,25 +92,34 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAcExit = new System.Windows.Forms.Button();
             this.labelAccount = new System.Windows.Forms.Label();
-            this.panelMain = new System.Windows.Forms.Panel();
             this.panelBottom = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtBox = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.panelTitle = new System.Windows.Forms.Panel();
+            this.panelMain = new System.Windows.Forms.Panel();
             this.panelEvents = new System.Windows.Forms.Panel();
+            this.panelEvent1 = new System.Windows.Forms.Panel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panelMenu.SuspendLayout();
             this.panelCalendar.SuspendLayout();
             this.LayPanDayContainer.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panelMain.SuspendLayout();
             this.panelBottom.SuspendLayout();
+            this.panelMain.SuspendLayout();
+            this.panelEvent1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panelMenu.Controls.Add(this.panelEvent1);
             this.panelMenu.Controls.Add(this.rbtnPending);
-            this.panelMenu.Controls.Add(this.rbtnCompleted);
-            this.panelMenu.Controls.Add(this.rbtnImportant);
+            this.panelMenu.Controls.Add(this.rbtnDone);
+            this.panelMenu.Controls.Add(this.rbtnFavourite);
             this.panelMenu.Controls.Add(this.rbtnSelectedDay);
             this.panelMenu.Controls.Add(this.rbtnAll);
             this.panelMenu.Controls.Add(this.panelCalendar);
@@ -137,35 +146,35 @@
             this.rbtnPending.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.rbtnPending.UseVisualStyleBackColor = true;
             // 
-            // rbtnCompleted
+            // rbtnDone
             // 
-            this.rbtnCompleted.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbtnCompleted.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbtnCompleted.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rbtnCompleted.FlatAppearance.BorderSize = 0;
-            this.rbtnCompleted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbtnCompleted.Location = new System.Drawing.Point(0, 508);
-            this.rbtnCompleted.Name = "rbtnCompleted";
-            this.rbtnCompleted.Size = new System.Drawing.Size(329, 40);
-            this.rbtnCompleted.TabIndex = 31;
-            this.rbtnCompleted.Text = "Completed";
-            this.rbtnCompleted.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbtnCompleted.UseVisualStyleBackColor = true;
+            this.rbtnDone.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbtnDone.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rbtnDone.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rbtnDone.FlatAppearance.BorderSize = 0;
+            this.rbtnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbtnDone.Location = new System.Drawing.Point(0, 508);
+            this.rbtnDone.Name = "rbtnDone";
+            this.rbtnDone.Size = new System.Drawing.Size(329, 40);
+            this.rbtnDone.TabIndex = 31;
+            this.rbtnDone.Text = "Done";
+            this.rbtnDone.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbtnDone.UseVisualStyleBackColor = true;
             // 
-            // rbtnImportant
+            // rbtnFavourite
             // 
-            this.rbtnImportant.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rbtnImportant.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbtnImportant.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rbtnImportant.FlatAppearance.BorderSize = 0;
-            this.rbtnImportant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rbtnImportant.Location = new System.Drawing.Point(0, 468);
-            this.rbtnImportant.Name = "rbtnImportant";
-            this.rbtnImportant.Size = new System.Drawing.Size(329, 40);
-            this.rbtnImportant.TabIndex = 30;
-            this.rbtnImportant.Text = "Important";
-            this.rbtnImportant.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rbtnImportant.UseVisualStyleBackColor = true;
+            this.rbtnFavourite.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rbtnFavourite.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rbtnFavourite.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rbtnFavourite.FlatAppearance.BorderSize = 0;
+            this.rbtnFavourite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rbtnFavourite.Location = new System.Drawing.Point(0, 468);
+            this.rbtnFavourite.Name = "rbtnFavourite";
+            this.rbtnFavourite.Size = new System.Drawing.Size(329, 40);
+            this.rbtnFavourite.TabIndex = 30;
+            this.rbtnFavourite.Text = "Favourite";
+            this.rbtnFavourite.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.rbtnFavourite.UseVisualStyleBackColor = true;
             // 
             // rbtnSelectedDay
             // 
@@ -1273,11 +1282,59 @@
             this.labelAccount.TabIndex = 0;
             this.labelAccount.Text = "Account";
             // 
+            // panelBottom
+            // 
+            this.panelBottom.BackColor = System.Drawing.Color.Transparent;
+            this.panelBottom.Controls.Add(this.txtBox);
+            this.panelBottom.Controls.Add(this.btnAdd);
+            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBottom.Location = new System.Drawing.Point(0, 751);
+            this.panelBottom.Name = "panelBottom";
+            this.panelBottom.Size = new System.Drawing.Size(845, 49);
+            this.panelBottom.TabIndex = 3;
+            // 
+            // txtBox
+            // 
+            this.txtBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBox.Location = new System.Drawing.Point(10, 12);
+            this.txtBox.Multiline = true;
+            this.txtBox.Name = "txtBox";
+            this.txtBox.Size = new System.Drawing.Size(742, 23);
+            this.txtBox.TabIndex = 1;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnAdd.Location = new System.Drawing.Point(758, 12);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            // 
+            // panelTitle
+            // 
+            this.panelTitle.AutoScroll = true;
+            this.panelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitle.Location = new System.Drawing.Point(0, 0);
+            this.panelTitle.Margin = new System.Windows.Forms.Padding(0);
+            this.panelTitle.Name = "panelTitle";
+            this.panelTitle.Size = new System.Drawing.Size(845, 28);
+            this.panelTitle.TabIndex = 4;
+            // 
             // panelMain
             // 
             this.panelMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panelMain.BackgroundImage")));
             this.panelMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelMain.Controls.Add(this.panelEvents);
+            this.panelMain.Controls.Add(this.panelTitle);
             this.panelMain.Controls.Add(this.panelBottom);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(329, 0);
@@ -1285,43 +1342,73 @@
             this.panelMain.Size = new System.Drawing.Size(845, 800);
             this.panelMain.TabIndex = 14;
             // 
-            // panelBottom
-            // 
-            this.panelBottom.BackColor = System.Drawing.Color.Transparent;
-            this.panelBottom.Controls.Add(this.textBox1);
-            this.panelBottom.Controls.Add(this.button1);
-            this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 751);
-            this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(845, 49);
-            this.panelBottom.TabIndex = 3;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(21, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(731, 25);
-            this.textBox1.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(758, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // panelEvents
             // 
             this.panelEvents.AutoScroll = true;
             this.panelEvents.BackColor = System.Drawing.Color.Transparent;
             this.panelEvents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEvents.Location = new System.Drawing.Point(0, 0);
-            this.panelEvents.Margin = new System.Windows.Forms.Padding(0);
+            this.panelEvents.Location = new System.Drawing.Point(0, 28);
             this.panelEvents.Name = "panelEvents";
-            this.panelEvents.Size = new System.Drawing.Size(845, 751);
-            this.panelEvents.TabIndex = 4;
+            this.panelEvents.Padding = new System.Windows.Forms.Padding(10);
+            this.panelEvents.Size = new System.Drawing.Size(845, 723);
+            this.panelEvents.TabIndex = 5;
+            // 
+            // panelEvent1
+            // 
+            this.panelEvent1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelEvent1.Controls.Add(this.textBox3);
+            this.panelEvent1.Controls.Add(this.textBox2);
+            this.panelEvent1.Controls.Add(this.checkBox2);
+            this.panelEvent1.Controls.Add(this.checkBox1);
+            this.panelEvent1.Controls.Add(this.textBox1);
+            this.panelEvent1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelEvent1.Location = new System.Drawing.Point(0, 588);
+            this.panelEvent1.Name = "panelEvent1";
+            this.panelEvent1.Size = new System.Drawing.Size(329, 43);
+            this.panelEvent1.TabIndex = 41;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(634, 9);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(148, 25);
+            this.textBox3.TabIndex = 6;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(479, 9);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(148, 25);
+            this.textBox2.TabIndex = 5;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(13, 15);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(15, 14);
+            this.checkBox2.TabIndex = 4;
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("checkBox1.BackgroundImage")));
+            this.checkBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.checkBox1.FlatAppearance.BorderSize = 0;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox1.Location = new System.Drawing.Point(788, 10);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(25, 25);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(34, 9);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(439, 25);
+            this.textBox1.TabIndex = 0;
             // 
             // frmMain
             // 
@@ -1345,9 +1432,11 @@
             this.LayPanDayContainer.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panelMain.ResumeLayout(false);
             this.panelBottom.ResumeLayout(false);
             this.panelBottom.PerformLayout();
+            this.panelMain.ResumeLayout(false);
+            this.panelEvent1.ResumeLayout(false);
+            this.panelEvent1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1411,15 +1500,22 @@
         private System.Windows.Forms.RadioButton radioButton40;
         private System.Windows.Forms.RadioButton radioButton41;
         private System.Windows.Forms.RadioButton radioButton42;
-        private System.Windows.Forms.RadioButton rbtnPending;
-        private System.Windows.Forms.RadioButton rbtnCompleted;
-        private System.Windows.Forms.RadioButton rbtnImportant;
+        private System.Windows.Forms.RadioButton rbtnDone;
+        private System.Windows.Forms.RadioButton rbtnFavourite;
         private System.Windows.Forms.RadioButton rbtnSelectedDay;
         private System.Windows.Forms.RadioButton rbtnAll;
-        private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelBottom;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtBox;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Panel panelTitle;
+        private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Panel panelEvents;
+        private System.Windows.Forms.RadioButton rbtnPending;
+        private System.Windows.Forms.Panel panelEvent1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,9 +50,7 @@ namespace ToDo_List
             month = now.Month;
             year = now.Year;
             DisplayDays();
-
-            //listView1.ColorStyle.TransparencyLevel = TransparencyLevel.Full;
-
+            DisplayEvents();
         }
 
         public void ClearDays()
@@ -135,6 +135,145 @@ namespace ToDo_List
             }
         }
 
+        public void ClearEvents()
+        {
+            panelEvents.Controls.Clear();
+        }
+        public void DisplayEvents()
+        {
+            //Panel panelEvent2 = new Panel();
+            //panelEvent2.Height = 40;
+            //panelEvent2.Width = 830;
+            //panelEvent2.BackColor = Color.White;
+
+            //EventControl eventControl;
+
+
+
+            //for (int i = 0; i < 10; i++)
+            //{
+
+            //    eventControl = new EventControl(i.ToString());
+            //    eventControl.Location = new Point(10, i * 40);
+            //    panelEvents.Controls.Add(eventControl);
+            //}
+
+            //string imagePath = Path.Combine(Application.StartupPath, "src", "star_unchecked.png");
+            //Bitmap image = new Bitmap(imagePath);
+
+
+            for (int i = 0; i < 3; i++)
+            {
+
+
+                Panel panel = new Panel();
+                panel.Width = 825;
+                panel.Height = 40;
+                panel.Location = new Point(10, i * 50);
+                //panel.Margin = new Padding(0, 10, 0, 0);
+                panel.BackColor = Color.White;
+                //panel.Dock = DockStyle.Top;
+
+                panelEvents.Controls.Add(panel);
+
+                CheckBox chkDone = new CheckBox();
+                TextBox txtName = new TextBox();
+                TextBox txtDate = new TextBox();
+                TextBox txtTime = new TextBox();
+                CheckBox chkFavourite = new CheckBox();
+
+                chkDone.Location = new Point(13, 15);
+                chkDone.Width = 15;
+                chkDone.Height = 14;
+                panel.Controls.Add(chkDone);
+
+
+                txtName.Text = i.ToString();
+                txtName.BackColor = SystemColors.Window;
+                txtName.ForeColor = Color.Black;
+                txtName.Location = new Point(34, 9);
+                txtName.Width = 439;
+                txtName.Height = 25;
+                panel.Controls.Add(txtName);
+
+                txtDate.Text = i.ToString();
+                txtDate.BackColor = SystemColors.Window;
+                txtDate.ForeColor = Color.Black;
+                txtDate.Location = new Point(479, 9);
+                txtDate.Width = 148;
+                txtDate.Height = 25;
+                panel.Controls.Add(txtDate);
+
+                txtTime.Text = i.ToString();
+                txtTime.BackColor = SystemColors.Window;
+                txtTime.ForeColor = Color.Black;
+                txtTime.Location = new Point(634, 9);
+                txtTime.Width = 148;
+                txtTime.Height = 25;
+                panel.Controls.Add(txtTime);
+
+                chkFavourite.Location = new Point(788, 10);
+                chkFavourite.Width = 25;
+                chkFavourite.Height = 25;
+                //chkFavourite.FlatStyle = FlatStyle.Flat;
+
+                //chkFavourite.BackgroundImage = image;
+                
+                panel.Controls.Add(chkFavourite);
+
+
+                //TextBox txt1 = new TextBox();
+                //TextBox txt2 = new TextBox();
+                //TextBox txt3 = new TextBox();
+                ////TextBox txt4 = new TextBox();
+                //CheckBox chk1 = new CheckBox();
+
+                //txt1.Text = i.ToString();
+                //txt1.BackColor = SystemColors.Window;
+                //txt1.ForeColor = Color.Black;
+                //txt1.Location = new Point(7, 9);
+                //txt1.Width = 367;
+                //txt1.Height = 25;
+                //panel.Controls.Add(txt1);
+
+
+                //txt2.Text = i.ToString();
+                //txt2.BackColor = SystemColors.Window;
+                //txt2.ForeColor = Color.Black;
+                //txt2.Location = new Point(380, 9);
+                //txt2.Width = 169;
+                //txt2.Height = 25;
+                //panel.Controls.Add(txt2);
+
+                //txt3.Text = i.ToString();
+                //txt3.BackColor = SystemColors.Window;
+                //txt3.ForeColor = Color.Black;
+                //txt3.Location = new Point(555, 9);
+                //txt3.Width = 119;
+                //txt3.Height = 25;
+                //panel.Controls.Add(txt3);
+
+                ////txt4.Text = i.ToString();
+                ////txt4.BackColor = SystemColors.Window;
+                ////txt4.ForeColor = Color.Black;
+                ////txt4.Location = new Point(680, 9);
+                ////txt4.Width = 136;
+                ////txt4.Height = 25;
+                ////panel.Controls.Add(txt4);
+
+                //chk1.Location = new Point(748, 15);
+                //chk1.Width = 15;
+                //chk1.Height = 14;
+                //panel.Controls.Add(chk1);
+            }
+
+
+
+
+
+
+        }
+
 
         private void btnPrev_Click(object sender, EventArgs e)
         {
@@ -149,11 +288,13 @@ namespace ToDo_List
 
 
             DisplayDays();
+            ClearEvents();
             //MessageBox.Show(string.Format(month.ToString() + " " + year.ToString()));
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            DisplayEvents();
             //LayPanDayContainer.Controls.Clear();
             if (month == 12)
             {

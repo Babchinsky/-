@@ -46,7 +46,6 @@ namespace ToDo_List
             File.WriteAllText(filePath, json);
         }
 
-        
         public bool IsEmailExists(string checkedEmail)
         {
             List<User> users = ReadFile();
