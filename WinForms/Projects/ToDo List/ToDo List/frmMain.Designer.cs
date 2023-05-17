@@ -1354,11 +1354,12 @@
             // 
             // btnAcExit
             // 
-            this.btnAcExit.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnAcExit.BackColor = System.Drawing.Color.Transparent;
             this.btnAcExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAcExit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAcExit.FlatAppearance.BorderSize = 0;
             this.btnAcExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAcExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnAcExit.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnAcExit.Location = new System.Drawing.Point(0, 0);
             this.btnAcExit.Name = "btnAcExit";
             this.btnAcExit.Size = new System.Drawing.Size(50, 28);
@@ -1446,16 +1447,18 @@
             this.panelTitle.Location = new System.Drawing.Point(0, 0);
             this.panelTitle.Margin = new System.Windows.Forms.Padding(0);
             this.panelTitle.Name = "panelTitle";
-            this.panelTitle.Size = new System.Drawing.Size(845, 29);
+            this.panelTitle.Size = new System.Drawing.Size(845, 33);
             this.panelTitle.TabIndex = 4;
             // 
             // btnTray
             // 
-            this.btnTray.BackColor = System.Drawing.Color.MediumPurple;
+            this.btnTray.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.btnTray.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTray.FlatAppearance.BorderSize = 0;
             this.btnTray.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTray.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTray.ForeColor = System.Drawing.Color.Snow;
-            this.btnTray.Location = new System.Drawing.Point(769, 3);
+            this.btnTray.Location = new System.Drawing.Point(768, 5);
             this.btnTray.Name = "btnTray";
             this.btnTray.Size = new System.Drawing.Size(25, 23);
             this.btnTray.TabIndex = 17;
@@ -1466,11 +1469,13 @@
             // 
             // btnMinimizeWindow
             // 
-            this.btnMinimizeWindow.BackColor = System.Drawing.Color.MediumPurple;
+            this.btnMinimizeWindow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.btnMinimizeWindow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizeWindow.FlatAppearance.BorderSize = 0;
             this.btnMinimizeWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimizeWindow.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMinimizeWindow.ForeColor = System.Drawing.Color.Snow;
-            this.btnMinimizeWindow.Location = new System.Drawing.Point(793, 3);
+            this.btnMinimizeWindow.Location = new System.Drawing.Point(792, 5);
             this.btnMinimizeWindow.Name = "btnMinimizeWindow";
             this.btnMinimizeWindow.Size = new System.Drawing.Size(25, 23);
             this.btnMinimizeWindow.TabIndex = 16;
@@ -1481,11 +1486,13 @@
             // 
             // btnEnd
             // 
-            this.btnEnd.BackColor = System.Drawing.Color.Red;
+            this.btnEnd.BackColor = System.Drawing.Color.Brown;
+            this.btnEnd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEnd.FlatAppearance.BorderSize = 0;
             this.btnEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnd.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnd.ForeColor = System.Drawing.Color.Transparent;
-            this.btnEnd.Location = new System.Drawing.Point(817, 3);
+            this.btnEnd.Location = new System.Drawing.Point(816, 5);
             this.btnEnd.Name = "btnEnd";
             this.btnEnd.Size = new System.Drawing.Size(25, 23);
             this.btnEnd.TabIndex = 15;
@@ -1511,11 +1518,12 @@
             this.panelEvents.AutoScroll = true;
             this.panelEvents.BackColor = System.Drawing.Color.Transparent;
             this.panelEvents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEvents.Location = new System.Drawing.Point(0, 29);
+            this.panelEvents.Location = new System.Drawing.Point(0, 33);
             this.panelEvents.Name = "panelEvents";
             this.panelEvents.Padding = new System.Windows.Forms.Padding(10);
-            this.panelEvents.Size = new System.Drawing.Size(845, 711);
+            this.panelEvents.Size = new System.Drawing.Size(845, 707);
             this.panelEvents.TabIndex = 5;
+            this.panelEvents.Paint += new System.Windows.Forms.PaintEventHandler(this.panelEvents_Paint);
             // 
             // contextMenuStrip1
             // 

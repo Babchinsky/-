@@ -161,6 +161,8 @@
             // btnMinimizeWindow
             // 
             this.btnMinimizeWindow.BackColor = System.Drawing.Color.MediumPurple;
+            this.btnMinimizeWindow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMinimizeWindow.FlatAppearance.BorderSize = 0;
             this.btnMinimizeWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimizeWindow.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMinimizeWindow.ForeColor = System.Drawing.Color.Snow;
@@ -176,6 +178,8 @@
             // btnEnd
             // 
             this.btnEnd.BackColor = System.Drawing.Color.Red;
+            this.btnEnd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEnd.FlatAppearance.BorderSize = 0;
             this.btnEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnd.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnd.ForeColor = System.Drawing.Color.Transparent;

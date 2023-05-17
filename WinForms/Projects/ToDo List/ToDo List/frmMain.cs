@@ -681,10 +681,47 @@ namespace ToDo_List
 
             DateTime dateTimeToAdd = new DateTime(year, month, day);
 
-            eventsInFile.Add(new Event(dateTimeToAdd, txtBox.Text, false, false));
-            AddEventToInterface(false, txtBox.Text, dateTimeToAdd, false);
+            bool newDone = false;
+            bool newFav = false;
+
+            if (rbtnFavourite.Checked) newFav = true;
+            else if (rbtnDone.Checked) newDone = true;
+
+            Event eventToAdd = new Event(dateTimeToAdd, txtBox.Text, newDone, newFav);
+            
+            eventsInFile.Add(eventToAdd);
+
+            if (rbtnAll.Checked)
+            {
+                //AddEventToInterface(false, txtBox.Text, dateTimeToAdd, false);
+                ClearEvents();
+                DisplayEvents(eventsInFile);
+            }
+            else if (rbtnSelectedDay.Checked)
+            {
+                rbtnSelectedDay_CheckedChanged(null, null);
+                //AddEventToInterface(false, txtBox.Text, dateTimeToAdd, false);
+            }
+            else if (rbtnFavourite.Checked)
+            {
+                rbtnFavourite_CheckedChanged(null, null);
+                //AddEventToInterface(false, txtBox.Text, dateTimeToAdd, true);
+            }
+            else if (rbtnDone.Checked)
+            {
+                rbtnDone_CheckedChanged(null, null);
+                //AddEventToInterface(true, txtBox.Text, dateTimeToAdd, false);
+            }
+            else if (rbtnPending.Checked)
+            {
+                rbtnPending_CheckedChanged(null, null);
+                //AddEventToInterface(false, txtBox.Text, dateTimeToAdd, false);
+            }
+
+            
             txtBox.Text = string.Empty;
             btnAdd.Enabled = true;
+
         }
 
         private void rbtnAll_CheckedChanged(object sender, EventArgs e)
@@ -837,7 +874,6 @@ namespace ToDo_List
             else btnAdd.Enabled = false;
         }
 
-
         private void btnEnd_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -855,6 +891,11 @@ namespace ToDo_List
 
             // Показываем иконку в трее
             notifyIcon.Visible = true;
+        }
+
+        private void panelEvents_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         private void btnRemoveEvent_Click(object sender, EventArgs e)
