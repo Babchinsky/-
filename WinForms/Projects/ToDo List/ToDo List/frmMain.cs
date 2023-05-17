@@ -21,6 +21,7 @@ namespace ToDo_List
 {
     public partial class frmMain : Form
     {
+        private NotifyIcon notifyIcon;
         string userEmail;
         private int month, year;
         private RadioButton[] radioBtnsDaysInCalendar = new RadioButton[42];
@@ -39,7 +40,11 @@ namespace ToDo_List
         public frmMain(string email)
         {
             InitializeComponent();
+            InitializeNotifyIcon();
+
+
             this.userEmail = email;
+
 
             filepath = userEmail + ".json";
             eventsOnScreen = 0;
@@ -95,6 +100,72 @@ namespace ToDo_List
             DisplayDays();
             DisplayEvents(eventsInFile);
         }
+
+
+        private void InitializeNotifyIcon()
+        {
+            // Создаем экземпляр NotifyIcon
+            notifyIcon = new NotifyIcon();
+
+            // Загружаем иконку для трея (можно указать свою)
+            //
+
+            if (File.Exists("C:\\0 My Files\\.NET\\WinForms\\Projects\\ToDo List\\ToDo List\\src\\icon.ico"))
+            {
+                //MessageBox.Show("Yes");
+                notifyIcon.Icon = new System.Drawing.Icon("C:\\0 My Files\\.NET\\WinForms\\Projects\\ToDo List\\ToDo List\\src\\icon.ico");
+            }
+            //else MessageBox.Show("No");
+
+            // Добавляем контекстное меню
+            ContextMenu contextMenu = new ContextMenu();
+            MenuItem openMenuItem = new MenuItem("Open");
+            openMenuItem.Click += OpenMenuItem_Click;
+            MenuItem exitMenuItem = new MenuItem("Close");
+            exitMenuItem.Click += ExitMenuItem_Click;
+            contextMenu.MenuItems.Add(openMenuItem);
+            contextMenu.MenuItems.Add(exitMenuItem);
+
+            // Привязываем контекстное меню к NotifyIcon
+            notifyIcon.ContextMenu = contextMenu;
+
+            // Устанавливаем обработчик для двойного щелчка на иконке трея
+            notifyIcon.DoubleClick += NotifyIcon_DoubleClick;
+        }
+
+        private void OpenMenuItem_Click(object sender, EventArgs e)
+        {
+            // Развернуть приложение при выборе "Открыть" из контекстного меню
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void ExitMenuItem_Click(object sender, EventArgs e)
+        {
+            // Закрыть приложение при выборе "Выход" из контекстного меню
+            this.Close();
+        }
+
+        private void NotifyIcon_DoubleClick(object sender, EventArgs e)
+        {
+            // Развернуть приложение при двойном щелчке на иконке трея
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Скрываем форму и отображаем иконку в трее при закрытии окна
+            e.Cancel = true;
+            this.Hide();
+        }
+
+
+
+
+
+
+
 
         public void CreateNewEventsFileWithExample()
         {
@@ -764,6 +835,26 @@ namespace ToDo_List
                 btnAdd.Enabled = true;
             }
             else btnAdd.Enabled = false;
+        }
+
+
+        private void btnEnd_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimizeWindow_Click(object sender, EventArgs e)
+        {
+
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnTray_Click(object sender, EventArgs e)
+        {
+            this.Hide(); // Скрываем форму
+
+            // Показываем иконку в трее
+            notifyIcon.Visible = true;
         }
 
         private void btnRemoveEvent_Click(object sender, EventArgs e)

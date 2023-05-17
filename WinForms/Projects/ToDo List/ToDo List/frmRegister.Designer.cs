@@ -41,6 +41,8 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btnBackToLogin = new System.Windows.Forms.Label();
+            this.btnEnd = new System.Windows.Forms.Button();
+            this.btnMinimizeWindow = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -179,12 +181,43 @@
             this.btnBackToLogin.Text = "Back to LOGIN";
             this.btnBackToLogin.Click += new System.EventHandler(this.btnBackToLogin_Click);
             // 
+            // btnEnd
+            // 
+            this.btnEnd.BackColor = System.Drawing.Color.Red;
+            this.btnEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnd.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnd.ForeColor = System.Drawing.Color.Transparent;
+            this.btnEnd.Location = new System.Drawing.Point(248, 12);
+            this.btnEnd.Name = "btnEnd";
+            this.btnEnd.Size = new System.Drawing.Size(25, 23);
+            this.btnEnd.TabIndex = 13;
+            this.btnEnd.Text = "X";
+            this.btnEnd.UseVisualStyleBackColor = false;
+            this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
+            // 
+            // btnMinimizeWindow
+            // 
+            this.btnMinimizeWindow.BackColor = System.Drawing.Color.MediumPurple;
+            this.btnMinimizeWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimizeWindow.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinimizeWindow.ForeColor = System.Drawing.Color.Snow;
+            this.btnMinimizeWindow.Location = new System.Drawing.Point(224, 12);
+            this.btnMinimizeWindow.Name = "btnMinimizeWindow";
+            this.btnMinimizeWindow.Size = new System.Drawing.Size(25, 23);
+            this.btnMinimizeWindow.TabIndex = 14;
+            this.btnMinimizeWindow.Text = "_";
+            this.btnMinimizeWindow.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMinimizeWindow.UseVisualStyleBackColor = false;
+            this.btnMinimizeWindow.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(285, 544);
+            this.Controls.Add(this.btnMinimizeWindow);
+            this.Controls.Add(this.btnEnd);
             this.Controls.Add(this.btnBackToLogin);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnClear);
@@ -224,6 +257,8 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label btnBackToLogin;
+        private System.Windows.Forms.Button btnEnd;
+        private System.Windows.Forms.Button btnMinimizeWindow;
     }
 }
 

@@ -60,5 +60,17 @@ namespace ToDo_List
             new frmRegister().Show();
             this.Hide();
         }
+
+
+        private void btnEnd_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimizeWindow_Click(object sender, EventArgs e)
+        {
+
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }

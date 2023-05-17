@@ -39,6 +39,8 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnMinimizeWindow = new System.Windows.Forms.Button();
+            this.btnEnd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCreateAc
@@ -156,12 +158,43 @@
             this.label1.TabIndex = 13;
             this.label1.Text = "Get Started";
             // 
+            // btnMinimizeWindow
+            // 
+            this.btnMinimizeWindow.BackColor = System.Drawing.Color.MediumPurple;
+            this.btnMinimizeWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimizeWindow.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinimizeWindow.ForeColor = System.Drawing.Color.Snow;
+            this.btnMinimizeWindow.Location = new System.Drawing.Point(228, 12);
+            this.btnMinimizeWindow.Name = "btnMinimizeWindow";
+            this.btnMinimizeWindow.Size = new System.Drawing.Size(25, 23);
+            this.btnMinimizeWindow.TabIndex = 26;
+            this.btnMinimizeWindow.Text = "_";
+            this.btnMinimizeWindow.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnMinimizeWindow.UseVisualStyleBackColor = false;
+            this.btnMinimizeWindow.Click += new System.EventHandler(this.btnMinimizeWindow_Click);
+            // 
+            // btnEnd
+            // 
+            this.btnEnd.BackColor = System.Drawing.Color.Red;
+            this.btnEnd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEnd.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnd.ForeColor = System.Drawing.Color.Transparent;
+            this.btnEnd.Location = new System.Drawing.Point(252, 12);
+            this.btnEnd.Name = "btnEnd";
+            this.btnEnd.Size = new System.Drawing.Size(25, 23);
+            this.btnEnd.TabIndex = 25;
+            this.btnEnd.Text = "X";
+            this.btnEnd.UseVisualStyleBackColor = false;
+            this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(289, 489);
+            this.Controls.Add(this.btnMinimizeWindow);
+            this.Controls.Add(this.btnEnd);
             this.Controls.Add(this.btnCreateAc);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnClear);
@@ -197,5 +230,7 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnMinimizeWindow;
+        private System.Windows.Forms.Button btnEnd;
     }
 }
