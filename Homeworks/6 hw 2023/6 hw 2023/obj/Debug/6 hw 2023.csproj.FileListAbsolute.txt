@@ -1,8 +1,0 @@
-C:\Users\Oleksii\Desktop\6 hw 2023\6 hw 2023\bin\Debug\6 hw 2023.exe.config
-C:\Users\Oleksii\Desktop\6 hw 2023\6 hw 2023\bin\Debug\6 hw 2023.exe
-C:\Users\Oleksii\Desktop\6 hw 2023\6 hw 2023\bin\Debug\6 hw 2023.pdb
-C:\Users\Oleksii\Desktop\6 hw 2023\6 hw 2023\obj\Debug\6 hw 2023.csproj.AssemblyReference.cache
-C:\Users\Oleksii\Desktop\6 hw 2023\6 hw 2023\obj\Debug\6 hw 2023.csproj.SuggestedBindingRedirects.cache
-C:\Users\Oleksii\Desktop\6 hw 2023\6 hw 2023\obj\Debug\6 hw 2023.csproj.CoreCompileInputs.cache
-C:\Users\Oleksii\Desktop\6 hw 2023\6 hw 2023\obj\Debug\6 hw 2023.exe
-C:\Users\Oleksii\Desktop\6 hw 2023\6 hw 2023\obj\Debug\6 hw 2023.pdb
