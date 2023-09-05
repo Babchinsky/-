@@ -3,11 +3,11 @@
 // Базовый класс "Носитель информации"
 public abstract class StorageDevice
 {
-    protected string Manufacturer { get; set; }
-    protected string Model { get; set; }
-    protected string Name { get; set; }
-    protected int CapacityGB { get; set; }
-    protected int Quantity { get; set; }
+    public string Manufacturer { get; set; }
+    public string Model { get; set; }
+    public string Name { get; set; }
+    public int CapacityGB { get; set; }
+    public int Quantity { get; set; }
 
     protected StorageDevice(string manufacturer, string model, string name, int capacityGB, int quantity)
     {

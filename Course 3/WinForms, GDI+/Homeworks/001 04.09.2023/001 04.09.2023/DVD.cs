@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 // Класс DVD-диск
 public class DVD : StorageDevice
