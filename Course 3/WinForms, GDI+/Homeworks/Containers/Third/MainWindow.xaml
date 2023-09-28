@@ -1,0 +1,30 @@
+﻿<Window x:Class="Third.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Third"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel>
+        <UniformGrid Name="uniformGrid1" Rows="3" Columns="3" DockPanel.Dock="Left" Background="LightCyan" Width="300">
+            <TextBox PreviewTextInput="TextBox_PreviewTextInput" Name = "Matrix11" Margin ="3" FontSize = "48"></TextBox>
+            <TextBox PreviewTextInput="TextBox_PreviewTextInput" Name = "Matrix12" Margin ="3" FontSize = "48"></TextBox>
+            <TextBox PreviewTextInput="TextBox_PreviewTextInput" Name = "Matrix13" Margin ="3" FontSize = "48"></TextBox>
+            <TextBox PreviewTextInput="TextBox_PreviewTextInput" Name = "Matrix21" Margin ="3" FontSize = "48"></TextBox>
+            <TextBox PreviewTextInput="TextBox_PreviewTextInput" Name = "Matrix22" Margin ="3" FontSize = "48"></TextBox>
+            <TextBox PreviewTextInput="TextBox_PreviewTextInput" Name = "Matrix23" Margin ="3" FontSize = "48"></TextBox>
+            <TextBox PreviewTextInput="TextBox_PreviewTextInput" Name = "Matrix31" Margin ="3" FontSize = "48"></TextBox>
+            <TextBox PreviewTextInput="TextBox_PreviewTextInput" Name = "Matrix32" Margin ="3" FontSize = "48"></TextBox>
+            <TextBox PreviewTextInput="TextBox_PreviewTextInput" Name = "Matrix33" Margin ="3" FontSize = "48"></TextBox>
+        </UniformGrid>
+        
+        
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <Button Margin ="50" FontSize="48" Click="Button_Click">=</Button>
+            <TextBlock Margin ="50" Name="resultTextBlock" FontSize="56" FontFamily="Roboto" TextWrapping="Wrap"/>
+        </StackPanel>
+
+    </DockPanel>
+</Window>
