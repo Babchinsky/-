@@ -17,7 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace Numbers_Game
+namespace Shulte
 {
     public partial class MainWindow : Window
     {
@@ -42,15 +42,6 @@ namespace Numbers_Game
             if (int.TryParse(numericTextBox.Text, out int currentValue))
             {
                 Value = currentValue + 1;
-
-
-                if (Value > 59)
-                {
-                    remainingMinutes++;
-                    remainingSeconds = 0;
-                }
-                else remainingSeconds++;
-
             }
         }
 
@@ -59,13 +50,6 @@ namespace Numbers_Game
             if (int.TryParse(numericTextBox.Text, out int currentValue))
             {
                 Value = Math.Max(0, currentValue - 1);
-
-                if (Value < 0)
-                {
-                    remainingMinutes--;
-                    remainingSeconds = 59;
-                }
-                else remainingSeconds--;
             }
         }
         #endregion
