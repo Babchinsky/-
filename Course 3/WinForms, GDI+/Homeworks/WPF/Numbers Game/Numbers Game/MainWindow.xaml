@@ -5,30 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Numbers_Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Таймер" Height="450" Width="800">
     <DockPanel>
         <StackPanel DockPanel.Dock="Right">
-            <Button>Новая игра</Button>
+            <Border>
+                <ListBox x:Name="listBox" Height="150">
+                </ListBox>
+            </Border>
+            <Button Click="Restart_Click">Новая игра</Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBox x:Name="numericTextBox" Text="0" VerticalAlignment="Center" Padding="7"/>
+            <Grid Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Content="↑" FontSize ="10" Width="20" Grid.Row="0" Click="IncreaseValue"/>
+                <Button Content="↓" FontSize ="10" Width="20" Height="15" Grid.Row="1" Click="DecreaseValue"/>
+            </Grid>
+            </StackPanel>
+            <!--<TextBox Grid.Column="0" HorizontalContentAlignment="Center"/>
+            <Button Grid.Column="1" Content="↑"/>
+            <Button Grid.Column="2" Content="↓"/>-->
         </StackPanel>
-        <ProgressBar Height="10" Foreground="#FF013AD3" DockPanel.Dock="Bottom"></ProgressBar>
+        <ProgressBar x:Name="progressBar" Value="0" Maximum="16" Height="20" DockPanel.Dock="Bottom"/>
 
-        <UniformGrid Rows="4" Columns="4">
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
-            <Button></Button>
+        <UniformGrid x:Name="uniformGrid" Rows="4" Columns="4">
+            <Button Click="Button_Click"></Button>
+            <Button Click="Button_Click"></Button>
+            <Button Click="Button_Click"></Button>
+            <Button Click="Button_Click"></Button>
+            <Button Click="Button_Click"></Button>
+            <Button Click="Button_Click"></Button>
+            <Button Click="Button_Click"></Button>
+            <Button Click="Button_Click"></Button>
+            <Button Click="Button_Click"></Button>
+            <Button Click="Button_Click"></Button>
+            <Button Click="Button_Click"></Button>
+            <Button Click="Button_Click"></Button>
+            <Button Click="Button_Click"></Button>
+            <Button Click="Button_Click"></Button>
+            <Button Click="Button_Click"></Button>
+            <Button  Click="Button_Click"></Button>
         </UniformGrid>
     </DockPanel>
 </Window>
