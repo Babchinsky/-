@@ -20,7 +20,7 @@ namespace Login___Register
         
         private void ConnectToDb()
         {
-            string connectionString = "mongodb+srv://babchinskyprog:Pass123@buzzbuscluster.pymxgjf.mongodb.net/userbox?retryWrites=true&w=majority";
+            string connectionString ="";
             MongoClient client = new MongoClient(connectionString);
             IMongoDatabase database = client.GetDatabase("userbox");
             collection = database.GetCollection<BsonDocument>("users");
