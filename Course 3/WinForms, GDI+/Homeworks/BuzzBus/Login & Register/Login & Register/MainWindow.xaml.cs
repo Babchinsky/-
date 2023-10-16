@@ -20,7 +20,7 @@ namespace Login___Register
         
         private void ConnectToDb()
         {
-            string connectionString ="";
+            string connectionString = "";
             MongoClient client = new MongoClient(connectionString);
             IMongoDatabase database = client.GetDatabase("userbox");
             collection = database.GetCollection<BsonDocument>("users");

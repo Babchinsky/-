@@ -26,7 +26,7 @@ using MongoDB.Bson;
 //}
 
 
-string connectionString = "mongodb+srv://babchinskyprog:Pass123@buzzbuscluster.pymxgjf.mongodb.net/userbox?retryWrites=true&w=majority";
+string connectionString = "";
 MongoClient client = new MongoClient(connectionString);
 IMongoDatabase database = client.GetDatabase("userbox");
 IMongoCollection<BsonDocument> collection = database.GetCollection<BsonDocument>("users");
