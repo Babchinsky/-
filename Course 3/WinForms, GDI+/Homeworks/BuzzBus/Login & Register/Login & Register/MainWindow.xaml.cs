@@ -29,13 +29,6 @@ namespace Login___Register
         private string ComputeHash(string password, string salt)
         {
             //////////// Логика хеширования пароля с использованием соли
-            //////////// Здесь можно использовать хэширование, например, SHA-256
-            //////////// Пример простого хеширования (замените на соответствующий алгоритм):
-            //////////string hashedPassword = SomeHashFunction(password + salt);
-
-            //////////return hashedPassword;
-            ///
-
             using (SHA256 sha256 = SHA256.Create())
             {
                 // Соль должна быть преобразована в байты
@@ -110,23 +103,24 @@ namespace Login___Register
         }
 
 
-        private void CheckAndAddUser(string username, string password)
+        private void CheckAndAddUser(string username, string password, string email, string name)
         {
-            string name = "John Doe";
-            string email = "example@gmail.com";
-
             // Генерация случайной соли для пароля
             string salt = GenerateRandomSalt();
 
             // Хеширование пароля с использованием соли
             string hashedPassword = ComputeHash(password, salt);
 
-            // Проверяем, что пользователь с таким именем не существует
-            var existingUserFilter = Builders<BsonDocument>.Filter.Eq("Username", username);
-            var existingUser = collection.Find(existingUserFilter).FirstOrDefault();
+            // Проверяем, что пользователь с таким именем или email не существует
+            var filter = Builders<BsonDocument>.Filter.Or(
+                Builders<BsonDocument>.Filter.Eq("Username", username),
+                Builders<BsonDocument>.Filter.Eq("Email", email)
+            );
+
+            var existingUser = collection.Find(filter).FirstOrDefault();
             if (existingUser != null)
             {
-                MessageBox.Show("Пользователь с таким именем уже существует.");
+                MessageBox.Show("Пользователь с таким именем или email уже существует.");
                 return;
             }
 
@@ -150,6 +144,8 @@ namespace Login___Register
 
 
 
+
+
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
@@ -166,7 +162,24 @@ namespace Login___Register
             if (string.IsNullOrWhiteSpace(textBox.Text))
             {
                 textBox.Foreground = Brushes.Gray;
-                textBox.Text = textBox.Name.Contains("login") ? "Username" : "Password";
+                //textBox.Text = textBox.Name.Contains("login") ? "Username" : "Password";
+                textBox.Text = textBox.Name;
+
+                switch (textBox.Name)
+                {
+                    case "registerUsername":
+                        textBox.Text = "Username";
+                        break;
+                    case "registerName":
+                        textBox.Text = "Name";
+                        break;
+                    case "registerEmail":
+                        textBox.Text = "Email";
+                        break;
+                    case "loginUsername":
+                        textBox.Text = "Username";
+                        break;
+                }
             }
         }
 
@@ -204,9 +217,10 @@ namespace Login___Register
         {
             string username = registerUsername.Text;
             string password = registerPassword.Password;
+            string email = registerEmail.Text;
+            string name = registerName.Text;
 
-            CheckAndAddUser(username, password);
-            //MessageBox.Show("Register clicked. Username: " + username + ", Password: " + password);
+            CheckAndAddUser(username, password, email, name);
         }
     }
 }

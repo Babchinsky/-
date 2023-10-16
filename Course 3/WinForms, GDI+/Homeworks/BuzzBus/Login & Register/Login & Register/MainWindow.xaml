@@ -21,6 +21,8 @@
             <TabItem Header="Register">
                 <StackPanel Margin="20">
                     <TextBox x:Name="registerUsername" Text="Username" Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="0 0 0 10"/>
+                    <TextBox x:Name="registerName" Text="Name" Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="0 0 0 10"/>
+                    <TextBox x:Name="registerEmail" Text="Email" Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="0 0 0 10"/>
                     <PasswordBox x:Name="registerPassword" PasswordChar="*" Foreground="Gray" GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus" Margin="0 0 0 10"/>
                     <Button Content="Register" Click="RegisterButton_Click" HorizontalAlignment="Right" Margin="0 20 0 0"/>
                 </StackPanel>
