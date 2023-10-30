@@ -1,30 +1,44 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System;
-using MongoDB.Driver;
-using MongoDB.Bson;
+using Realms;
 using System.Security.Cryptography;
 using System.Text;
+using Realms.Sync;
 
 namespace Login___Register
 {
     public partial class MainWindow : Window
     {
-        private IMongoCollection<BsonDocument> collection;
+        private Realm _realm;
+
         public MainWindow()
         {
             InitializeComponent();
-            ConnectToDb();
+            ConnectToRealm();
         }
-        
-        private void ConnectToDb()
+
+        private void ConnectToRealm()
         {
-            string connectionString = "mongodb+srv://babchinskyprog:Pass123@buzzbuscluster.pymxgjf.mongodb.net/userbox?retryWrites=true&w=majority";
-            MongoClient client = new MongoClient(connectionString);
-            IMongoDatabase database = client.GetDatabase("userbox");
-            collection = database.GetCollection<BsonDocument>("users");
+            var appId = "your-app-id"; // Замените на ваш фактический Realm App Id
+
+            // Инициализация подключения к MongoDB Realm
+            var appConfig = new AppConfiguration(appId)
+            {
+                // Дополнительные параметры, если необходимо.
+            };
+
+            var user = App.Create(appConfig).GetCurrentUser();
+            if (user == null)
+            {
+                MessageBox.Show("Не удалось аутентифицироваться в MongoDB Realm.");
+                Close();
+            }
+
+            _realm = user.GetRealm("todo"); // Замените "myrealm" на имя вашей Realm базы данных
         }
+
 
         private string ComputeHash(string password, string salt)
         {
@@ -62,28 +76,25 @@ namespace Login___Register
             return Convert.ToBase64String(saltBytes);
         }
 
+
+
+
+
+
+
         private void FindUsernameAndPassword(string username, string password)
         {
-            // Искомый username и пароль
             string usernameToSearch = username;
-            string passwordToCheck = password; // Пароль в открытом виде
 
-            // Создаем фильтр для поиска по username
-            var filter = Builders<BsonDocument>.Filter.Eq("Username", usernameToSearch);
-
-            // Выполняем поиск пользователя по username
-            var user = collection.Find(filter).FirstOrDefault();
+            var user = _realm.Find<User>(usernameToSearch);
 
             if (user != null)
             {
-                // Получаем хешированный пароль и соль из базы данных
-                string hashedPasswordFromDatabase = user["HashedPassword"].AsString;
-                string salt = user["Salt"].AsString;
+                string salt = user.Salt;
+                string hashedPasswordFromDatabase = user.HashedPassword;
 
-                // Хешируем введенный пароль с использованием соли
-                string hashedPasswordToCheck = ComputeHash(passwordToCheck, salt);
+                string hashedPasswordToCheck = ComputeHash(password, salt);
 
-                // Проверяем соответствие хешированных паролей
                 if (hashedPasswordFromDatabase == hashedPasswordToCheck)
                 {
                     MessageBox.Show("Login successful.");
@@ -101,49 +112,34 @@ namespace Login___Register
 
         private void CheckAndAddUser(string username, string password, string email, string name)
         {
-            // Генерация случайной соли для пароля
-            string salt = GenerateRandomSalt();
+            var existingUser = _realm.Find<User>(u => u.Username == username || u.Email == email).FirstOrDefault();
 
-            // Хеширование пароля с использованием соли
-            string hashedPassword = ComputeHash(password, salt);
-
-            // Проверяем, что пользователь с таким именем или email не существует
-            var filter = Builders<BsonDocument>.Filter.Or(
-                Builders<BsonDocument>.Filter.Eq("Username", username),
-                Builders<BsonDocument>.Filter.Eq("Email", email)
-            );
-
-            var existingUser = collection.Find(filter).FirstOrDefault();
             if (existingUser != null)
             {
-                MessageBox.Show("Пользователь с таким именем или email уже существует.");
+                MessageBox.Show("User with the same username or email already exists.");
                 return;
             }
 
-            // Создаем новый документ пользователя
-            var newUserDocument = new BsonDocument
+            string salt = GenerateRandomSalt();
+            string hashedPassword = ComputeHash(password, salt);
+
+            _realm.Write(() =>
             {
-                { "Username", username },
-                { "HashedPassword", hashedPassword }, // Захешированный пароль
-                { "Salt", salt }, // Соль
-                { "Name", name }, // Имя пользователя
-                { "Email", email }, // Email пользователя
-                { "RegistrationDate", DateTime.Now } // Дата регистрации
-                // Можно добавить другие данные пользователя, если необходимо
-            };
+                _realm.Add(new User
+                {
+                    Username = username,
+                    HashedPassword = hashedPassword,
+                    Salt = salt,
+                    Name = name,
+                    Email = email,
+                    RegistrationDate = DateTimeOffset.Now
+                });
+            });
 
-            // Добавляем нового пользователя в коллекцию
-            collection.InsertOne(newUserDocument);
-
-            MessageBox.Show("Регистрация успешно завершена для пользователя с именем: " + username);
+            MessageBox.Show("Registration successful for the user with username: " + username);
         }
 
-
-
-
-
-
-
+        // Остальной код остается без изменений
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;

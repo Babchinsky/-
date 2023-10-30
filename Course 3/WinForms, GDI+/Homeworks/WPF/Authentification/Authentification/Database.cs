@@ -7,18 +7,13 @@ using MongoDB.Bson;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Login___Register
+namespace Authentification
 {
-    public partial class MainWindow : Window
+    public class Database
     {
         private IMongoCollection<BsonDocument> collection;
-        public MainWindow()
-        {
-            InitializeComponent();
-            ConnectToDb();
-        }
-        
-        private void ConnectToDb()
+
+        public Database()
         {
             string connectionString = "mongodb+srv://babchinskyprog:Pass123@buzzbuscluster.pymxgjf.mongodb.net/userbox?retryWrites=true&w=majority";
             MongoClient client = new MongoClient(connectionString);
@@ -26,7 +21,7 @@ namespace Login___Register
             collection = database.GetCollection<BsonDocument>("users");
         }
 
-        private string ComputeHash(string password, string salt)
+        public string ComputeHash(string password, string salt)
         {
             //////////// Логика хеширования пароля с использованием соли
             using (SHA256 sha256 = SHA256.Create())
@@ -49,7 +44,7 @@ namespace Login___Register
             }
         }
 
-        private string GenerateRandomSalt()
+        public string GenerateRandomSalt()
         {
             // Generate a random salt using a cryptographic random number generator
             byte[] saltBytes = new byte[16]; // Adjust the size of the salt as needed
@@ -62,7 +57,7 @@ namespace Login___Register
             return Convert.ToBase64String(saltBytes);
         }
 
-        private void FindUsernameAndPassword(string username, string password)
+        public void FindUsernameAndPassword(string username, string password)
         {
             // Искомый username и пароль
             string usernameToSearch = username;
@@ -99,7 +94,7 @@ namespace Login___Register
             }
         }
 
-        private void CheckAndAddUser(string username, string password, string email, string name)
+        public void CheckAndAddUser(string username, string password, string email, string name)
         {
             // Генерация случайной соли для пароля
             string salt = GenerateRandomSalt();
@@ -138,87 +133,5 @@ namespace Login___Register
             MessageBox.Show("Регистрация успешно завершена для пользователя с именем: " + username);
         }
 
-
-
-
-
-
-
-        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            if (textBox.Foreground == Brushes.Gray)
-            {
-                textBox.Foreground = Brushes.Black;
-                textBox.Text = "";
-            }
-        }
-
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            if (string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                textBox.Foreground = Brushes.Gray;
-                //textBox.Text = textBox.Name.Contains("login") ? "Username" : "Password";
-                textBox.Text = textBox.Name;
-
-                switch (textBox.Name)
-                {
-                    case "registerUsername":
-                        textBox.Text = "Username";
-                        break;
-                    case "registerName":
-                        textBox.Text = "Name";
-                        break;
-                    case "registerEmail":
-                        textBox.Text = "Email";
-                        break;
-                    case "loginUsername":
-                        textBox.Text = "Username";
-                        break;
-                }
-            }
-        }
-
-        private void PasswordBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            PasswordBox passwordBox = (PasswordBox)sender;
-            if (passwordBox.Foreground == Brushes.Gray)
-            {
-                passwordBox.Foreground = Brushes.Black;
-                passwordBox.Password = "";
-            }
-        }
-
-        private void PasswordBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            PasswordBox passwordBox = (PasswordBox)sender;
-            if (string.IsNullOrWhiteSpace(passwordBox.Password))
-            {
-                passwordBox.Foreground = Brushes.Gray;
-                passwordBox.Password = "Password";
-            }
-        }
-
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            string username = loginUsername.Text;
-            string password = loginPassword.Password;
-
-            //FindUsername(username);
-            FindUsernameAndPassword(username, password);
-            //MessageBox.Show("Login clicked. Username: " + username + ", Password: " + password);
-        }
-
-        private void RegisterButton_Click(object sender, RoutedEventArgs e)
-        {
-            string username = registerUsername.Text;
-            string password = registerPassword.Password;
-            string email = registerEmail.Text;
-            string name = registerName.Text;
-
-            CheckAndAddUser(username, password, email, name);
-        }
     }
 }

@@ -1,0 +1,32 @@
+﻿<Window x:Class="Login___Register.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Login___Register"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <!-- Вкладка для входа -->
+            <TabItem Header="Login">
+                <StackPanel Margin="20">
+                    <TextBox x:Name="loginUsername" Text="Username" Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="0 0 0 10"/>
+                    <PasswordBox x:Name="loginPassword" PasswordChar="*" Foreground="Gray" GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus" Margin="0 0 0 10"/>
+                    <Button Content="Login" Click="LoginButton_Click" HorizontalAlignment="Right" Margin="0 20 0 0"/>
+                </StackPanel>
+            </TabItem>
+
+            <!-- Вкладка для регистрации -->
+            <TabItem Header="Register">
+                <StackPanel Margin="20">
+                    <TextBox x:Name="registerUsername" Text="Username" Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="0 0 0 10"/>
+                    <TextBox x:Name="registerName" Text="Name" Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="0 0 0 10"/>
+                    <TextBox x:Name="registerEmail" Text="Email" Foreground="Gray" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" Margin="0 0 0 10"/>
+                    <PasswordBox x:Name="registerPassword" PasswordChar="*" Foreground="Gray" GotFocus="PasswordBox_GotFocus" LostFocus="PasswordBox_LostFocus" Margin="0 0 0 10"/>
+                    <Button Content="Register" Click="RegisterButton_Click" HorizontalAlignment="Right" Margin="0 20 0 0"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
