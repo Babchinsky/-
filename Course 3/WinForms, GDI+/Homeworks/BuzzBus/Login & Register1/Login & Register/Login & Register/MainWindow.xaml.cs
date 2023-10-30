@@ -143,7 +143,6 @@ namespace Login___Register
 
 
 
-
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
