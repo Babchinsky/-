@@ -8,9 +8,6 @@
         Title="Notebook" Background="#262626" MinHeight = "300" MinWidth="450" Height="500" Width="800" Icon="/AppIcon.png">
     <Window.Resources>
         <local:Person x:Key="pers" Fio="" Address="" Phone=""/>
-        <!--<local:Person x:Key="pers" Fio="" Address="" Phone=""/>-->
-   
-        <!--<local:Person x:Key="pers" Fio="" Address="" Phone=""/>-->
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="local:CommandLoad.Load" Executed="LoadCommand"/>
