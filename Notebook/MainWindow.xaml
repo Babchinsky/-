@@ -10,6 +10,7 @@
         <local:Person x:Key="pers" Fio="" Address="" Phone=""/>
         <!--<local:Person x:Key="pers" Fio="" Address="" Phone=""/>-->
         <!--<local:Person x:Key="pers" Fio="" Address="" Phone=""/>-->
+        <!--<local:Person x:Key="pers" Fio="" Address="" Phone=""/>-->
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="local:CommandLoad.Load" Executed="LoadCommand"/>
