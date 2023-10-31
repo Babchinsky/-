@@ -9,7 +9,7 @@
     <Window.Resources>
         <local:Person x:Key="pers" Fio="" Address="" Phone=""/>
         <!--<local:Person x:Key="pers" Fio="" Address="" Phone=""/>-->
-        <!--<local:Person x:Key="pers" Fio="" Address="" Phone=""/>-->
+   
         <!--<local:Person x:Key="pers" Fio="" Address="" Phone=""/>-->
     </Window.Resources>
     <Window.CommandBindings>
