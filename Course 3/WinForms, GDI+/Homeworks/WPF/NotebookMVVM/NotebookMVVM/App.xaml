@@ -1,7 +1,7 @@
-﻿<Application x:Class="Notebook_MVVM.App"
+﻿<Application x:Class="NotebookMVVM.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Notebook_MVVM"
+             xmlns:local="clr-namespace:NotebookMVVM"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Notebook_MVVM
+namespace NotebookMVVM
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notebook MVVM", "Notebook MVVM\Notebook MVVM.csproj", "{47085415-9C26-4577-8701-E219A7A53B11}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotebookMVVM", "NotebookMVVM\NotebookMVVM.csproj", "{F52BDE74-91DA-4446-9796-BB5041325059}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{47085415-9C26-4577-8701-E219A7A53B11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{47085415-9C26-4577-8701-E219A7A53B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{47085415-9C26-4577-8701-E219A7A53B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{47085415-9C26-4577-8701-E219A7A53B11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F52BDE74-91DA-4446-9796-BB5041325059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F52BDE74-91DA-4446-9796-BB5041325059}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F52BDE74-91DA-4446-9796-BB5041325059}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F52BDE74-91DA-4446-9796-BB5041325059}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {DE156FD6-3766-4EA7-BB53-FC52277CB7AC}
+		SolutionGuid = {7989C656-3E05-4F10-9AA1-F119EA85EE54}
 	EndGlobalSection
 EndGlobal
