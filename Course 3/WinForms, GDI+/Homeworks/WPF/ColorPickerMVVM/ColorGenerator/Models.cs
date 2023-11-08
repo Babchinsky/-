@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Media;
 using System.Threading.Tasks;
 
-namespace ColorGenerator {
+namespace ColorPicker {
     class ColorModel {
         public string color_name { get; set; }
         public ColorModel(string color) => color_name = color;

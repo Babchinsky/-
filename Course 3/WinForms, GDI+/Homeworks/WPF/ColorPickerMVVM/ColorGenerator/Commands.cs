@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ColorGenerator {
+namespace ColorPicker {
     public class Commands : ICommand {
         Action<object> execute;
         Predicate<object> can_execute;

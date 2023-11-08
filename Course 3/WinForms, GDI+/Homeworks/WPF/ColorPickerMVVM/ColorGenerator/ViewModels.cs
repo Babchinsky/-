@@ -10,7 +10,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace ColorGenerator {
+namespace ColorPicker {
     public abstract class VMBase : INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName) {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ColorGenerator {
+namespace ColorPicker {
     public partial class App : Application {
         private void OnStartUp(object sender, StartupEventArgs e) {
             MainWindow view = new MainWindow();
