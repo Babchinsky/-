@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:ColorGenerator"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Цветовая палитра" Background="#262626" 
+        Title="Color Picker" Background="#262626" 
         MinHeight="350" MinWidth="500" 
-        Height="400" Width="650" Icon="/AppIcon.png">
+        Height="400" Width="600" Icon="/AppIcon.png">
     <Window.Resources>
         <local:MainViewModel x:Key="ViewModel"/>
     </Window.Resources>
