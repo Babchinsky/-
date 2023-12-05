@@ -83,7 +83,7 @@
 
                         <Image Source="/Images/Lock.png" Height="20" />
                         <TextBlock x:Name="textPassword" MouseDown="textPassword_MouseDown" Text="Password" Style="{StaticResource textHint}" />
-                        <PasswordBox x:Name="passwordBox" PasswordChanged="PasswordBox_PasswordChanged" Style="{StaticResource textBox}" />
+                        <PasswordBox x:Name="passwordBox" PasswordChanged="PasswordBox_TextChanged" Style="{StaticResource textBox}" />
                     </Grid>
                 </Border>
 

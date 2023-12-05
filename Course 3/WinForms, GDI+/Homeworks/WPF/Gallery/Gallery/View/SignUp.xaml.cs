@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gallery.Model;
+using System;
 using System.Net.Mail;
 using System.Windows;
 using System.Windows.Controls;
@@ -57,17 +58,34 @@ namespace Gallery
                 {
                     try
                     {
-                        DatabaseService databaseService = new DatabaseService();
-                        databaseService.SignUp(txtEmail.Text, passwordBox.Password);
+                        Random random = new Random();
+                        string correctCode = random.Next(10000, 100000).ToString();
+                        // Создаем новое окно SignUp
+                        VerificationCode verificationCodeWindow = new VerificationCode(txtEmail.Text, passwordBox.Password, correctCode);
+
+                        // Устанавливаем текущее окно (SignInWindow) в качестве владельца для SignUpWindow
+                        verificationCodeWindow.Owner = this;
+
+                        // Подписываемся на событие Closed окна SignUpWindow
+                        verificationCodeWindow.Closed += (signupSender, signupArgs) =>
+                        {
+                            // Показываем снова SignInWindow
+                            this.Show();
+                        };
+
+                        // Открываем окно SignUpWindow
+                        verificationCodeWindow.Show();
+
+                        // Скрываем текущее окно SignInWindow
+                        this.Hide();
+
                     }
                     catch (Exception ex)
                     {
-
-                        MessageBox.Show("Error", ex.Message);
+                        MessageBox.Show(ex.Message);
                     }
-                    MessageBox.Show("Succesfully Signed Up");
-                  
                 }
+                else MessageBox.Show("The passwords don't match. Please re-enter.");
             }
             else MessageBox.Show("Inputs are empty. Please write email and password");
         }
