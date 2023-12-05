@@ -15,7 +15,6 @@ namespace Gallery.Model
         private string smtpUsername = "visioarts.company@gmail.com"; // Пароль почты Qwerty_123
         private string smtpPassword = "krdtpbmhmcenxagy";
         private int smtpPort = 587; // Обычно порт 587 используется для шифрованного соединения (TLS)
-
         private SmtpClient smtpClient;
 
         public EmailVerification()
@@ -28,10 +27,8 @@ namespace Gallery.Model
                 EnableSsl = true, // Включение SSL для шифрованного соединения
             };
         }
-
         public void SendMessage(string number, string toEmail)
         {
-
             // Создание объекта MailMessage
             MailMessage message = new MailMessage(smtpUsername, toEmail)
             {

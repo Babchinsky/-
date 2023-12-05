@@ -8,9 +8,11 @@ using FireSharp.Config;
 using FireSharp.Interfaces;
 using FireSharp.Response;
 using Newtonsoft.Json;
+using System.Data.Common;
 
 namespace Gallery
 {
+
     // Подключение БД
     public class DatabaseConnection
     {
@@ -31,22 +33,21 @@ namespace Gallery
             {
                 client = new FireSharp.FirebaseClient(fc);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new Exception($"Error Connecting to Database {ex.Message}");
+                //Console.WriteLine("Error");
+                throw new Exception("Error connection to database");
             }
         }
     }
 
     public class DatabaseService
     {
-        DatabaseConnection dbConnection;
-        //private static DatabaseUser me { get; set; }
+        private DatabaseConnection dbConnection;
         public DatabaseService()
         {
             dbConnection = new();
         }
-
         public void AddUser(DatabaseUser user)
         {
             try
@@ -72,6 +73,13 @@ namespace Gallery
                 dbConnection.client.Update(dbConnection.path + user.Email, user);
             }
         }
+        public bool IsEmailExists(string encodedEmail)
+        {
+            FirebaseResponse response = dbConnection.client.Get(dbConnection.path + encodedEmail);
+
+            if (response.Body == "null") return false;
+            else return true;
+        }
         public DatabaseUser GetUser(string encodedEmail)
         {
             FirebaseResponse response = dbConnection.client.Get(dbConnection.path + encodedEmail);
@@ -87,7 +95,6 @@ namespace Gallery
                 throw new Exception($"Error with serialization in GetUser {ex.Message}");
             }
         }
-
         public void SignUp(string email, string password)
         {
             try
@@ -95,15 +102,18 @@ namespace Gallery
                 DatabaseUser user = new DatabaseUser();
 
                 string encodedEmail = Encryption.EncodeToBase64(email);
-                user.Email = encodedEmail;
+                if (IsEmailExists(encodedEmail))
+                {
+                    user.Email = encodedEmail;
 
-                string salt = Encryption.GenerateSalt();
-                user.Salt = salt;
+                    string salt = Encryption.GenerateSalt();
+                    user.Salt = salt;
 
-                string hashedPassword = Encryption.HashPassword(password, salt);
-                user.Password = hashedPassword;
+                    string hashedPassword = Encryption.HashPassword(password, salt);
+                    user.Password = hashedPassword;
 
-                AddUser(user);
+                    AddUser(user);
+                }
             }
             catch (Exception ex)
             {

@@ -13,18 +13,15 @@ namespace Gallery
         {
             InitializeComponent();
         }
-
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
-
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Application.Current.Shutdown();
         }
-
         private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(passwordBox.Password) && passwordBox.Password.Length > 0)
@@ -32,7 +29,6 @@ namespace Gallery
             else
                 textPassword.Visibility = Visibility.Visible;
         }
-
         private void ConfirmPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(confirmPasswordBox.Password) && confirmPasswordBox.Password.Length > 0)
@@ -40,7 +36,6 @@ namespace Gallery
             else
                 textConfirmPassword.Visibility = Visibility.Visible;
         }
-
         private void textPassword_MouseDown(object sender, MouseButtonEventArgs e)
         {
             passwordBox.Focus();
@@ -49,7 +44,6 @@ namespace Gallery
         {
             confirmPasswordBox.Focus();
         }
-
         private void SignUp_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(passwordBox.Password))
@@ -58,6 +52,11 @@ namespace Gallery
                 {
                     try
                     {
+                        DatabaseService databaseService = new DatabaseService();
+
+                        string encodedEmail = Encryption.EncodeToBase64(txtEmail.Text);
+                        if (databaseService.IsEmailExists(encodedEmail)) throw new Exception("Email is already exists. Please sign in or re-enter");
+
                         Random random = new Random();
                         string correctCode = random.Next(10000, 100000).ToString();
                         // Создаем новое окно SignUp
@@ -89,7 +88,6 @@ namespace Gallery
             }
             else MessageBox.Show("Inputs are empty. Please write email and password");
         }
-
         private void txtEmail_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtEmail.Text) && txtEmail.Text.Length > 0)
@@ -97,12 +95,10 @@ namespace Gallery
             else
                 textEmail.Visibility = Visibility.Visible;
         }
-
         private void textEmail_MouseDown(object sender, MouseButtonEventArgs e)
         {
             txtEmail.Focus();
         }
-
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
             // Создаем новое окно SignUp

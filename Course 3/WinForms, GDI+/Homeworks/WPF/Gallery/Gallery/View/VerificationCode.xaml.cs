@@ -21,7 +21,6 @@ namespace Gallery
             EmailVerification emailVerification = new EmailVerification();
             emailVerification.SendMessage(Code, Email);
         }
-
         private void CodeBox_TextChanged(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(codeBox.Password) && codeBox.Password.Length > 0)

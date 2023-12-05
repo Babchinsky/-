@@ -10,18 +10,15 @@ namespace Gallery
         {
             InitializeComponent();
         }
-
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 this.DragMove();
         }
-
         private void Image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Application.Current.Shutdown();
         }
-
         private void PasswordBox_TextChanged(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(passwordBox.Password) && passwordBox.Password.Length > 0)
@@ -29,12 +26,10 @@ namespace Gallery
             else
                 textPassword.Visibility = Visibility.Visible;
         }
-
         private void textPassword_MouseDown(object sender, MouseButtonEventArgs e)
         {
             passwordBox.Focus();
         }
-
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(passwordBox.Password))
@@ -56,7 +51,6 @@ namespace Gallery
             }
             else MessageBox.Show("Inputs are empty. Please write email and password");
         }
-
         private void txtEmail_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtEmail.Text) && txtEmail.Text.Length > 0)
@@ -64,12 +58,10 @@ namespace Gallery
             else
                 textEmail.Visibility = Visibility.Visible;
         }
-
         private void textEmail_MouseDown(object sender, MouseButtonEventArgs e)
         {
             txtEmail.Focus();
         }
-
         private void SignUpClick(object sender, RoutedEventArgs e)
         {
             // Создаем новое окно SignUp
