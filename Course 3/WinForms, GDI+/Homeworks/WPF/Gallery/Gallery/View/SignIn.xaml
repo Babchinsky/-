@@ -87,7 +87,7 @@
                     </Grid>
                 </Border>
 
-                <Button Content="Sign In" Click="Button_Click" Style="{StaticResource mainButton}" />
+                <Button Content="Sign In" Click="SignIn_Click" Style="{StaticResource mainButton}" />
             </StackPanel>
         </Border>
 

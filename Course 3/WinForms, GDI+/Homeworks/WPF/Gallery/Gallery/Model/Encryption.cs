@@ -54,5 +54,12 @@ namespace Gallery
                 return stringBuilder.ToString();
             }
         }
+
+        public static bool VerifyPassword(string passwordInput, string hashedPasswordInDb, string salt)
+        {
+            string hashedPassword = HashPassword(passwordInput, salt);
+            // Захешировать введенный пользователем пароль с использованием сохраненной соли и сравнить с сохраненным захешированным паролем
+            return StringComparer.OrdinalIgnoreCase.Compare(hashedPassword, hashedPasswordInDb) == 0;
+        }
     }
 }

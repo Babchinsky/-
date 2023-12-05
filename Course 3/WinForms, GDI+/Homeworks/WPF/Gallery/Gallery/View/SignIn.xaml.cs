@@ -35,11 +35,24 @@ namespace Gallery
             passwordBox.Focus();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void SignIn_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtEmail.Text) && !string.IsNullOrEmpty(passwordBox.Password))
             {
-                //MessageBox.Show("Successfully Signed In");
+                try
+                {
+                    DatabaseService databaseService = new DatabaseService();
+                    if (databaseService.SignIn(txtEmail.Text, passwordBox.Password))
+                    {
+                        MessageBox.Show("Succesfully Signed In");
+                    }
+                    
+                }
+                catch (System.Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
             }
             else MessageBox.Show("Inputs are empty. Please write email and password");
         }

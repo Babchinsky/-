@@ -74,13 +74,12 @@ namespace Gallery
         }
         public DatabaseUser GetUser(string encodedEmail)
         {
-
             FirebaseResponse response = dbConnection.client.Get(dbConnection.path + encodedEmail);
-            if (response.Body == "null") throw new Exception("Can't find user in database. Error in GetUser");
+            if (response.Body == "null") throw new Exception("Can't find user in database");
 
             try
             {
-                DatabaseUser ? user = JsonConvert.DeserializeObject<DatabaseUser>(response.Body);
+                DatabaseUser user = JsonConvert.DeserializeObject<DatabaseUser>(response.Body);
                 return user;
             }
             catch (Exception ex)
@@ -111,9 +110,24 @@ namespace Gallery
                 MessageBox.Show(ex.Message);
             }
         }
-        public void SignIn(DatabaseUser user)
+        public bool SignIn(string email, string passwordInput)
         {
+            try
+            {
+                string encodedEmail = Encryption.EncodeToBase64(email);
+                DatabaseUser user = GetUser(encodedEmail);
 
+                string decodedEmail = Encryption.DecodeFromBase64(user.Email);
+
+                bool isValidPassword = Encryption.VerifyPassword(passwordInput, user.Password, user.Salt);
+
+                if (isValidPassword == true && decodedEmail == email) return true;
+                else throw new Exception("Invalid Email or Password");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
