@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -36,6 +37,15 @@ namespace Gallery
             {
                 try
                 {
+                    if (!Model.Validation.IsValidEmail(txtEmail.Text))
+                    {
+                        throw new Exception("Email does not validate");
+                    }
+                    if (!Model.Validation.IsValidPassword(passwordBox.Password))
+                    {
+                        throw new Exception("Password must contain a minimum of 8 characters including numbers, upper and lower case letters");
+                    }
+
                     DatabaseService databaseService = new DatabaseService();
                     if (databaseService.SignIn(txtEmail.Text, passwordBox.Password))
                     {

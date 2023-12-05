@@ -52,10 +52,10 @@ namespace Gallery
                 {
                     try
                     {
-                        DatabaseService databaseService = new DatabaseService();
+                          
 
                         string encodedEmail = Encryption.EncodeToBase64(txtEmail.Text);
-                        if (databaseService.IsEmailExists(encodedEmail)) throw new Exception("Email is already exists. Please sign in or re-enter");
+                        if (DatabaseService.IsEmailExists(encodedEmail)) throw new Exception("Email is already exists. Please sign in or re-enter");
 
                         Random random = new Random();
                         string correctCode = random.Next(10000, 100000).ToString();

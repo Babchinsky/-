@@ -43,10 +43,14 @@ namespace Gallery
 
     public class DatabaseService
     {
-        private DatabaseConnection dbConnection;
-        public DatabaseService()
+        private static DatabaseConnection dbConnection = new();
+        public DatabaseService() { }
+        public static bool IsEmailExists(string encodedEmail)
         {
-            dbConnection = new();
+            FirebaseResponse response = dbConnection.client.Get(dbConnection.path + encodedEmail);
+
+            if (response.Body == "null") return false;
+            else return true;
         }
         public void AddUser(DatabaseUser user)
         {
@@ -73,13 +77,6 @@ namespace Gallery
                 dbConnection.client.Update(dbConnection.path + user.Email, user);
             }
         }
-        public bool IsEmailExists(string encodedEmail)
-        {
-            FirebaseResponse response = dbConnection.client.Get(dbConnection.path + encodedEmail);
-
-            if (response.Body == "null") return false;
-            else return true;
-        }
         public DatabaseUser GetUser(string encodedEmail)
         {
             FirebaseResponse response = dbConnection.client.Get(dbConnection.path + encodedEmail);
@@ -102,18 +99,17 @@ namespace Gallery
                 DatabaseUser user = new DatabaseUser();
 
                 string encodedEmail = Encryption.EncodeToBase64(email);
-                if (IsEmailExists(encodedEmail))
-                {
-                    user.Email = encodedEmail;
+                if (IsEmailExists(encodedEmail)) throw new Exception("Email is already exists. Please sign in or re-enter.");
+                
+                user.Email = encodedEmail;
 
-                    string salt = Encryption.GenerateSalt();
-                    user.Salt = salt;
+                string salt = Encryption.GenerateSalt();
+                user.Salt = salt;
 
-                    string hashedPassword = Encryption.HashPassword(password, salt);
-                    user.Password = hashedPassword;
+                string hashedPassword = Encryption.HashPassword(password, salt);
+                user.Password = hashedPassword;
 
-                    AddUser(user);
-                }
+                AddUser(user);
             }
             catch (Exception ex)
             {
