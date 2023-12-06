@@ -18,8 +18,8 @@ namespace Gallery
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
-            mainWindow.Photos = (PhotoCollection)(this.Resources["Photos"] as ObjectDataProvider).Data;
-            mainWindow.Photos.Path = "C:\\Windows\\Web\\Wallpaper";
+            //mainWindow.Photos = (PhotoCollection)(this.Resources["Photos"] as ObjectDataProvider).Data;
+            //mainWindow.Photos.Path = "C:\\Windows\\Web\\Wallpaper";
         }
     }
 }

@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Drawing;
 using System.IO;
-
+using System.Collections.ObjectModel;
 
 namespace Gallery
 {
@@ -23,18 +23,19 @@ namespace Gallery
     /// </summary>
     public partial class MainWindow : Window
     {
-        public PhotoCollection Photos;
-        public Photo _photo;
-        public static bool needAngle = false;
-        public static bool needSigma = false;
-        public static bool needMatrixSize = false;
-        public static bool needThreshold = false;
-        public static bool needDataForGaborFilter = false;
-        public static bool needBrushSize = false;
-        public static bool needRadius = false;
+        //public PhotoCollection Photos;
+        //public Photo _photo;
+
+        public ObservableCollection<string> Photos { get; set; }
         public MainWindow()
         {
+            //InitializeComponent();
+            //Photos = new ObservableCollection<string>();
+
             InitializeComponent();
+            Photos = new ObservableCollection<string>();
+            //Photos.Add("C:\\Wallpapers\\1.jpg"); // Пример добавления элемента
+            PhotosListBox.DataContext = this; // Привязываем DataContext к текущему экземпляру окна
         }
 
         private void OpenMenuItem_Click(object sender, RoutedEventArgs e)
@@ -47,87 +48,79 @@ namespace Gallery
                 // Добавьте свой код обработки файла здесь
             }
         }
-        void SaveUsingEncoder(BitmapEncoder encoder, string format)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            switch (format)
-            {
-                case ".jpg":
-                    saveFileDialog.Filter = "JPG|*.jpg";
-                    break;
-                case ".png":
-                    saveFileDialog.Filter = "PNG|*.png";
-                    break;
-                case ".bmp":
-                    saveFileDialog.Filter = "BMP|*.bmp";
-                    break;
-            }
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                encoder.Frames.Add(_photo.Image);
-                using (var stream = File.Create(saveFileDialog.FileName))
-                {
-                    encoder.Save(stream);
-                }
-            }
-        }
-        private void Refresh()
-        {
-            if (PhotosListBox.SelectedItem != null)
-            {
-                _photo = (Photo)PhotosListBox.SelectedItem;
-                ViewedPhoto.Source = _photo.Image;
-                SIG.Title = "Gallery: " + _photo.Source;
-            }
-        }
-
-        private void OnPhotoMove(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            Refresh();
-        }
-
-        private void Update(string FilePath)
-        {
-            //Photos = new PhotoCollection();
-            //if (Photos == null) MessageBox.Show("Null");
-            Photos.Path = FilePath.Remove(FilePath.LastIndexOf('\\') + 1);
-            for (int i = 0; i < Photos.Count; ++i)
-            {
-                if (Photos[i].Source.Equals(FilePath))
-                {
-                    PhotosListBox.SelectedItem = Photos[i]; 
-                    break;
-                }
-            }
-            Refresh();
-        }
-
-        private void Clear(object sender, RoutedEventArgs e)
-        {
-            Update(_photo.Source);
-        }
 
         private void OpenFile(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Images|*.jpg; *.jpeg; *.png; *.bmp|All files (*.*)|*.*";
+
             if (openFileDialog.ShowDialog() == true)
-                Update(openFileDialog.FileName);
+            {
+                string absolutePath = openFileDialog.FileName;
+                Update(absolutePath);
+            }
+        }
+
+        private string[] GetImageFilesInFolder(string folderPath)
+        {
+            // Получаем все файлы с указанными расширениями в папке
+            string[] imageFiles = Directory.GetFiles(folderPath, "*.*", SearchOption.TopDirectoryOnly)
+                .Where(file => file.ToLower().EndsWith(".png") || file.ToLower().EndsWith(".jpg") || file.ToLower().EndsWith(".bmp") || file.ToLower().EndsWith(".jpeg"))
+                .ToArray();
+
+            return imageFiles;
+        }
+
+        private void Update(string FilePath)
+        {
+            // Применяю фотографию к главному окну
+            Uri uri = new Uri(FilePath, UriKind.Absolute);
+            BitmapImage bitmapImage = new BitmapImage(uri);
+            ViewedPhoto.Source = bitmapImage;
+
+
+            string folderPath = System.IO.Path.GetDirectoryName(FilePath);
+            string[] imageFiles = GetImageFilesInFolder(folderPath);
+            foreach (string imageFile in imageFiles)
+            {
+                Photos.Add(imageFile);
+            }
+        }
+
+        private void OnListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (PhotosListBox.SelectedItem != null)
+            {
+                string selectedImagePath = PhotosListBox.SelectedItem.ToString();
+                Update(selectedImagePath);
+            }
+        }
+       
+
+
+       
+        private void Clear(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        void SaveUsingEncoder(BitmapEncoder encoder, string format)
+        {
+
         }
 
         private void SaveToJpg(object sender, RoutedEventArgs e)
         {
-            SaveUsingEncoder(new JpegBitmapEncoder(), ".jpg");
+           
         }
 
         void SaveToPng(object sender, RoutedEventArgs e)
         {
-            SaveUsingEncoder(new PngBitmapEncoder(), ".png");
         }
 
         void SaveToBmp(object sender, RoutedEventArgs e)
         {
-            SaveUsingEncoder(new BmpBitmapEncoder(), ".bmp");
+            
         }
     }
 }
