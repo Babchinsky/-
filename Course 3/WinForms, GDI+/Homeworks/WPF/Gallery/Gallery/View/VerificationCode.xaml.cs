@@ -46,7 +46,26 @@ namespace Gallery
                     {
                         DatabaseService databaseService = new DatabaseService();
                         databaseService.SignUp(Email, PasswordInput);
-                        MessageBox.Show("Succesfully Signed Up");
+                        //MessageBox.Show("Succesfully Signed Up");
+
+                        // Создаем новое окно SignUp
+                        MainWindow mainWindow = new MainWindow();
+
+                        // Устанавливаем текущее окно (SignInWindow) в качестве владельца для SignUpWindow
+                        mainWindow.Owner = this;
+
+                        // Подписываемся на событие Closed окна SignUpWindow
+                        mainWindow.Closed += (signupSender, signupArgs) =>
+                        {
+                            // Показываем снова SignInWindow
+                            this.Show();
+                        };
+
+                        // Открываем окно SignUpWindow
+                        mainWindow.Show();
+
+                        // Скрываем текущее окно SignInWindow
+                        this.Hide();
                     }
                     catch (System.Exception ex)
                     {

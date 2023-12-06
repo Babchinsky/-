@@ -49,7 +49,27 @@ namespace Gallery
                     DatabaseService databaseService = new DatabaseService();
                     if (databaseService.SignIn(txtEmail.Text, passwordBox.Password))
                     {
-                        MessageBox.Show("Succesfully Signed In");
+                        // Скрываем текущее окно SignInWindow
+                        this.Hide();
+
+                        //MessageBox.Show("Succesfully Signed In");
+                        // Создаем новое окно SignUp
+                        MainWindow mainWindow = new MainWindow();
+
+                        // Устанавливаем текущее окно (SignInWindow) в качестве владельца для SignUpWindow
+                        mainWindow.Owner = this;
+
+                        // Подписываемся на событие Closed окна SignUpWindow
+                        mainWindow.Closed += (signupSender, signupArgs) =>
+                        {
+                            //Показываем снова SignInWindow
+                            this.Show();
+                        };
+
+                        // Открываем окно SignUpWindow
+                        mainWindow.Show();
+
+                        
                     }
                     
                 }

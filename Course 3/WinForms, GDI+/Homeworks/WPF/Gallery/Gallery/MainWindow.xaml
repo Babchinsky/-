@@ -5,7 +5,8 @@
         Title="Gallery" Height="500" Width="800" Background="#3AB19B"
         WindowStyle="None"
         AllowsTransparency="True"
-        ResizeMode="CanResizeWithGrip">
+        ResizeMode="CanResize"
+        MouseMove="Window_MouseDown">
 
     <!-- Styles and Templates -->
     <Window.Resources>
@@ -127,11 +128,11 @@
         </DockPanel>
 
         <!-- Заголовок окна (может содержать ваши собственные элементы управления) -->
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
             <!-- Ваши собственные кнопки и другие элементы управления -->
-            <Button Content="_Minimize" BorderThickness="0" Foreground="White" Background="Transparent" Click="MinimizeButton_Click"/>
-            <Button Content="_Restore" BorderThickness="0" Foreground="White" Background="Transparent" Click="RestoreButton_Click"/>
-            <Button Content="_Close" BorderThickness="0"  Foreground="White" Background="Transparent" Click="CloseButton_Click"/>
+            <Button Content="─" FontSize="20"  Margin="0,0,10,0" BorderThickness="0" Foreground="White" Background="Transparent" Click="MinimizeButton_Click"/>
+            <Button Content="□" FontSize="20"  Margin="0,0,10,0" BorderThickness="0" Foreground="White" Background="Transparent" Click="RestoreButton_Click"/>
+            <Button Content="x" FontSize="20"  Margin="0,0,10,0" BorderThickness="0" Foreground="White" Background="Transparent" Click="CloseButton_Click"/>
         </StackPanel>
         
         <!-- Tools -->

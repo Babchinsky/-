@@ -16,6 +16,8 @@ using System.Drawing;
 using System.IO;
 using System.Collections.ObjectModel;
 using System.Runtime.ConstrainedExecution;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Gallery
 {
@@ -26,6 +28,9 @@ namespace Gallery
     {
         //public PhotoCollection Photos;
         //public Photo _photo;
+        private bool isDragging = false;
+        private System.Windows.Point startPoint;
+
 
         public ObservableCollection<string> Photos { get; set; }
         public MainWindow()
@@ -121,6 +126,7 @@ namespace Gallery
         {
             Photos.Clear();
             PhotosListBox.SelectedIndex = -1;
+            ViewedPhoto.Source = null;
         }
 
         private void SaveAsJpg_Click(object sender, RoutedEventArgs e)
@@ -194,6 +200,12 @@ namespace Gallery
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Window_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+                DragMove();
         }
     }
 }
