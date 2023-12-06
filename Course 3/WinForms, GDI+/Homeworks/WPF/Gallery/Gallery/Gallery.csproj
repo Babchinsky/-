@@ -17,6 +17,12 @@
     <None Remove="Images\Lock.png" />
     <None Remove="Images\LockGreen.png" />
     <None Remove="Images\LockWhite.png" />
+    <None Remove="View\Pictures\1.jpg" />
+    <None Remove="View\Pictures\2.jpg" />
+    <None Remove="View\Pictures\3.jpg" />
+    <None Remove="View\Pictures\4.jpg" />
+    <None Remove="View\Pictures\5.jpg" />
+    <None Remove="View\Pictures\6.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +40,12 @@
     <Resource Include="Images\Lock.png" />
     <Resource Include="Images\LockGreen.png" />
     <Resource Include="Images\LockWhite.png" />
+    <Resource Include="View\Pictures\1.jpg" />
+    <Resource Include="View\Pictures\2.jpg" />
+    <Resource Include="View\Pictures\3.jpg" />
+    <Resource Include="View\Pictures\4.jpg" />
+    <Resource Include="View\Pictures\5.jpg" />
+    <Resource Include="View\Pictures\6.jpg" />
   </ItemGroup>
 
 </Project>
