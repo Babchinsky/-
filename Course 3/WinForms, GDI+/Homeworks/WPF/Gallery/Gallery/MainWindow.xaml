@@ -2,12 +2,20 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:Gallery"
-        Title="Gallery" Height="500" Width="800">
+        Title="Gallery" Height="500" Width="800" Background="#3AB19B"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip">
 
     <!-- Styles and Templates -->
     <Window.Resources>
         <local:UriToBitmapConverter x:Key="UriToBitmapConverter" />
 
+        <!-- Стиль без отступов -->
+        <Style TargetType="Window">
+            <Setter Property="Margin" Value="0"/>
+        </Style>
+        
         <!-- Photo Template -->
         <DataTemplate DataType="{x:Type local:Photo}">
             <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="6">
@@ -95,7 +103,6 @@
 
     <!-- Master Container -->
     <Grid DataContext="{Binding Source={StaticResource Photos}}" Margin="10">
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="240" MinWidth="240" />
             <ColumnDefinition Width="*"/>
@@ -104,20 +111,31 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- Tools -->
         <DockPanel Grid.Column="0" Grid.Row="0" Margin="0,0,0,10" Grid.ColumnSpan="2">
-            <Menu DockPanel.Dock="Top" FontSize="14" Background="White">
-                <MenuItem Header="_File" >
-                    <MenuItem Header="_Open" Click="OpenFile"/>
-                    <MenuItem Header="_Save as JPG"  Click="SaveAsJpg_Click"/>
-                    <MenuItem Header="_Save as PNG" Click ="SaveAsPng_Click"/>
-                    <MenuItem Header="_Save as BMP" Click ="SaveAsBmp_Click"/>
-                    <MenuItem Header="_Clear" Click="Clear"/>
+            <Menu DockPanel.Dock="Top" FontSize="14" Background="#3AB19B">
+                <MenuItem Header="_File" Foreground="White" >
+                    <MenuItem Header="_Open" Click="OpenFile" Background="#3AB19B" Foreground="White"/>
+                    <MenuItem Header="_Save as JPG"  Click="SaveAsJpg_Click" Background="#3AB19B" Foreground="White"/>
+                    <MenuItem Header="_Save as PNG" Click ="SaveAsPng_Click" Background="#3AB19B" Foreground="White"/>
+                    <MenuItem Header="_Save as BMP" Click ="SaveAsBmp_Click" Background="#3AB19B" Foreground="White"/>
+                    <MenuItem Header="_Clear" Click="Clear" Background="#3AB19B" Foreground="White"/>
                 </MenuItem>
             </Menu>
         </DockPanel>
+
+        <!-- Заголовок окна (может содержать ваши собственные элементы управления) -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <!-- Ваши собственные кнопки и другие элементы управления -->
+            <Button Content="_Minimize" BorderThickness="0" Foreground="White" Background="Transparent" Click="MinimizeButton_Click"/>
+            <Button Content="_Restore" BorderThickness="0" Foreground="White" Background="Transparent" Click="RestoreButton_Click"/>
+            <Button Content="_Close" BorderThickness="0"  Foreground="White" Background="Transparent" Click="CloseButton_Click"/>
+        </StackPanel>
+        
+        <!-- Tools -->
+       
 
         <!-- Photo Management Canvas -->
         <GroupBox Grid.Column="0" Grid.Row="1">

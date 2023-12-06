@@ -75,11 +75,6 @@ namespace Gallery
         private void LoadAfterOpenFile(string FilePath)
         {
             Clear();
-            // Применяю фотографию к главному окну
-            Uri uri = new Uri(FilePath, UriKind.Absolute);
-            BitmapImage bitmapImage = new BitmapImage(uri);
-            ViewedPhoto.Source = bitmapImage;
-
 
             string folderPath = System.IO.Path.GetDirectoryName(FilePath);
             string[] imageFiles = GetImageFilesInFolder(folderPath);
@@ -87,6 +82,17 @@ namespace Gallery
             {
                 Photos.Add(imageFile);
             }
+
+            // Устанавливаем выбранное изображение
+            PhotosListBox.SelectedItem = FilePath;
+
+            // Применяю фотографию к главному окну
+            Uri uri = new Uri(FilePath, UriKind.Absolute);
+            BitmapImage bitmapImage = new BitmapImage(uri);
+            ViewedPhoto.Source = bitmapImage;
+
+            // Прокручиваем к выбранному элементу
+            PhotosListBox.ScrollIntoView(PhotosListBox.SelectedItem);
         }
 
         private void ChangeMainImage(string FilePath)
@@ -166,6 +172,28 @@ namespace Gallery
                     }
                 }
             }
+        }
+
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void RestoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                WindowState = WindowState.Normal;
+            }
+            else
+            {
+                WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
