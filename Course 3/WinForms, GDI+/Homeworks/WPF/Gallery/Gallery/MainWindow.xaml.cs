@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Drawing;
 using System.IO;
 using System.Collections.ObjectModel;
+using System.Runtime.ConstrainedExecution;
 
 namespace Gallery
 {
@@ -57,7 +58,7 @@ namespace Gallery
             if (openFileDialog.ShowDialog() == true)
             {
                 string absolutePath = openFileDialog.FileName;
-                Update(absolutePath);
+                LoadAfterOpenFile(absolutePath);
             }
         }
 
@@ -71,8 +72,9 @@ namespace Gallery
             return imageFiles;
         }
 
-        private void Update(string FilePath)
+        private void LoadAfterOpenFile(string FilePath)
         {
+            Clear();
             // Применяю фотографию к главному окну
             Uri uri = new Uri(FilePath, UriKind.Absolute);
             BitmapImage bitmapImage = new BitmapImage(uri);
@@ -87,12 +89,25 @@ namespace Gallery
             }
         }
 
+        private void ChangeMainImage(string FilePath)
+        {
+            // Применяю фотографию к главному окну
+            Uri uri = new Uri(FilePath, UriKind.Absolute);
+            BitmapImage bitmapImage = new BitmapImage(uri);
+            ViewedPhoto.Source = bitmapImage;
+        }
+
+        private void Clear()
+        {
+            Photos.Clear();
+        }
+
         private void OnListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (PhotosListBox.SelectedItem != null)
             {
                 string selectedImagePath = PhotosListBox.SelectedItem.ToString();
-                Update(selectedImagePath);
+                ChangeMainImage(selectedImagePath);
             }
         }
        
