@@ -7,7 +7,7 @@
         AllowsTransparency="True"
         ResizeMode="CanResize"
         MouseMove="Window_MouseDown">
- 
+
     <!-- Styles and Templates -->
     <Window.Resources>
         <local:UriToBitmapConverter x:Key="UriToBitmapConverter" />
