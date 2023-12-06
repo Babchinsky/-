@@ -111,31 +111,61 @@ namespace Gallery
             }
         }
        
-
-
-       
         private void Clear(object sender, RoutedEventArgs e)
         {
-           
+            Photos.Clear();
+            PhotosListBox.SelectedIndex = -1;
         }
 
-        void SaveUsingEncoder(BitmapEncoder encoder, string format)
+        private void SaveAsJpg_Click(object sender, RoutedEventArgs e)
         {
-
+            SaveImageWithEncoder(new JpegBitmapEncoder(), ".jpg");
         }
 
-        private void SaveToJpg(object sender, RoutedEventArgs e)
+        private void SaveAsPng_Click(object sender, RoutedEventArgs e)
         {
-           
+            SaveImageWithEncoder(new PngBitmapEncoder(), ".png");
         }
 
-        void SaveToPng(object sender, RoutedEventArgs e)
+        private void SaveAsBmp_Click(object sender, RoutedEventArgs e)
         {
+            SaveImageWithEncoder(new BmpBitmapEncoder(), ".bmp");
         }
 
-        void SaveToBmp(object sender, RoutedEventArgs e)
+        private void SaveImageWithEncoder(BitmapEncoder encoder, string fileExtension)
         {
-            
+            if (PhotosListBox.SelectedItem != null)
+            {
+                // Получаем выбранный путь к изображению
+                string selectedImagePath = PhotosListBox.SelectedItem.ToString();
+
+                // Создаем BitmapImage из выбранного изображения
+                BitmapImage bitmapImage = new BitmapImage(new Uri(selectedImagePath, UriKind.Absolute));
+
+                // Добавляем BitmapFrame с выбранным изображением в кодировщик
+                encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
+
+                // Создаем диалог для сохранения файла
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = $"{encoder.GetType().Name} Files|*{fileExtension}|All files (*.*)|*.*";
+                saveFileDialog.FileName = System.IO.Path.GetFileNameWithoutExtension(selectedImagePath); // Имя файла по умолчанию
+
+                // Показываем диалог сохранения
+                bool? result = saveFileDialog.ShowDialog();
+
+                // Если пользователь выбрал файл и нажал "Сохранить"
+                if (result == true)
+                {
+                    // Получаем выбранный путь для сохранения
+                    string savePath = saveFileDialog.FileName;
+
+                    // Сохраняем изображение в файл
+                    using (FileStream fileStream = new FileStream(savePath, FileMode.Create))
+                    {
+                        encoder.Save(fileStream);
+                    }
+                }
+            }
         }
     }
 }

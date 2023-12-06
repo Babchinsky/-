@@ -109,12 +109,12 @@
         <!-- Tools -->
         <DockPanel Grid.Column="0" Grid.Row="0" Margin="0,0,0,10" Grid.ColumnSpan="2">
             <Menu DockPanel.Dock="Top" FontSize="14" Background="White">
-                <MenuItem Header="_Файл" >
-                    <MenuItem Header="_Відкрити" Click="OpenFile"/>
-                    <MenuItem Header="_Зберегти в JPG"  Click="SaveToJpg"/>
-                    <MenuItem Header="_Зберегти в PNG" Click ="SaveToPng"/>
-                    <MenuItem Header="_Зберегти в BMP" Click ="SaveToBmp"/>
-                    <MenuItem Header="_Очистити" Click="Clear"/>
+                <MenuItem Header="_File" >
+                    <MenuItem Header="_Open" Click="OpenFile"/>
+                    <MenuItem Header="_Save as JPG"  Click="SaveAsJpg_Click"/>
+                    <MenuItem Header="_Save as PNG" Click ="SaveAsPng_Click"/>
+                    <MenuItem Header="_Save as BMP" Click ="SaveAsBmp_Click"/>
+                    <MenuItem Header="_Clear" Click="Clear"/>
                 </MenuItem>
             </Menu>
         </DockPanel>
@@ -129,8 +129,6 @@
          SelectionMode="Extended" 
          ItemsSource="{Binding Photos}"
          SelectedIndex="0" SelectionChanged="OnListBoxSelectionChanged"> 
-         <!--MouseMove="OnPhotoMove">-->
-                    
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel>
