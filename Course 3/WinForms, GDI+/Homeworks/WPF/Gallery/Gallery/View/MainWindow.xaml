@@ -149,32 +149,32 @@
                 <Button Click="End_Click">End</Button>
             </StackPanel>-->
 
-            <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Name="LeftActionButtons" Visibility="Hidden">
                 <Button Click="Prev_Click" Style="{StaticResource IconButtonStyle}">
                     <StackPanel Orientation="Horizontal" Margin="5">
-                        <Image Source="Pictures/prevWhite.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                        <Image Source="Pictures/prev.png" Width="20" Height="20" Margin="0,0,5,0"/>
                         <!--<TextBlock Text="Prev"/>-->
                     </StackPanel>
                 </Button>
                 <Button Click="First_Click" Style="{StaticResource IconButtonStyle}">
                     <StackPanel Orientation="Horizontal" Margin="5">
-                        <Image Source="Pictures/firstWhite.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                        <Image Source="Pictures/first.png" Width="20" Height="20" Margin="0,0,5,0"/>
                         <!--<TextBlock Text="First"/>-->
                     </StackPanel>
                 </Button>
             </StackPanel>
 
-            <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center">
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Name="RightActionButtons" Visibility="Hidden">
                 <Button Click="Next_Click" Style="{StaticResource IconButtonStyle}">
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <!--<TextBlock Text="Next"/>-->
-                        <Image Source="Pictures/nextWhite.png" Width="20" Height="20" Margin="5,0,0,0"/>
+                        <Image Source="Pictures/next.png" Width="20" Height="20" Margin="5,0,0,0"/>
                     </StackPanel>
                 </Button>
                 <Button Click="End_Click" Style="{StaticResource IconButtonStyle}">
                     <StackPanel Orientation="Horizontal" Margin="5">
                         <!--<TextBlock Text="End"/>-->
-                        <Image Source="Pictures/lastWhite.png" Width="20" Height="20" Margin="5,0,0,0"/>
+                        <Image Source="Pictures/last.png" Width="20" Height="20" Margin="5,0,0,0"/>
                     </StackPanel>
                 </Button>
             </StackPanel>

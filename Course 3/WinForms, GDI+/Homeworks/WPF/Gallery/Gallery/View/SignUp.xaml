@@ -48,17 +48,7 @@
         <Border Background="#FFFFFF" Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
             <StackPanel VerticalAlignment="Center">
                 <TextBlock Text="Sign in to App" Foreground="#3AB19B" Style="{StaticResource TitleText}" />
-                <StackPanel Orientation="Horizontal" Margin="0 20" HorizontalAlignment="Center">
-                    <Button Style="{StaticResource buttonCircle}">
-                        <Image Source="/Images/google.png" Width="20" Height="20" />
-                    </Button>
-                    <Button Style="{StaticResource buttonCircle}">
-                        <Image Source="/Images/facebook.png" Width="20" Height="20" />
-                    </Button>
-                    <Button Style="{StaticResource buttonCircle}">
-                        <Image Source="/Images/linkedin.png" Width="20" Height="20" />
-                    </Button>
-                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 20" HorizontalAlignment="Center"/>
 
                 <TextBlock Text="or use your email info :" Margin="0 10 0 15" Foreground="#878787" Style="{StaticResource NormalText}" />
 

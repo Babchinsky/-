@@ -133,7 +133,7 @@ namespace Gallery
             foreach (string imageFile in imageFiles)
             {
                 
-                imageRatings.Add(imageFile, 3);
+                imageRatings.Add(imageFile, 0);
                 Photos.Add(imageFile);
             }
 
@@ -175,6 +175,10 @@ namespace Gallery
                 }
             }
 
+
+
+            LeftActionButtons.Visibility = Visibility.Visible;
+            RightActionButtons.Visibility = Visibility.Visible;
         }
         private void ChangeMainImage(string FilePath)
         {

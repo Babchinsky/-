@@ -59,12 +59,12 @@ namespace Gallery
                         // Устанавливаем текущее окно (SignInWindow) в качестве владельца для SignUpWindow
                         mainWindow.Owner = this;
 
-                        // Подписываемся на событие Closed окна SignUpWindow
-                        mainWindow.Closed += (signupSender, signupArgs) =>
-                        {
-                            //Показываем снова SignInWindow
-                            this.Show();
-                        };
+                        //// Подписываемся на событие Closed окна SignUpWindow
+                        //mainWindow.Closed += (signupSender, signupArgs) =>
+                        //{
+                        //    //Показываем снова SignInWindow
+                        //    this.Show();
+                        //};
 
                         // Открываем окно SignUpWindow
                         mainWindow.Show();
