@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Media.Imaging;
 
-namespace Gallery
+namespace Gallery.Model
 {
 
     public class Photo

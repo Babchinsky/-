@@ -25,6 +25,7 @@ namespace Gallery
         private System.Windows.Point startPoint;
 
         public ObservableCollection<string> Photos { get; set; }
+        private int currentPhotoIndex = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -230,9 +231,57 @@ namespace Gallery
                 DragMove();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void UpdateDisplayedPhoto()
         {
+            string currentPhotoPath = Photos[currentPhotoIndex];
+            // Здесь вы можете использовать currentPhotoPath для обновления вашего интерфейса (например, изменить источник изображения)
+            ViewedPhoto.Source = new BitmapImage(new Uri(currentPhotoPath));
+        }
 
+        private void First_Click(object sender, RoutedEventArgs e)
+        {
+            if (Photos.Count == 0) { return; }
+            currentPhotoIndex = 0;
+            UpdateDisplayedPhoto();
+        }
+
+        private void End_Click(object sender, RoutedEventArgs e)
+        {
+            if (Photos.Count == 0) { return; }
+            currentPhotoIndex = Photos.Count - 1;
+            UpdateDisplayedPhoto();
+        }
+
+        private void Next_Click(object sender, RoutedEventArgs e)
+        {
+            if (Photos.Count == 0) { return; }
+            if (currentPhotoIndex < Photos.Count - 1)
+            {
+                currentPhotoIndex++;
+            }
+            else
+            {
+                // Если индекс на последнем изображении, перейти к первому изображению
+                currentPhotoIndex = 0;
+            }
+
+            UpdateDisplayedPhoto();
+        }
+
+        private void Prev_Click(object sender, RoutedEventArgs e)
+        {
+            if (Photos.Count == 0) { return; }
+            if (currentPhotoIndex > 0)
+            {
+                currentPhotoIndex--;
+            }
+            else
+            {
+                // Если индекс 0, перейти к последнему изображению
+                currentPhotoIndex = Photos.Count - 1;
+            }
+
+            UpdateDisplayedPhoto();
         }
     }
 }

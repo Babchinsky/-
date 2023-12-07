@@ -1,6 +1,6 @@
-﻿using Gallery;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.IO;
+using Gallery.Model;
 
 namespace Gallery
 {
@@ -41,7 +41,7 @@ namespace Gallery
 
         private void Update()
         {
-            this.Clear();
+            Clear();
             foreach (FileInfo f in _directory.GetFiles("*.*"))
             {
                 if (f.FullName.EndsWith(".jpg") ||

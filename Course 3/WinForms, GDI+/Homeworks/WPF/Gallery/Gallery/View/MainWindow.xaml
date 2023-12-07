@@ -70,7 +70,7 @@
         </Border>
 
         <Menu FontSize="14" Background="Transparent" Grid.Column="0" Grid.Row="0" Margin="10 0 0 0" VerticalAlignment="Center">
-            <MenuItem Header="_File" Foreground="White" Click="MenuItem_Click" >
+            <MenuItem Header="_File" Foreground="White">
                 <MenuItem Header="_Open" Click="OpenFile" Background="#3AB19B" Foreground="White"/>
                 <MenuItem Header="_Save as JPG"  Click="SaveAsJpg_Click" Background="#3AB19B" Foreground="White"/>
                 <MenuItem Header="_Save as PNG" Click ="SaveAsPng_Click" Background="#3AB19B" Foreground="White"/>
@@ -78,14 +78,8 @@
                 <MenuItem Header="_Clear" Click="Clear" Background="#3AB19B" Foreground="White"/>
             </MenuItem>
         </Menu>
-        <ScrollViewer  Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Auto" 
-     HorizontalScrollBarVisibility="Disabled">
-            <ListBox Name="PhotosListBox"
-    IsSynchronizedWithCurrentItem="True"  
-    Style="{StaticResource PhotoListBoxStyle}"
-    SelectionMode="Extended" 
-    ItemsSource="{Binding Photos}"
-    SelectedIndex="0" SelectionChanged="OnListBoxSelectionChanged">
+        <ScrollViewer  Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <ListBox Name="PhotosListBox" IsSynchronizedWithCurrentItem="True" Style="{StaticResource PhotoListBoxStyle}" SelectionMode="Extended" ItemsSource="{Binding Photos}" SelectedIndex="0" SelectionChanged="OnListBoxSelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -95,7 +89,6 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </ScrollViewer>
-
         <Border Background="#3AB19B" Grid.Column="1" Grid.RowSpan="2" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
             <StackPanel VerticalAlignment="Center">
 
@@ -103,5 +96,12 @@
             </StackPanel>
         </Border>
 
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Button Click="First_Click">First</Button>
+            <Button Click="End_Click">End</Button>
+            <Button Click="Next_Click">Next</Button>
+            <Button Click="Prev_Click">Prev</Button>
+                
+        </StackPanel>
     </Grid>
 </Window>
