@@ -22,6 +22,14 @@
     <None Remove="Images\maximizeWhite.png" />
     <None Remove="Images\minimize.png" />
     <None Remove="Images\minimizeWhite.png" />
+    <None Remove="View\Pictures\first.png" />
+    <None Remove="View\Pictures\firstWhite.png" />
+    <None Remove="View\Pictures\last.png" />
+    <None Remove="View\Pictures\lastWhite.png" />
+    <None Remove="View\Pictures\next.png" />
+    <None Remove="View\Pictures\nextWhite.png" />
+    <None Remove="View\Pictures\prev.png" />
+    <None Remove="View\Pictures\prevWhite.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +46,8 @@
     <Resource Include="Images\closeWhite.png" />
     <Resource Include="Images\Email.png" />
     <Resource Include="Images\facebook.png" />
+    <Resource Include="View\Pictures\first.png" />
+    <Resource Include="View\Pictures\firstWhite.png" />
     <Resource Include="View\Pictures\GalleryIcon.ico" />
     <Resource Include="Images\google.png" />
     <Resource Include="Images\linkedin.png" />
@@ -48,6 +58,12 @@
     <Resource Include="Images\maximizeWhite.png" />
     <Resource Include="Images\minimize.png" />
     <Resource Include="Images\minimizeWhite.png" />
+    <Resource Include="View\Pictures\last.png" />
+    <Resource Include="View\Pictures\lastWhite.png" />
+    <Resource Include="View\Pictures\next.png" />
+    <Resource Include="View\Pictures\nextWhite.png" />
+    <Resource Include="View\Pictures\prev.png" />
+    <Resource Include="View\Pictures\prevWhite.png" />
   </ItemGroup>
 
 </Project>
