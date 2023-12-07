@@ -11,7 +11,8 @@
         Background="Transparent" 
         Height="500" 
         Width="800"
-        Icon="Pictures/GalleryIcon.ico">
+        Icon="Pictures/GalleryIcon.ico"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
     <Window.Resources>
         <Style x:Key="IconButtonStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
@@ -60,9 +61,9 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="1" Grid.Row="0" Panel.ZIndex="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Image Source="/Images/minimize.png"  MouseUp="Minimize_MouseUp" Style="{StaticResource imgClose}"/>
-            <Image Source="/Images/maximize.png" MouseUp="Maximize_MouseUp" Style="{StaticResource imgClose}"/>
-            <Image Source="/Images/close.png" MouseUp="Close_MouseUp" Style="{StaticResource imgClose}"/>
+            <Image Name="MinimizeButton" Source="/Images/minimize.png"  MouseUp="Minimize_MouseUp" Style="{StaticResource imgClose}"/>
+            <Image Name="MaximizeButton" Source="/Images/maximize.png" MouseUp="Maximize_MouseUp" Style="{StaticResource imgClose}"/>
+            <Image Name="CloseButton" Source="/Images/close.png" MouseUp="Close_MouseUp" Style="{StaticResource imgClose}"/>
         </StackPanel>
 
 

@@ -30,16 +30,7 @@ namespace Gallery
         {
             InitializeComponent();
             Photos = new ObservableCollection<string>();
-            //Photos.Add("C:\\Wallpapers\\1.jpg"); // Пример добавления элемента
             PhotosListBox.DataContext = this; // Привязываем DataContext к текущему экземпляру окна
-
-
-            // Путь к файлу с изображением
-            //string imagePath = "C:\\Wallpapers\\1.jpg";
-
-            // Создаем объект BitmapImage и устанавливаем его как источник для ViewedPhoto
-            //BitmapImage bitmapImage = new BitmapImage(new Uri(imagePath));
-            //ViewedPhoto.Source = bitmapImage;
         }
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -65,8 +56,6 @@ namespace Gallery
                 WindowState = WindowState.Maximized;
             }
         }
-
-
         private void OpenMenuItem_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -77,7 +66,6 @@ namespace Gallery
                 // Добавьте свой код обработки файла здесь
             }
         }
-
         private void OpenFile(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -89,7 +77,6 @@ namespace Gallery
                 LoadAfterOpenFile(absolutePath);
             }
         }
-
         private string[] GetImageFilesInFolder(string folderPath)
         {
             // Получаем все файлы с указанными расширениями в папке
@@ -99,7 +86,6 @@ namespace Gallery
 
             return imageFiles;
         }
-
         private void LoadAfterOpenFile(string FilePath)
         {
             Clear();
@@ -122,7 +108,6 @@ namespace Gallery
             // Прокручиваем к выбранному элементу
             PhotosListBox.ScrollIntoView(PhotosListBox.SelectedItem);
         }
-
         private void ChangeMainImage(string FilePath)
         {
             // Применяю фотографию к главному окну
@@ -130,12 +115,10 @@ namespace Gallery
             BitmapImage bitmapImage = new BitmapImage(uri);
             ViewedPhoto.Source = bitmapImage;
         }
-
         private void Clear()
         {
             Photos.Clear();
         }
-
         private void OnListBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (PhotosListBox.SelectedItem != null)
@@ -144,29 +127,24 @@ namespace Gallery
                 ChangeMainImage(selectedImagePath);
             }
         }
-
         private void Clear(object sender, RoutedEventArgs e)
         {
             Photos.Clear();
             PhotosListBox.SelectedIndex = -1;
             ViewedPhoto.Source = null;
         }
-
         private void SaveAsJpg_Click(object sender, RoutedEventArgs e)
         {
             SaveImageWithEncoder(new JpegBitmapEncoder(), ".jpg");
         }
-
         private void SaveAsPng_Click(object sender, RoutedEventArgs e)
         {
             SaveImageWithEncoder(new PngBitmapEncoder(), ".png");
         }
-
         private void SaveAsBmp_Click(object sender, RoutedEventArgs e)
         {
             SaveImageWithEncoder(new BmpBitmapEncoder(), ".bmp");
         }
-
         private void SaveImageWithEncoder(BitmapEncoder encoder, string fileExtension)
         {
             if (PhotosListBox.SelectedItem != null)
@@ -202,35 +180,11 @@ namespace Gallery
                 }
             }
         }
-
-        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-        private void RestoreButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (WindowState == WindowState.Maximized)
-            {
-                WindowState = WindowState.Normal;
-            }
-            else
-            {
-                WindowState = WindowState.Maximized;
-            }
-        }
-
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
         private void Window_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
         }
-
         private void UpdateDisplayedPhoto()
         {
             string currentPhotoPath = Photos[currentPhotoIndex];
@@ -239,7 +193,6 @@ namespace Gallery
             //// Прокручиваем к выбранному элементу
             PhotosListBox.ScrollIntoView(PhotosListBox.SelectedItem);
         }
-
         private void First_Click(object sender, RoutedEventArgs e)
         {
             if (Photos.Count == 0) { return; }
@@ -247,7 +200,6 @@ namespace Gallery
             PhotosListBox.SelectedIndex = currentPhotoIndex;
             UpdateDisplayedPhoto();
         }
-
         private void End_Click(object sender, RoutedEventArgs e)
         {
             if (Photos.Count == 0) { return; }
@@ -255,7 +207,6 @@ namespace Gallery
             PhotosListBox.SelectedIndex = currentPhotoIndex;
             UpdateDisplayedPhoto();
         }
-
         private void Next_Click(object sender, RoutedEventArgs e)
         {
             if (Photos.Count == 0) { return; }
@@ -271,7 +222,6 @@ namespace Gallery
             PhotosListBox.SelectedIndex = currentPhotoIndex;
             UpdateDisplayedPhoto();
         }
-
         private void Prev_Click(object sender, RoutedEventArgs e)
         {
             if (Photos.Count == 0) { return; }
@@ -286,6 +236,57 @@ namespace Gallery
             }
             PhotosListBox.SelectedIndex = currentPhotoIndex;
             UpdateDisplayedPhoto();
+        }
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                // Проверяем, является ли клик кнопкой закрытия
+                if (e.OriginalSource == CloseButton)
+                {
+                    // Клик на кнопке закрытия, не вызываем DragMove()
+                    CloseButton_Click(null, null);
+                    return;
+                }
+
+                // Проверяем, является ли клик кнопкой закрытия
+                if (e.OriginalSource == MaximizeButton)
+                {
+                    RestoreButton_Click(null, null); 
+                    // Клик на кнопке закрытия, не вызываем DragMove()
+                    return;
+                }
+
+                // Проверяем, является ли клик кнопкой сворачивания
+                if (e.OriginalSource == MinimizeButton)
+                {
+                    // Клик на кнопке сворачивания, не вызываем DragMove()
+                    MinimizeButton_Click(null, null);
+                    return;
+                }
+
+                // Клик произошел вне кнопок закрытия и сворачивания, вызываем DragMove()
+                DragMove();
+            }
+        }
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+        private void RestoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                WindowState = WindowState.Normal;
+            }
+            else
+            {
+                WindowState = WindowState.Maximized;
+            }
+        }
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
