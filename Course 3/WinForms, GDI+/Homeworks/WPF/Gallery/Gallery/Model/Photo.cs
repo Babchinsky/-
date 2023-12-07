@@ -4,7 +4,6 @@ using System.Windows.Media.Imaging;
 
 namespace Gallery.Model
 {
-
     public class Photo
     {
         private string _path;
