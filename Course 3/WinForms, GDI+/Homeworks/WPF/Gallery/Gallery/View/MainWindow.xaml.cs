@@ -8,23 +8,33 @@ using System.Windows.Input;
 using System.Linq;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls.Primitives;
+using System.Collections.Generic;
 
 namespace Gallery
 {
     public partial class MainWindow : Window
     {
-        private bool isDragging = false;
-        private System.Windows.Point startPoint;
-
+        private Dictionary<string, int> imageRatings = new Dictionary<string, int>();
         public ObservableCollection<string> Photos { get; set; }
         private int currentPhotoIndex = 0;
         private string author = "Author";
+        private string currentImagePath = string.Empty;
         public MainWindow()
         {
             InitializeComponent();
             Photos = new ObservableCollection<string>();
             PhotosListBox.DataContext = this; // Привязываем DataContext к текущему экземпляру окна
+
+            /*LoadImageRatings();*/ // Загрузка рейтингов из сохраненных данных
         }
+        private void LoadImageRatings()
+        {
+            // Ваш код для загрузки рейтингов из сохраненных данных, например, из файла или базы данных
+            // Пример загрузки изображений из файла:
+            
+            // и так далее
+        }
+
         private void Border_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -108,32 +118,6 @@ namespace Gallery
 
         private string GetImageAuthor(string filePath)
         {
-            //try
-            //{
-            //    BitmapDecoder decoder = BitmapDecoder.Create(new Uri(filePath), BitmapCreateOptions.None, BitmapCacheOption.Default);
-            //    BitmapMetadata metadata = decoder.Metadata as BitmapMetadata;
-
-            //    if (metadata != null && metadata.Author != null)
-            //    {
-            //        if (metadata.Author.Count > 0)
-            //        {
-            //            // If there are multiple authors, return the first one
-            //            return author;
-            //        }
-            //        else
-            //        {
-            //            // If there is only one author, return it
-            //return author;
-            //}
-            //}
-            //}
-            //catch (Exception ex)
-            //{
-            //    // Handle errors
-            //    Console.WriteLine($"Error getting image author: {ex.Message}");
-            //}
-
-            // Return an empty string if author information is not found
             return author;
         }
 
@@ -143,10 +127,13 @@ namespace Gallery
         {
             Clear();
 
+            currentImagePath = FilePath;
             string folderPath = System.IO.Path.GetDirectoryName(FilePath);
             string[] imageFiles = GetImageFilesInFolder(folderPath);
             foreach (string imageFile in imageFiles)
             {
+                
+                imageRatings.Add(imageFile, 3);
                 Photos.Add(imageFile);
             }
 
@@ -165,13 +152,58 @@ namespace Gallery
             Size.Text = GetImageSizeInKilobytes(FilePath).ToString() + "KB";
             Author.Text = GetImageAuthor(FilePath).ToString();
             Stars.Visibility = Visibility.Visible;
+
+
+            // Загрузка изображения и установка соответствующего рейтинга
+            if (imageRatings.ContainsKey(FilePath))
+            {
+                int rating = imageRatings[FilePath];
+                // Установка рейтинга для текущего изображения
+                for (int i = 1; i <= 5; i++)
+                {
+                    ToggleButton star = (ToggleButton)FindName($"star{i}");
+                    star.IsChecked = i <= rating;
+                }
+            }
+            else
+            {
+                // Если рейтинг для изображения не найден, сбросить все звезды
+                for (int i = 1; i <= 5; i++)
+                {
+                    ToggleButton star = (ToggleButton)FindName($"star{i}");
+                    star.IsChecked = false;
+                }
+            }
+
         }
         private void ChangeMainImage(string FilePath)
         {
+            currentImagePath = FilePath;
             // Применяю фотографию к главному окну
             Uri uri = new Uri(FilePath, UriKind.Absolute);
             BitmapImage bitmapImage = new BitmapImage(uri);
             ViewedPhoto.Source = bitmapImage;
+
+            if (imageRatings.ContainsKey(currentImagePath))
+            {
+                int rating = imageRatings[currentImagePath];
+                // Установка рейтинга для текущего изображения
+                for (int i = 1; i <= 5; i++)
+                {
+                    ToggleButton star = (ToggleButton)FindName($"star{i}");
+                    star.IsChecked = i <= rating;
+                }
+            }
+            else
+            {
+                // Если рейтинг для изображения не найден, сбросить все звезды
+                for (int i = 1; i <= 5; i++)
+                {
+                    ToggleButton star = (ToggleButton)FindName($"star{i}");
+                    star.IsChecked = false;
+                }
+            }
+
         }
         private void Clear()
         {
@@ -353,19 +385,24 @@ namespace Gallery
         private void Star_Click(object sender, RoutedEventArgs e)
         {
             ToggleButton clickedStar = (ToggleButton)sender;
-            int rating = int.Parse(clickedStar.Tag.ToString());
 
-            // Закрашиваем все звезды до выбранной
-            for (int i = 1; i <= 5; i++)
+            if (clickedStar != null && !string.IsNullOrEmpty(currentImagePath))
             {
-                ToggleButton star = (ToggleButton)FindName($"star{i}");
-                if (i <= rating)
+                int clickedStarIndex = int.Parse(clickedStar.Tag.ToString());
+                imageRatings[currentImagePath] = clickedStarIndex; // Сохранение рейтинга для текущего изображения
+
+                // Закрашиваем все звезды до выбранной
+                for (int i = 1; i <= 5; i++)
                 {
-                    star.IsChecked = true;
-                }
-                else
-                {
-                    star.IsChecked = false;
+                    ToggleButton star = (ToggleButton)FindName($"star{i}");
+                    if (i <= clickedStarIndex)
+                    {
+                        star.IsChecked = true;
+                    }
+                    else
+                    {
+                        star.IsChecked = false;
+                    }
                 }
             }
         }
