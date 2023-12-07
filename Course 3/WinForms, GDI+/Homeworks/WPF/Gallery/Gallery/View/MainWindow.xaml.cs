@@ -19,13 +19,13 @@ using System.Runtime.ConstrainedExecution;
 
 namespace Gallery
 {
-    public partial class NewMainWindow : Window
+    public partial class MainWindow : Window
     {
         private bool isDragging = false;
         private System.Windows.Point startPoint;
 
         public ObservableCollection<string> Photos { get; set; }
-        public NewMainWindow()
+        public MainWindow()
         {
             InitializeComponent();
             Photos = new ObservableCollection<string>();
