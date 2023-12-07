@@ -236,12 +236,15 @@ namespace Gallery
             string currentPhotoPath = Photos[currentPhotoIndex];
             // Здесь вы можете использовать currentPhotoPath для обновления вашего интерфейса (например, изменить источник изображения)
             ViewedPhoto.Source = new BitmapImage(new Uri(currentPhotoPath));
+            //// Прокручиваем к выбранному элементу
+            PhotosListBox.ScrollIntoView(PhotosListBox.SelectedItem);
         }
 
         private void First_Click(object sender, RoutedEventArgs e)
         {
             if (Photos.Count == 0) { return; }
             currentPhotoIndex = 0;
+            PhotosListBox.SelectedIndex = currentPhotoIndex;
             UpdateDisplayedPhoto();
         }
 
@@ -249,6 +252,7 @@ namespace Gallery
         {
             if (Photos.Count == 0) { return; }
             currentPhotoIndex = Photos.Count - 1;
+            PhotosListBox.SelectedIndex = currentPhotoIndex;
             UpdateDisplayedPhoto();
         }
 
@@ -264,7 +268,7 @@ namespace Gallery
                 // Если индекс на последнем изображении, перейти к первому изображению
                 currentPhotoIndex = 0;
             }
-
+            PhotosListBox.SelectedIndex = currentPhotoIndex;
             UpdateDisplayedPhoto();
         }
 
@@ -280,7 +284,7 @@ namespace Gallery
                 // Если индекс 0, перейти к последнему изображению
                 currentPhotoIndex = Photos.Count - 1;
             }
-
+            PhotosListBox.SelectedIndex = currentPhotoIndex;
             UpdateDisplayedPhoto();
         }
     }

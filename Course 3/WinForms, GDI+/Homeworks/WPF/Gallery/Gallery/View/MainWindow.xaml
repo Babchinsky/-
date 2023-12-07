@@ -42,9 +42,9 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="1" Grid.Row="0" Panel.ZIndex="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Image Source="/Images/minimizeWhite.png"  MouseUp="Minimize_MouseUp" Style="{StaticResource imgClose}"/>
-            <Image Source="/Images/maximizeWhite.png" MouseUp="Maximize_MouseUp" Style="{StaticResource imgClose}"/>
-            <Image Source="/Images/closeWhite.png" MouseUp="Close_MouseUp" Style="{StaticResource imgClose}"/>
+            <Image Source="/Images/minimize.png"  MouseUp="Minimize_MouseUp" Style="{StaticResource imgClose}"/>
+            <Image Source="/Images/maximize.png" MouseUp="Maximize_MouseUp" Style="{StaticResource imgClose}"/>
+            <Image Source="/Images/close.png" MouseUp="Close_MouseUp" Style="{StaticResource imgClose}"/>
         </StackPanel>
 
 
@@ -89,7 +89,7 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </ScrollViewer>
-        <Border Background="#3AB19B" Grid.Column="1" Grid.RowSpan="2" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
+        <Border Background="White" Grid.Column="1" Grid.RowSpan="2" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
             <StackPanel VerticalAlignment="Center">
 
                 <Image Name="ViewedPhoto"/>

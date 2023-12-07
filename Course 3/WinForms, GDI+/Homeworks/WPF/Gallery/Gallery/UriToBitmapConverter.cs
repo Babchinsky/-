@@ -2,7 +2,7 @@
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
-namespace Gallery.Model
+namespace Gallery
 {
 
     class UriToBitmapConverter : IValueConverter
