@@ -5,17 +5,9 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Drawing;
-using System.Runtime.ConstrainedExecution;
+using System.Windows.Controls.Primitives;
 
 namespace Gallery
 {
@@ -26,6 +18,7 @@ namespace Gallery
 
         public ObservableCollection<string> Photos { get; set; }
         private int currentPhotoIndex = 0;
+        private string author = "Author";
         public MainWindow()
         {
             InitializeComponent();
@@ -86,6 +79,66 @@ namespace Gallery
 
             return imageFiles;
         }
+
+        private double GetImageSizeInMegabytes(string filePath)
+        {
+            FileInfo fileInfo = new FileInfo(filePath);
+            long fileSizeInBytes = fileInfo.Length;
+
+            // Конвертируем байты в мегабайты и округляем до десятых
+            double fileSizeInMegabytes = Math.Round((double)fileSizeInBytes / (1024 * 1024), 1);
+
+            return fileSizeInMegabytes;
+        }
+        private double GetImageSizeInKilobytes(string filePath)
+        {
+            FileInfo fileInfo = new FileInfo(filePath);
+            long fileSizeInBytes = fileInfo.Length;
+
+            // Конвертируем байты в килобайты и округляем до десятых
+            double fileSizeInKilobytes = Math.Round((double)fileSizeInBytes / 1024, 1);
+
+            return fileSizeInKilobytes;
+        }
+
+        private string GetImageFileName(string filePath)
+        {
+            return System.IO.Path.GetFileName(filePath);
+        }
+
+        private string GetImageAuthor(string filePath)
+        {
+            //try
+            //{
+            //    BitmapDecoder decoder = BitmapDecoder.Create(new Uri(filePath), BitmapCreateOptions.None, BitmapCacheOption.Default);
+            //    BitmapMetadata metadata = decoder.Metadata as BitmapMetadata;
+
+            //    if (metadata != null && metadata.Author != null)
+            //    {
+            //        if (metadata.Author.Count > 0)
+            //        {
+            //            // If there are multiple authors, return the first one
+            //            return author;
+            //        }
+            //        else
+            //        {
+            //            // If there is only one author, return it
+            //return author;
+            //}
+            //}
+            //}
+            //catch (Exception ex)
+            //{
+            //    // Handle errors
+            //    Console.WriteLine($"Error getting image author: {ex.Message}");
+            //}
+
+            // Return an empty string if author information is not found
+            return author;
+        }
+
+
+
         private void LoadAfterOpenFile(string FilePath)
         {
             Clear();
@@ -107,6 +160,11 @@ namespace Gallery
 
             // Прокручиваем к выбранному элементу
             PhotosListBox.ScrollIntoView(PhotosListBox.SelectedItem);
+
+            FileName.Text = GetImageFileName(FilePath).ToString();
+            Size.Text = GetImageSizeInKilobytes(FilePath).ToString() + "KB";
+            Author.Text = GetImageAuthor(FilePath).ToString();
+            Stars.Visibility = Visibility.Visible;
         }
         private void ChangeMainImage(string FilePath)
         {
@@ -125,6 +183,9 @@ namespace Gallery
             {
                 string selectedImagePath = PhotosListBox.SelectedItem.ToString();
                 ChangeMainImage(selectedImagePath);
+                FileName.Text = GetImageFileName(selectedImagePath).ToString();
+                Size.Text = GetImageSizeInKilobytes(selectedImagePath).ToString() + "KB";
+                Author.Text = GetImageAuthor(selectedImagePath).ToString();
             }
         }
         private void Clear(object sender, RoutedEventArgs e)
@@ -252,7 +313,7 @@ namespace Gallery
                 // Проверяем, является ли клик кнопкой закрытия
                 if (e.OriginalSource == MaximizeButton)
                 {
-                    RestoreButton_Click(null, null); 
+                    RestoreButton_Click(null, null);
                     // Клик на кнопке закрытия, не вызываем DragMove()
                     return;
                 }
@@ -287,6 +348,26 @@ namespace Gallery
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void Star_Click(object sender, RoutedEventArgs e)
+        {
+            ToggleButton clickedStar = (ToggleButton)sender;
+            int rating = int.Parse(clickedStar.Tag.ToString());
+
+            // Закрашиваем все звезды до выбранной
+            for (int i = 1; i <= 5; i++)
+            {
+                ToggleButton star = (ToggleButton)FindName($"star{i}");
+                if (i <= rating)
+                {
+                    star.IsChecked = true;
+                }
+                else
+                {
+                    star.IsChecked = false;
+                }
+            }
         }
     }
 }
