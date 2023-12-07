@@ -10,7 +10,8 @@
         AllowsTransparency="True" 
         Background="Transparent" 
         Height="500" 
-        Width="300">
+        Width="300"
+        Icon="Pictures/GalleryIcon.ico">
 
     <Grid>
         <Grid.ColumnDefinitions>
