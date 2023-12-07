@@ -11,16 +11,43 @@
         Background="Transparent" 
         Height="500" 
         Width="800">
-
+    <Window.Resources>
+        <!-- Main photo catalog view -->
+        <Style TargetType="{x:Type ListBox}" x:Key="PhotoListBoxStyle">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBox}" >
+                        <WrapPanel Margin="5" 
+                       IsItemsHost="True" 
+                       Orientation="Horizontal" 
+                       ItemWidth="200" 
+                       VerticalAlignment="Top" 
+                       HorizontalAlignment="Stretch" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="2.5*" />
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="2.8*" />
         </Grid.ColumnDefinitions>
 
-        <Image Source="/Images/close.png" Grid.Column="1" Panel.ZIndex="1" MouseUp="Image_MouseUp" Style="{StaticResource imgClose}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
+        </Grid.RowDefinitions>
 
-        <Border CornerRadius="10 0 0 10">
+        <StackPanel Grid.Column="1" Grid.Row="0" Panel.ZIndex="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Image Source="/Images/minimizeWhite.png"  MouseUp="Minimize_MouseUp" Style="{StaticResource imgClose}"/>
+            <Image Source="/Images/maximizeWhite.png" MouseUp="Maximize_MouseUp" Style="{StaticResource imgClose}"/>
+            <Image Source="/Images/closeWhite.png" MouseUp="Close_MouseUp" Style="{StaticResource imgClose}"/>
+        </StackPanel>
+
+
+        <Border CornerRadius="10 0 0 10" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="#3AA9AD" Offset="0" />
@@ -36,14 +63,40 @@
                     <Ellipse Margin="50 400 0 0" Width="20" Height="20" Fill="#4EB1B6" />
                 </Canvas>
 
-               
+                <Menu FontSize="14" Background="Transparent" Grid.Column="0" Grid.Row="0" Margin="10">
+                    <MenuItem Header="_File" Foreground="White" Click="MenuItem_Click" >
+                        <MenuItem Header="_Open" Click="OpenFile" Background="#3AB19B" Foreground="White"/>
+                        <MenuItem Header="_Save as JPG"  Click="SaveAsJpg_Click" Background="#3AB19B" Foreground="White"/>
+                        <MenuItem Header="_Save as PNG" Click ="SaveAsPng_Click" Background="#3AB19B" Foreground="White"/>
+                        <MenuItem Header="_Save as BMP" Click ="SaveAsBmp_Click" Background="#3AB19B" Foreground="White"/>
+                        <MenuItem Header="_Clear" Click="Clear" Background="#3AB19B" Foreground="White"/>
+                    </MenuItem>
+                </Menu>
+                <ScrollViewer  Grid.Column="0" VerticalScrollBarVisibility="Auto" 
+                     HorizontalScrollBarVisibility="Disabled" Margin="0,30,0,0">
+                    <ListBox Name="PhotosListBox"
+                    IsSynchronizedWithCurrentItem="True"  
+                    Style="{StaticResource PhotoListBoxStyle}"
+                    SelectionMode="Extended" 
+                    ItemsSource="{Binding Photos}"
+                    SelectedIndex="0" SelectionChanged="OnListBoxSelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Image Source="{Binding}" Width="Auto" Height="Auto" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </ScrollViewer>
+
             </Grid>
         </Border>
 
-        <Border Background="#FFFFFF" Grid.Column="1" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
+        <Border Background="#3AB19B" Grid.Column="1" Grid.RowSpan="2" CornerRadius="0 10 10 0" MouseDown="Border_MouseDown">
             <StackPanel VerticalAlignment="Center">
-       
-               
+
+                <Image Name="ViewedPhoto"/>
             </StackPanel>
         </Border>
 

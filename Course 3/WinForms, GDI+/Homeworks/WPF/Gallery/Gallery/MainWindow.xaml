@@ -117,7 +117,7 @@
 
         <DockPanel Grid.Column="0" Grid.Row="0" Margin="0,0,0,10" Grid.ColumnSpan="2">
             <Menu DockPanel.Dock="Top" FontSize="14" Background="#3AB19B">
-                <MenuItem Header="_File" Foreground="White" >
+                <MenuItem Header="_File" Foreground="White" Click="MenuItem_Click" >
                     <MenuItem Header="_Open" Click="OpenFile" Background="#3AB19B" Foreground="White"/>
                     <MenuItem Header="_Save as JPG"  Click="SaveAsJpg_Click" Background="#3AB19B" Foreground="White"/>
                     <MenuItem Header="_Save as PNG" Click ="SaveAsPng_Click" Background="#3AB19B" Foreground="White"/>

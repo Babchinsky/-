@@ -17,6 +17,10 @@
     <None Remove="Images\Lock.png" />
     <None Remove="Images\LockGreen.png" />
     <None Remove="Images\LockWhite.png" />
+    <None Remove="Images\maximize.png" />
+    <None Remove="Images\maximizeWhite.png" />
+    <None Remove="Images\minimize.png" />
+    <None Remove="Images\minimizeWhite.png" />
     <None Remove="View\Pictures\1.jpg" />
     <None Remove="View\Pictures\2.jpg" />
     <None Remove="View\Pictures\3.jpg" />
@@ -44,6 +48,10 @@
     <Resource Include="Images\Lock.png" />
     <Resource Include="Images\LockGreen.png" />
     <Resource Include="Images\LockWhite.png" />
+    <Resource Include="Images\maximize.png" />
+    <Resource Include="Images\maximizeWhite.png" />
+    <Resource Include="Images\minimize.png" />
+    <Resource Include="Images\minimizeWhite.png" />
     <Resource Include="View\Pictures\1.jpg" />
     <Resource Include="View\Pictures\2.jpg" />
     <Resource Include="View\Pictures\3.jpg" />

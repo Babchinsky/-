@@ -207,5 +207,10 @@ namespace Gallery
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

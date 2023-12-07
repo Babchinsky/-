@@ -2,8 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Gallery"
-             StartupUri="View/SignIn.xaml">
-             <!--Startup="OnApplicationStartup">-->
+             StartupUri="NewMainWindow.xaml">
+    <!--StartupUri="View/SignIn.xaml">-->
+    <!--Startup="OnApplicationStartup">-->
     <Application.Resources>
         <ObjectDataProvider x:Key="Photos" ObjectType="{x:Type local:PhotoCollection}" />
 
